@@ -1,0 +1,1607 @@
+PILOTOS
+
+[
+  {
+    "id": "680be10ac90792ed739edf28",
+    "nombre_piloto": "Max",
+    "apellido_piloto": "Verstappen",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Neerlandés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be123c90792ed739edf29",
+    "nombre_piloto": "Liam",
+    "apellido_piloto": "Lawson",
+    "edad_piloto": 23,
+    "nacionalidad_piloto": "Neozelandés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be138c90792ed739edf2a",
+    "nombre_piloto": "George",
+    "apellido_piloto": "Russell",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Británico",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be165c90792ed739edf2b",
+    "nombre_piloto": "Kimi",
+    "apellido_piloto": "Antonelli",
+    "edad_piloto": 18,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be196c90792ed739edf2c",
+    "nombre_piloto": "Charles",
+    "apellido_piloto": "Leclerc",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Monegasco",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be1aac90792ed739edf2d",
+    "nombre_piloto": "Lewis",
+    "apellido_piloto": "Hamilton",
+    "edad_piloto": 40,
+    "nacionalidad_piloto": "Británico",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be1bbc90792ed739edf2e",
+    "nombre_piloto": "Lando",
+    "apellido_piloto": "Norris",
+    "edad_piloto": 25,
+    "nacionalidad_piloto": "Británico",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be1c8c90792ed739edf2f",
+    "nombre_piloto": "Oscar",
+    "apellido_piloto": "Piastri",
+    "edad_piloto": 24,
+    "nacionalidad_piloto": "Australiano",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be1f5c90792ed739edf30",
+    "nombre_piloto": "Fernando",
+    "apellido_piloto": "Alonso",
+    "edad_piloto": 43,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be20bc90792ed739edf31",
+    "nombre_piloto": "Lance",
+    "apellido_piloto": "Stroll",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Canadiense",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be224c90792ed739edf32",
+    "nombre_piloto": "Pierre",
+    "apellido_piloto": "Gasly",
+    "edad_piloto": 29,
+    "nacionalidad_piloto": "Francés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be238c90792ed739edf33",
+    "nombre_piloto": "Jack",
+    "apellido_piloto": "Doohan",
+    "edad_piloto": 22,
+    "nacionalidad_piloto": "Australiano",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be24ac90792ed739edf34",
+    "nombre_piloto": "Esteban",
+    "apellido_piloto": "Ocon",
+    "edad_piloto": 28,
+    "nacionalidad_piloto": "Francés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be25cc90792ed739edf35",
+    "nombre_piloto": "Oliver",
+    "apellido_piloto": "Bearman",
+    "edad_piloto": 19,
+    "nacionalidad_piloto": "Británico",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be26dc90792ed739edf36",
+    "nombre_piloto": "Alexander",
+    "apellido_piloto": "Albon",
+    "edad_piloto": 29,
+    "nacionalidad_piloto": "Tailandés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be28ec90792ed739edf37",
+    "nombre_piloto": "Carlos",
+    "apellido_piloto": "Sainz Jr",
+    "edad_piloto": 30,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be2b7c90792ed739edf38",
+    "nombre_piloto": "Nico",
+    "apellido_piloto": "Hülkenberg",
+    "edad_piloto": 37,
+    "nacionalidad_piloto": "Alemán",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be2cec90792ed739edf39",
+    "nombre_piloto": "Yuki",
+    "apellido_piloto": "Tsunoda",
+    "edad_piloto": 24,
+    "nacionalidad_piloto": "Japonés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be2dbc90792ed739edf3a",
+    "nombre_piloto": "Isack",
+    "apellido_piloto": "Hadjar",
+    "edad_piloto": 20,
+    "nacionalidad_piloto": "Francés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be301c90792ed739edf3b",
+    "nombre_piloto": "Valtteri",
+    "apellido_piloto": "Bottas",
+    "edad_piloto": 35,
+    "nacionalidad_piloto": "Finlandés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "680be313c90792ed739edf3c",
+    "nombre_piloto": "Guanyu",
+    "apellido_piloto": "Zhou",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Chino",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "680be324c90792ed739edf3d",
+    "nombre_piloto": "Pato",
+    "apellido_piloto": "O’Ward",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Mexicano",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "680be337c90792ed739edf3e",
+    "nombre_piloto": "Felipe",
+    "apellido_piloto": "Drugovich",
+    "edad_piloto": 25,
+    "nacionalidad_piloto": "Brasileño",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "680be34ac90792ed739edf3f",
+    "nombre_piloto": "Franco",
+    "apellido_piloto": "Colapinto",
+    "edad_piloto": 22,
+    "nacionalidad_piloto": "Argentino",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "6813749fb5a253252881d1ac",
+    "nombre_piloto": "Pietro",
+    "apellido_piloto": "Fittipaldi",
+    "edad_piloto": 28,
+    "nacionalidad_piloto": "Brasileño",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "6813749fb5a253252881d1ad",
+    "nombre_piloto": "Ayumu",
+    "apellido_piloto": "Iwasa",
+    "edad_piloto": 23,
+    "nacionalidad_piloto": "Japonés",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": false
+  },
+  {
+    "id": "681381262eaa9562616283e2",
+    "nombre_piloto": "Oliver",
+    "apellido_piloto": "Turvey",
+    "edad_piloto": 38,
+    "nacionalidad_piloto": "Británico",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681381262eaa9562616283e3",
+    "nombre_piloto": "Ryo",
+    "apellido_piloto": "Hirakawa",
+    "edad_piloto": 31,
+    "nacionalidad_piloto": "Japonesa",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1ee",
+    "nombre_piloto": "Francesco",
+    "apellido_piloto": "Bagnaia",
+    "edad_piloto": 28,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1ef",
+    "nombre_piloto": "Marc",
+    "apellido_piloto": "Márquez",
+    "edad_piloto": 32,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f0",
+    "nombre_piloto": "Álex",
+    "apellido_piloto": "Márquez",
+    "edad_piloto": 28,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f1",
+    "nombre_piloto": "Fermín",
+    "apellido_piloto": "Aldeguer",
+    "edad_piloto": 19,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f2",
+    "nombre_piloto": "Fabio",
+    "apellido_piloto": "Di Giannantonio",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f3",
+    "nombre_piloto": "Franco",
+    "apellido_piloto": "Morbidelli",
+    "edad_piloto": 30,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f4",
+    "nombre_piloto": "Brad",
+    "apellido_piloto": "Binder",
+    "edad_piloto": 29,
+    "nacionalidad_piloto": "Sudafricano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f5",
+    "nombre_piloto": "Pedro",
+    "apellido_piloto": "Acosta",
+    "edad_piloto": 20,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f6",
+    "nombre_piloto": "Enea",
+    "apellido_piloto": "Bastianini",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f7",
+    "nombre_piloto": "Maverick",
+    "apellido_piloto": "Viñales",
+    "edad_piloto": 30,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f8",
+    "nombre_piloto": "Jorge",
+    "apellido_piloto": "Martín",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1f9",
+    "nombre_piloto": "Marco",
+    "apellido_piloto": "Bezzecchi",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1fa",
+    "nombre_piloto": "Raúl",
+    "apellido_piloto": "Fernández",
+    "edad_piloto": 24,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1fb",
+    "nombre_piloto": "Ai",
+    "apellido_piloto": "Ogura",
+    "edad_piloto": 23,
+    "nacionalidad_piloto": "Japonés",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1fc",
+    "nombre_piloto": "Fabio",
+    "apellido_piloto": "Quartararo",
+    "edad_piloto": 25,
+    "nacionalidad_piloto": "Francés",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1fd",
+    "nombre_piloto": "Álex",
+    "apellido_piloto": "Rins",
+    "edad_piloto": 29,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1fe",
+    "nombre_piloto": "Miguel",
+    "apellido_piloto": "Oliveira",
+    "edad_piloto": 30,
+    "nacionalidad_piloto": "Portugués",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca1ff",
+    "nombre_piloto": "Jack",
+    "apellido_piloto": "Miller",
+    "edad_piloto": 30,
+    "nacionalidad_piloto": "Australiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca200",
+    "nombre_piloto": "Joan",
+    "apellido_piloto": "Mir",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Español",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca201",
+    "nombre_piloto": "Luca",
+    "apellido_piloto": "Marini",
+    "edad_piloto": 27,
+    "nacionalidad_piloto": "Italiano",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca202",
+    "nombre_piloto": "Johann",
+    "apellido_piloto": "Zarco",
+    "edad_piloto": 34,
+    "nacionalidad_piloto": "Francés",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813b9f6663ccf01890ca203",
+    "nombre_piloto": "Somkiat",
+    "apellido_piloto": "Chantra",
+    "edad_piloto": 26,
+    "nacionalidad_piloto": "Tailandés",
+    "tipo": "Piloto",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813c0f27d7f0421bf9479ab",
+    "nombre_piloto": "Gabriel",
+    "apellido_piloto": "Bortoletto",
+    "edad_piloto": 20,
+    "nacionalidad_piloto": "Brasileño",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c1317d7f0421bf9479ac",
+    "nombre_piloto": "Zane",
+    "apellido_piloto": "Maloney",
+    "edad_piloto": 19,
+    "nacionalidad_piloto": "Barbados",
+    "tipo": "Piloto",
+    "categoria": "Formula 1",
+    "estado": true
+  }
+]
+
+----------------------------------------------------
+EQUIPOS
+
+[
+  {
+    "id": "680be408c90792ed739edf42",
+    "nombre_equipo": "Oracle Red Bull Racing",
+    "pais_equipo": "Austria",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be420c90792ed739edf43",
+    "nombre_equipo": "Scuderia Ferrari Hp",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be43ac90792ed739edf44",
+    "nombre_equipo": "Mercedes-Amg Petronas Formula One Team",
+    "pais_equipo": "Alemania",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be450c90792ed739edf45",
+    "nombre_equipo": "Mclaren Formula 1 Team",
+    "pais_equipo": "Reino Unido",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be46cc90792ed739edf46",
+    "nombre_equipo": "Aston Martin Aramco Formula One Team",
+    "pais_equipo": "Reino Unido",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be481c90792ed739edf47",
+    "nombre_equipo": "Bwt Alpine F1 Team",
+    "pais_equipo": "Francia",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be495c90792ed739edf48",
+    "nombre_equipo": "Visa Cash App Racing Bulls Formula One Team",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be4acc90792ed739edf49",
+    "nombre_equipo": "Atlassian Williams Racing",
+    "pais_equipo": "Reino Unido",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813702f36d3f375756e12fd",
+    "nombre_equipo": "Moneygram Haas F1 Team",
+    "pais_equipo": "Estados Unidos",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813702f36d3f375756e12fe",
+    "nombre_equipo": "Stake F1 Team Kick Sauber",
+    "pais_equipo": "Suiza",
+    "tipo": "Equipo",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca204",
+    "nombre_equipo": "Ducati Lenovo Team",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca205",
+    "nombre_equipo": "Prima Pramac Racing",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca206",
+    "nombre_equipo": "Gresini Racing Motogp",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca207",
+    "nombre_equipo": "Pertamina Enduro Vr46 Racing Team",
+    "pais_equipo": "Italia",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca208",
+    "nombre_equipo": "Red Bull Ktm Factory Racing",
+    "pais_equipo": "Austria",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca209",
+    "nombre_equipo": "Trackhouse Racing",
+    "pais_equipo": "Estados Unidos",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca20a",
+    "nombre_equipo": "Monster Energy Yamaha Motogp",
+    "pais_equipo": "Japón",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca20b",
+    "nombre_equipo": "Repsol Honda Team",
+    "pais_equipo": "Japón",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca20c",
+    "nombre_equipo": "Lcr Honda",
+    "pais_equipo": "Japón",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813ba81663ccf01890ca20d",
+    "nombre_equipo": "Gasgas Factory Racing Tech3",
+    "pais_equipo": "Austria",
+    "tipo": "Equipo",
+    "categoria": "Moto GP",
+    "estado": true
+  }
+]
+
+---------------------------------------------------
+CIRCUITOS
+
+[
+  {
+    "id": "680be67ced5ecbe7a3d2d356",
+    "pais_circuito": "Arabia saudita",
+    "ciudad_circuito": "Yeda",
+    "distancia_del_circuito": 6.174,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be6a0ed5ecbe7a3d2d357",
+    "pais_circuito": "Estados unidos",
+    "ciudad_circuito": "Miami",
+    "distancia_del_circuito": 5.412,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be6e2ed5ecbe7a3d2d35a",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Barcelona",
+    "distancia_del_circuito": 4.675,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be6f8ed5ecbe7a3d2d35b",
+    "pais_circuito": "Canadá",
+    "ciudad_circuito": "Montreal",
+    "distancia_del_circuito": 4.361,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be736ed5ecbe7a3d2d35c",
+    "pais_circuito": "Austria",
+    "ciudad_circuito": "Spielberg",
+    "distancia_del_circuito": 4.318,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be74aed5ecbe7a3d2d35d",
+    "pais_circuito": "Reino unido",
+    "ciudad_circuito": "Silverstone",
+    "distancia_del_circuito": 5.891,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be764ed5ecbe7a3d2d35e",
+    "pais_circuito": "Bélgica",
+    "ciudad_circuito": "Spa-Francorchamps",
+    "distancia_del_circuito": 7.004,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be77ced5ecbe7a3d2d35f",
+    "pais_circuito": "Hungría",
+    "ciudad_circuito": "Budapest",
+    "distancia_del_circuito": 4.381,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be790ed5ecbe7a3d2d360",
+    "pais_circuito": "Países bajos",
+    "ciudad_circuito": "Zandvoort",
+    "distancia_del_circuito": 4.259,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be7a5ed5ecbe7a3d2d361",
+    "pais_circuito": "Italia",
+    "ciudad_circuito": "Monza",
+    "distancia_del_circuito": 5.793,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be7b6ed5ecbe7a3d2d362",
+    "pais_circuito": "Azerbaiyán",
+    "ciudad_circuito": "Bakú",
+    "distancia_del_circuito": 6.003,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be7c8ed5ecbe7a3d2d363",
+    "pais_circuito": "Singapur",
+    "ciudad_circuito": "Singapur",
+    "distancia_del_circuito": 5.063,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be7dfed5ecbe7a3d2d364",
+    "pais_circuito": "Estados unidos",
+    "ciudad_circuito": "Austin",
+    "distancia_del_circuito": 5.513,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be7f8ed5ecbe7a3d2d365",
+    "pais_circuito": "México",
+    "ciudad_circuito": "Ciudad De México",
+    "distancia_del_circuito": 4.304,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be811ed5ecbe7a3d2d366",
+    "pais_circuito": "Brasil",
+    "ciudad_circuito": "São Paulo",
+    "distancia_del_circuito": 4.309,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be82ced5ecbe7a3d2d367",
+    "pais_circuito": "Estados unidos",
+    "ciudad_circuito": "Las Vegas",
+    "distancia_del_circuito": 6.201,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be843ed5ecbe7a3d2d368",
+    "pais_circuito": "Catar",
+    "ciudad_circuito": "Lusail",
+    "distancia_del_circuito": 5.419,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "680be85bed5ecbe7a3d2d369",
+    "pais_circuito": "Emiratos árabes unidos",
+    "ciudad_circuito": "Abu Dabi",
+    "distancia_del_circuito": 5.281,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68115451e1b8ed8313bd23c7",
+    "pais_circuito": "Australia",
+    "ciudad_circuito": "Melbourne",
+    "distancia_del_circuito": 5.278,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68115451e1b8ed8313bd23c8",
+    "pais_circuito": "China",
+    "ciudad_circuito": "Shanghái",
+    "distancia_del_circuito": 5.451,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681159b47af4af7e11e8425a",
+    "pais_circuito": "Italia",
+    "ciudad_circuito": "Imola",
+    "distancia_del_circuito": 4.909,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681159b47af4af7e11e8425b",
+    "pais_circuito": "Mónaco",
+    "ciudad_circuito": "Montecarlo",
+    "distancia_del_circuito": 3.337,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca20e",
+    "pais_circuito": "Tailandia",
+    "ciudad_circuito": "Buriram",
+    "distancia_del_circuito": 4.554,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca20f",
+    "pais_circuito": "Argentina",
+    "ciudad_circuito": "Termas De Río Hondo",
+    "distancia_del_circuito": 4.806,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca210",
+    "pais_circuito": "Estados unidos",
+    "ciudad_circuito": "Austin",
+    "distancia_del_circuito": 5.513,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca211",
+    "pais_circuito": "Catar",
+    "ciudad_circuito": "Lusail",
+    "distancia_del_circuito": 5.38,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca212",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Jerez De La Frontera",
+    "distancia_del_circuito": 4.428,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca213",
+    "pais_circuito": "Francia",
+    "ciudad_circuito": "Le Mans",
+    "distancia_del_circuito": 4.185,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca214",
+    "pais_circuito": "Reino unido",
+    "ciudad_circuito": "Silverstone",
+    "distancia_del_circuito": 5.9,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca215",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Alcañiz",
+    "distancia_del_circuito": 5.077,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca216",
+    "pais_circuito": "Italia",
+    "ciudad_circuito": "Scarperia E San Piero",
+    "distancia_del_circuito": 5.245,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca217",
+    "pais_circuito": "Países bajos",
+    "ciudad_circuito": "Assen",
+    "distancia_del_circuito": 4.542,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca218",
+    "pais_circuito": "Alemania",
+    "ciudad_circuito": "Hohenstein-Ernstthal",
+    "distancia_del_circuito": 3.671,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca219",
+    "pais_circuito": "República checa",
+    "ciudad_circuito": "Brno",
+    "distancia_del_circuito": 5.403,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21a",
+    "pais_circuito": "Austria",
+    "ciudad_circuito": "Spielberg",
+    "distancia_del_circuito": 4.318,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21b",
+    "pais_circuito": "Hungría",
+    "ciudad_circuito": "Balatonfőkajár",
+    "distancia_del_circuito": 4.115,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21c",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Montmeló",
+    "distancia_del_circuito": 4.627,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21d",
+    "pais_circuito": "San marino",
+    "ciudad_circuito": "Misano Adriatico",
+    "distancia_del_circuito": 4.226,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21e",
+    "pais_circuito": "Japón",
+    "ciudad_circuito": "Motegi",
+    "distancia_del_circuito": 4.801,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca21f",
+    "pais_circuito": "Indonesia",
+    "ciudad_circuito": "Lombok",
+    "distancia_del_circuito": 4.31,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca220",
+    "pais_circuito": "Australia",
+    "ciudad_circuito": "Phillip Island",
+    "distancia_del_circuito": 4.448,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca221",
+    "pais_circuito": "Malasia",
+    "ciudad_circuito": "Sepang",
+    "distancia_del_circuito": 5.543,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca222",
+    "pais_circuito": "Portugal",
+    "ciudad_circuito": "Portimão",
+    "distancia_del_circuito": 4.592,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bb39663ccf01890ca223",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Valencia",
+    "distancia_del_circuito": 4.005,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813c6de7d7f0421bf9479b2",
+    "pais_circuito": "Japón",
+    "ciudad_circuito": "Suzuka",
+    "distancia_del_circuito": 5.807,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c6de7d7f0421bf9479b3",
+    "pais_circuito": "Baréin",
+    "ciudad_circuito": "Sakhir",
+    "distancia_del_circuito": 5.412,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Formula 1",
+    "estado": true
+  }
+]
+
+----------------------------------------------------
+CONFORMACIO DE EQUIPOS
+
+[
+  {
+    "id": "68113a2a2a0051935e278b57",
+    "nombre_equipo": "Bwt Alpine F1 Team",
+    "primer_piloto": "Pierre Gasly",
+    "segundo_piloto": "Jack Doohan",
+    "piloto_reserva": "Franco Colapinto",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68113a342a0051935e278b58",
+    "nombre_equipo": "Scuderia Ferrari Hp",
+    "primer_piloto": "Charles Leclerc",
+    "segundo_piloto": "Lewis Hamilton",
+    "piloto_reserva": "Guanyu Zhou",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68113a4e2a0051935e278b59",
+    "nombre_equipo": "Mercedes-Amg Petronas Formula One Team",
+    "primer_piloto": "George Russell",
+    "segundo_piloto": "Kimi Antonelli",
+    "piloto_reserva": "Valtteri Bottas",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bf1e7d7f0421bf9479a9",
+    "nombre_equipo": "Oracle Red Bull Racing",
+    "primer_piloto": "Max Verstappen",
+    "segundo_piloto": "Yuki Tsunoda",
+    "piloto_reserva": "None",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bf1e7d7f0421bf9479aa",
+    "nombre_equipo": "Atlassian Williams Racing",
+    "primer_piloto": "Alexander Albon",
+    "segundo_piloto": "Carlos Sainz Jr",
+    "piloto_reserva": "Oliver Turvey",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c2967d7f0421bf9479ad",
+    "nombre_equipo": "Visa Cash App Racing Bulls Formula One Team",
+    "primer_piloto": "Isack Hadjar",
+    "segundo_piloto": "Liam Lawson",
+    "piloto_reserva": "None",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c2967d7f0421bf9479ae",
+    "nombre_equipo": "Moneygram Haas F1 Team",
+    "primer_piloto": "Oliver Bearman",
+    "segundo_piloto": "Esteban Ocon",
+    "piloto_reserva": "None",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c2967d7f0421bf9479af",
+    "nombre_equipo": "Stake F1 Team Kick Sauber",
+    "primer_piloto": "Nico Hülkenberg",
+    "segundo_piloto": "Gabriel Bortoletto",
+    "piloto_reserva": "Zane Maloney",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c2967d7f0421bf9479b0",
+    "nombre_equipo": "Aston Martin Aramco Formula One Team",
+    "primer_piloto": "Fernando Alonso",
+    "segundo_piloto": "Lance Stroll",
+    "piloto_reserva": "Felipe Drugovich",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813c2967d7f0421bf9479b1",
+    "nombre_equipo": "Mclaren Formula 1 Team",
+    "primer_piloto": "Lando Norris",
+    "segundo_piloto": "Oscar Piastri",
+    "piloto_reserva": "Pato O’Ward",
+    "tipo": "formacion",
+    "categoria": "Formula 1",
+    "estado": true
+  }
+]
+
+---------------------------------------------------
+PUNTOS
+
+[
+  {
+    "id": "68137adce651c433d7bd05ce",
+    "posicion": 1,
+    "puntos": 25,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05cf",
+    "posicion": 2,
+    "puntos": 18,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d0",
+    "posicion": 3,
+    "puntos": 15,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d1",
+    "posicion": 4,
+    "puntos": 12,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d2",
+    "posicion": 5,
+    "puntos": 10,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d3",
+    "posicion": 6,
+    "puntos": 8,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d4",
+    "posicion": 7,
+    "puntos": 7,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d5",
+    "posicion": 8,
+    "puntos": 6,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d6",
+    "posicion": 9,
+    "puntos": 4,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "68137adce651c433d7bd05d7",
+    "posicion": 10,
+    "puntos": 2,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca224",
+    "posicion": 1,
+    "puntos": 8,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca225",
+    "posicion": 2,
+    "puntos": 7,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca226",
+    "posicion": 3,
+    "puntos": 6,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca227",
+    "posicion": 4,
+    "puntos": 5,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca228",
+    "posicion": 5,
+    "puntos": 4,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca229",
+    "posicion": 6,
+    "puntos": 3,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca22a",
+    "posicion": 7,
+    "puntos": 2,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bbf6663ccf01890ca22b",
+    "posicion": 8,
+    "puntos": 1,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca22c",
+    "posicion": 1,
+    "puntos": 12,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca22d",
+    "posicion": 2,
+    "puntos": 9,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca22e",
+    "posicion": 3,
+    "puntos": 7,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca22f",
+    "posicion": 4,
+    "puntos": 6,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca230",
+    "posicion": 5,
+    "puntos": 5,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca231",
+    "posicion": 6,
+    "puntos": 4,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca232",
+    "posicion": 7,
+    "puntos": 3,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca233",
+    "posicion": 8,
+    "puntos": 2,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc30663ccf01890ca234",
+    "posicion": 9,
+    "puntos": 1,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca235",
+    "posicion": 1,
+    "puntos": 25,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca236",
+    "posicion": 2,
+    "puntos": 20,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca237",
+    "posicion": 3,
+    "puntos": 16,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca238",
+    "posicion": 4,
+    "puntos": 13,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca239",
+    "posicion": 5,
+    "puntos": 11,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23a",
+    "posicion": 6,
+    "puntos": 10,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23b",
+    "posicion": 7,
+    "puntos": 9,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23c",
+    "posicion": 8,
+    "puntos": 8,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23d",
+    "posicion": 9,
+    "puntos": 7,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23e",
+    "posicion": 10,
+    "puntos": 6,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca23f",
+    "posicion": 11,
+    "puntos": 5,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca240",
+    "posicion": 12,
+    "puntos": 4,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca241",
+    "posicion": 13,
+    "puntos": 3,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca242",
+    "posicion": 14,
+    "puntos": 2,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813bc43663ccf01890ca243",
+    "posicion": 15,
+    "puntos": 1,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  }
+]
+
+---------------------------------------------------
+

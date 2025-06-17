@@ -1,0 +1,130 @@
+from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import jwt, JWTError
+from passlib.context import CryptContext
+from datetime import datetime, timedelta, timezone
+import secrets
+from db.client import db_client
+from bson import ObjectId
+from bson.errors import InvalidId
+from db.models.users import User, UserLogin, UserPassword, UserCreate
+from db.schemas.users import user_create_schema, user_login_schema, user_password_schema, user_schema, users_create_schema
+
+
+router = APIRouter(prefix="/Users",
+                   tags=["Users"],
+                   responses={404:{"Message":"No encontrado"}}
+)
+
+ALGORITHM = "HS256"
+ACCESS_TOKEN_DURATION = 1
+hex_token = secrets.token_hex(16) 
+oauth2 = OAuth2PasswordBearer(tokenUrl="login")
+crypt = CryptContext(schemes=["bcrypt"]  )
+
+
+
+def validate_object_id(id: str):
+    try:
+        return ObjectId(id)
+    except InvalidId:
+        raise HTTPException(status_code=400, detail="ID inválido")
+    
+    
+@router.get("/view/{id}")
+async def show_user(id:str):
+    user = user_schema(db_client.users.find_one({"_id":id}))
+    if not user:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Usuario no encontrado")
+    
+    return user
+    
+    
+@router.post("/Crear", response_model=User, status_code=status.HTTP_202_ACCEPTED)
+async def create_user(user:UserCreate):
+    
+    if db_client.users.find_one({"mail":user.mail}):
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El mail ingresado ya esta asociado a una cuenta")
+    
+    if db_client.users.find_one ({"username":user.username}):
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail= "El nombre de usuario ya existe en la base de datos")
+    
+    
+    user_dict = dict(user)
+    del user_dict["id"]
+    
+    if user_dict["age"] < 12:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="La edad no puede ser menor a 12")
+    
+    user_dict["estado"] = True
+    
+    id = db_client.users.insert_one(user_dict).inserted_id
+    new_user = user_create_schema(db_client.users.find_one({"_id":id}))
+    
+    return User(**new_user)
+
+
+@router.put("/Modificar", status_code=status.HTTP_202_ACCEPTED, response_model=User)
+async def modify_user(user:User):
+    dict_user = dict(user)
+    del dict_user["id"]
+    
+    usuario = db_client.users.find_one_and_replace({"_id":ObjectId(user.id)},dict_user)
+    if not usuario:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Usuario no encontrado")
+    
+    return user_schema(db_client.users.find_one({"_id":ObjectId(user.id)}))
+
+
+
+@router.post("/Login", status_code=status.HTTP_202_ACCEPTED)
+async def login_user(form:OAuth2PasswordRequestForm = Depends()):
+    usuario = db_client.users.find_one({"username":form.username})
+    if not usuario:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Usuario no encontrado")
+    dict_usuario = dict(usuario)
+    if not crypt.verify(form.password, dict_usuario["password"]):
+        raise HTTPException(
+            status_code= 400, detail= "La contraseña es incorrecta")
+        
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_DURATION)
+    
+    acces_token = {"sub":dict_usuario["username"], "exp":expire}
+    
+    if not dict_usuario.get("estado", False):
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El usuario esta inactivo")
+    
+    return {"access_token": jwt.encode(acces_token,hex_token,algorithm=ALGORITHM), "token_type": "bearer"}
+        
+        
+        
+async def auth_user(token: str = Depends(oauth2)):
+    
+    exception =  HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Credenciales de autenticación inválidas",
+            headers={"WWW-Authenticate": "Bearer"}  # corregí el typo aquí también
+        )
+    
+    try:
+        payload = jwt.decode(token, hex_token, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username == None:
+            raise exception
+        
+        user = user_search(username)
+        if user.disabled:
+            raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail= "El usuario no esta habilitado")
+        
+        return user
+    except JWTError:
+        raise exception
+        
+async def current_user(user: User = Depends(auth_user)):#aqui el oauth2 es el que trae el token. 
+            
+        return user  # <- no te olvides de devolver el usuario    
+
+@router.get("/user/me")
+async def me(user: User = Depends(current_user)):
+    return user

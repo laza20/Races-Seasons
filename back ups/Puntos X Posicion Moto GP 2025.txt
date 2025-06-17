@@ -1,0 +1,201 @@
+PRINCIPAL
+
+[
+  {
+    "id": "6813da1a644f0bd8957ae7b7",
+    "posicion": 1,
+    "puntos": 25,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b8",
+    "posicion": 2,
+    "puntos": 20,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b9",
+    "posicion": 3,
+    "puntos": 16,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7ba",
+    "posicion": 4,
+    "puntos": 13,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7bb",
+    "posicion": 5,
+    "puntos": 11,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7bc",
+    "posicion": 6,
+    "puntos": 10,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7bd",
+    "posicion": 7,
+    "puntos": 9,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7be",
+    "posicion": 8,
+    "puntos": 8,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7bf",
+    "posicion": 9,
+    "puntos": 7,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c0",
+    "posicion": 10,
+    "puntos": 6,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c1",
+    "posicion": 11,
+    "puntos": 5,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c2",
+    "posicion": 12,
+    "puntos": 4,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c3",
+    "posicion": 13,
+    "puntos": 3,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c4",
+    "posicion": 14,
+    "puntos": 2,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7c5",
+    "posicion": 15,
+    "puntos": 1,
+    "tipo": "Principal",
+    "categoria": "Moto GP",
+    "estado": true
+  }
+]
+
+SPRINT
+
+[
+  {
+    "id": "6813da1a644f0bd8957ae7ae",
+    "posicion": 1,
+    "puntos": 12,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7af",
+    "posicion": 2,
+    "puntos": 9,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b0",
+    "posicion": 3,
+    "puntos": 7,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b1",
+    "posicion": 4,
+    "puntos": 6,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b2",
+    "posicion": 5,
+    "puntos": 5,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b3",
+    "posicion": 6,
+    "puntos": 4,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b4",
+    "posicion": 7,
+    "puntos": 3,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b5",
+    "posicion": 8,
+    "puntos": 2,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7b6",
+    "posicion": 9,
+    "puntos": 1,
+    "tipo": "Sprint",
+    "categoria": "Moto GP",
+    "estado": true
+  }
+]

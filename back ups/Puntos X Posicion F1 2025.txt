@@ -1,0 +1,152 @@
+
+PRINCIPAL
+[
+  {
+    "id": "681ce657c453017d99c23522",
+    "posicion": 1,
+    "puntos": 25,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23523",
+    "posicion": 2,
+    "puntos": 18,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23524",
+    "posicion": 3,
+    "puntos": 15,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23525",
+    "posicion": 4,
+    "puntos": 12,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23526",
+    "posicion": 5,
+    "puntos": 10,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23527",
+    "posicion": 6,
+    "puntos": 8,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23528",
+    "posicion": 7,
+    "puntos": 6,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c23529",
+    "posicion": 8,
+    "puntos": 4,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c2352a",
+    "posicion": 9,
+    "puntos": 2,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "681ce657c453017d99c2352b",
+    "posicion": 10,
+    "puntos": 1,
+    "tipo": "Principal",
+    "categoria": "Formula 1",
+    "estado": true
+  }
+]
+
+SPRINT
+[
+  {
+    "id": "6813da1a644f0bd8957ae7a6",
+    "posicion": 1,
+    "puntos": 8,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7a7",
+    "posicion": 2,
+    "puntos": 7,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7a8",
+    "posicion": 3,
+    "puntos": 6,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7a9",
+    "posicion": 4,
+    "puntos": 5,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7aa",
+    "posicion": 5,
+    "puntos": 4,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7ab",
+    "posicion": 6,
+    "puntos": 3,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7ac",
+    "posicion": 7,
+    "puntos": 2,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  },
+  {
+    "id": "6813da1a644f0bd8957ae7ad",
+    "posicion": 8,
+    "puntos": 1,
+    "tipo": "Sprint",
+    "categoria": "Formula 1",
+    "estado": true
+  }
+]

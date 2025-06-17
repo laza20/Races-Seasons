@@ -1,0 +1,222 @@
+[
+  {
+    "id": "6813d9b5644f0bd8957ae77a",
+    "pais_circuito": "Tailandia",
+    "ciudad_circuito": "Buriram",
+    "distancia_del_circuito": 4.554,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae77b",
+    "pais_circuito": "Argentina",
+    "ciudad_circuito": "Termas De Río Hondo",
+    "distancia_del_circuito": 4.806,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae77c",
+    "pais_circuito": "Estados unidos",
+    "ciudad_circuito": "Austin",
+    "distancia_del_circuito": 5.513,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae77d",
+    "pais_circuito": "Catar",
+    "ciudad_circuito": "Lusail",
+    "distancia_del_circuito": 5.38,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae77e",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Jerez De La Frontera",
+    "distancia_del_circuito": 4.428,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae77f",
+    "pais_circuito": "Francia",
+    "ciudad_circuito": "Le Mans",
+    "distancia_del_circuito": 4.185,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae780",
+    "pais_circuito": "Reino unido",
+    "ciudad_circuito": "Silverstone",
+    "distancia_del_circuito": 5.9,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae781",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Alcañiz",
+    "distancia_del_circuito": 5.077,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae782",
+    "pais_circuito": "Italia",
+    "ciudad_circuito": "Scarperia E San Piero",
+    "distancia_del_circuito": 5.245,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae783",
+    "pais_circuito": "Países bajos",
+    "ciudad_circuito": "Assen",
+    "distancia_del_circuito": 4.542,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae784",
+    "pais_circuito": "Alemania",
+    "ciudad_circuito": "Hohenstein-Ernstthal",
+    "distancia_del_circuito": 3.671,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae785",
+    "pais_circuito": "República checa",
+    "ciudad_circuito": "Brno",
+    "distancia_del_circuito": 5.403,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae786",
+    "pais_circuito": "Austria",
+    "ciudad_circuito": "Spielberg",
+    "distancia_del_circuito": 4.318,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae787",
+    "pais_circuito": "Hungría",
+    "ciudad_circuito": "Balatonfőkajár",
+    "distancia_del_circuito": 4.115,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae788",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Montmeló",
+    "distancia_del_circuito": 4.627,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae789",
+    "pais_circuito": "San marino",
+    "ciudad_circuito": "Misano Adriatico",
+    "distancia_del_circuito": 4.226,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78a",
+    "pais_circuito": "Japón",
+    "ciudad_circuito": "Motegi",
+    "distancia_del_circuito": 4.801,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78b",
+    "pais_circuito": "Indonesia",
+    "ciudad_circuito": "Lombok",
+    "distancia_del_circuito": 4.31,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78c",
+    "pais_circuito": "Australia",
+    "ciudad_circuito": "Phillip Island",
+    "distancia_del_circuito": 4.448,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78d",
+    "pais_circuito": "Malasia",
+    "ciudad_circuito": "Sepang",
+    "distancia_del_circuito": 5.543,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78e",
+    "pais_circuito": "Portugal",
+    "ciudad_circuito": "Portimão",
+    "distancia_del_circuito": 4.592,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  },
+  {
+    "id": "6813d9b5644f0bd8957ae78f",
+    "pais_circuito": "España",
+    "ciudad_circuito": "Valencia",
+    "distancia_del_circuito": 4.005,
+    "sistema_medicion": "KM",
+    "tipo": "Circuito",
+    "categoria": "Moto GP",
+    "estado": true
+  }
+]

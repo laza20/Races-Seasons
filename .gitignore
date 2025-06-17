@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+*.sqlite3
+*.db
+.vscode/
+.idea/
+back up (mio).js

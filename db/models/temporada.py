@@ -1,0 +1,13 @@
+from pydantic import BaseModel
+
+class Temporada(BaseModel):
+    id                          : str | None = None
+    descripcion                 : str
+    cantidad_de_grandes_premios : int
+    cantidad_de_equipos         : int
+    observaciones               : str #campeones, curiosidades
+    tipo                        : str
+    year                        : int
+    categoria                   : str
+    estado                      : bool
+
