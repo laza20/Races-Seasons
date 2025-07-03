@@ -4,6 +4,7 @@ from db.client import db_client
 from db.schemas.equipos import equipo_schema, equipos_schema, equipo_carga_schema, equipos_carga_schema
 from bson import ObjectId
 from bson.errors import InvalidId
+from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put, validaciones
 
 
 router = APIRouter(prefix="/Equipos",
@@ -15,6 +16,14 @@ def validate_object_id(id: str):
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
+    
+peticiones_http_post.cargar_uno(
+    EquipoCarga,
+    router,
+    "Equipos",
+    equipo_schema,
+    validaciones.validacion_carga_equipo
+)
 
 @router.get("/", response_model=list[Equipos])
 async def show_equipos():
@@ -47,51 +56,6 @@ async def show_equipos_by_pais(pais_equipo:str):
         
     return equipos
 
-@router.get("/Cargas", response_model=list[EquipoCarga])
-async def show_teams_for_load():
-    equipos = equipos_carga_schema(db_client.equipos.find({"tipo":"Equipo"}))
-    return equipos
-    
-
-    
-@router.post("/Cargar/Uno", response_model=Equipos, status_code=status.HTTP_201_CREATED)
-async def create_equipo(equipo:Equipos):
-    dict_equipo = cargar_equipo(equipo)
-    
-    id = db_client.equipos.insert_one(dict_equipo).inserted_id
-    new_equipo = equipo_schema(db_client.equipos.find_one({"_id":id}))
-    
-    return Equipos(**new_equipo)
-
-@router.post("/Cargar/Muchos", response_model=list[Equipos], status_code=status.HTTP_201_CREATED)
-async def create_many_equipos(equipos:list[Equipos]):
-    
-    lista_equipos = []
-    for equipo in equipos:
-        dict_equipo = cargar_equipo(equipo)
-        lista_equipos.append(dict_equipo)
-        
-    resultado = db_client.equipos.insert_many(lista_equipos)
-    ids = resultado.inserted_ids
-    documentos = db_client.equipos.find({"_id":{"$in": ids }})
-    news_equipos = equipos_schema(documentos)
-    
-    return list(news_equipos)
-        
-def cargar_equipo(equipo):
-        filtros = {
-            "nombre_equipo" : {"$regex": f"^{equipo.nombre_equipo}$", "$options": "i"},
-            "pais_equipo" : {"$regex": f"^{equipo.pais_equipo}$", "$options": "i"},
-            }
-        
-        if db_client.equipos.find_one(filtros):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El equipo ingresado ya se encuentra en la base de datos")
-        
-        
-        dict_equipo = dict(equipo)
-        del dict_equipo["id"]
-        dict_equipo["tipo"] = "Equipo"
-        return dict_equipo
     
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
