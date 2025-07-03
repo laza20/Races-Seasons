@@ -11,3 +11,9 @@ def cargar_uno(Clase: Type[BaseModel], router, base_de_datos, schema, validacion
         new_document = funciones_logicas.cargar_uno(clase, base_de_datos, schema)
     
         return new_document
+    
+def cargar_muchos(Clase: Type[BaseModel], router, base_de_datos, schema, validacion):
+    @router.post("/Cargar/Muchos", response_model=List[Clase], status_code=status.HTTP_201_CREATED)
+    async def create_many(clase: List[Clase] = Body(...)):
+        documentos = funciones_logicas.cargar_muchos(clase, base_de_datos, schema, validacion)
+        return documentos
