@@ -24,6 +24,15 @@ peticiones_http_post.cargar_uno(
     validaciones.validar_carga_temporada
 )
 
+peticiones_http_post.cargar_muchos(
+    TemporadaCarga,
+    router,
+    "Temporadas",
+    temporadas_schema,
+    validaciones.validar_carga_temporada    
+)
+
+
 @router.get("/Ver/Datos")
 async def show_seasons():
     temporadas = temporadas_schema(db_client.temporadas.find())
