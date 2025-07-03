@@ -25,6 +25,14 @@ peticiones_http_post.cargar_uno(
     validaciones.validacion_carga_equipo
 )
 
+peticiones_http_post.cargar_muchos(
+    EquipoCarga,
+    router,
+    "Equipos",
+    equipos_schema,
+    validaciones.validacion_carga_equipo    
+)
+
 @router.get("/", response_model=list[Equipos])
 async def show_equipos():
     return equipos_schema(db_client.equipos.find())
