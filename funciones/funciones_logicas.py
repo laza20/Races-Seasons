@@ -9,8 +9,9 @@ def validate_object_id(id: str):
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
     
-def cargar_uno(dato, base_de_datos, schema):
+def cargar_uno(dato, base_de_datos, schema, validacion):
         coleccion = getattr(db_client, base_de_datos)
+        validacion(dato, base_de_datos)
         dict_dato = dict(dato)
         dict_dato["tipo"] = base_de_datos
         id = coleccion.insert_one(dict_dato).inserted_id
@@ -20,8 +21,8 @@ def cargar_uno(dato, base_de_datos, schema):
 def cargar_muchos(datos, base_de_datos , schema, validacion):
     coleccion = getattr(db_client, base_de_datos)
     lista = []
+    validacion(datos, base_de_datos)
     for dato in datos:
-        validacion(dato, base_de_datos)
         dict_dato = dict(dato)
         dict_dato["tipo"] = base_de_datos
         lista.append(dict_dato)
