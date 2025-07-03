@@ -24,6 +24,14 @@ peticiones_http_post.cargar_uno(
     validaciones.validar_carga_circuito
 )
 
+peticiones_http_post.cargar_muchos(
+    CircuitosCarga,
+    router,
+    "Circuitos",
+    circuitos_schema,
+    validaciones.validar_carga_circuito    
+)
+
 @router.get("/", response_model=list[Circuitos])
 async def show_circuitos():
     return circuitos_schema(db_client.circuitos.find())
@@ -56,32 +64,6 @@ async def show_circuito_by_ciudad(ciudad_circuito:str):
 async def show_teams_for_load():
     circuitos = circuitos_carga_schema(db_client.circuitos.find({"tipo":"Circuito"}))
     return circuitos
-    
-
-
-    
-
-
-#@router.post("/Cargar/Muchos", response_model=list[Circuitos], status_code=status.HTTP_201_CREATED)
-#async def create_many_circuitos(circuitos:list[Circuitos]):
-#    lista_circuitos = []
-#    for circuito in circuitos:
-  
- #       if any(c["ciudad_circuito"] == circuito.ciudad_circuito for c in circuitos):
- #           raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Mismo circuito ingresado 2 veces")
-
-   #     dict_circuito = cargar_circuito(circuito)
-   #     lista_circuitos.append(dict_circuito)
-   #     
-   # resultado = db_client.circuitos.insert_many(lista_circuitos)
-    
-    #circuitos_ids = resultado.inserted_ids
-    #documentos = db_client.circuitos.find({"_id":{"$in": circuitos_ids }})
-    
-    #news_circuitos = circuitos_schema(documentos)
-    
-    #return list(news_circuitos)
-        
         
 
 @router.delete("/Borrar/Todo", status_code=status.HTTP_204_NO_CONTENT)
