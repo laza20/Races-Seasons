@@ -25,6 +25,14 @@ peticiones_http_post.cargar_uno(
     validaciones.validacion_carga_piloto
 )
 
+peticiones_http_post.cargar_muchos(
+    PilotoCarga,
+    router,
+    "Pilotos",
+    pilotos_schema,
+    validaciones.validacion_carga_piloto    
+)
+
 @router.get("/", response_model=list[Piloto])
 async def show_pilotos():
     return pilotos_schema(db_client.pilotos.find())
