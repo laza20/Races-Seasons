@@ -64,3 +64,25 @@ def validacion_carga_equipo(datos, base_de_datos):
         if coleccion.find_one({"nombre_equipo": dato.nombre_equipo, "pais_equipo": dato.pais_equipo}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El Equipo {dato.nombre_equipo} ya está cargado")
         
+
+def validacion_carga_piloto(datos, base_de_datos):
+    coleccion = getattr(db_client, base_de_datos)
+    if isinstance(datos, list) and len(datos) >= 2:
+        pilotos = set()
+        for dato in datos:
+            key = (dato.piloto_participante.lower(), dato.edad_piloto)
+            
+            if key in pilotos:
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Mismo Equipo ingresado 2 veces")
+            pilotos.add(key)
+            
+
+            if coleccion.find_one({"piloto_participante": dato.piloto_participante, "edad_piloto": dato.edad_piloto}):
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
+    else:
+        # Es un único circuito
+        dato = datos if not isinstance(datos, list) else datos[0]
+
+        if coleccion.find_one({"piloto_participante": dato.piloto_participante, "edad_piloto": dato.edad_piloto}):
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
+        
