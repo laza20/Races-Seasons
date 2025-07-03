@@ -4,6 +4,8 @@ from db.client import db_client
 from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_carga_schema, pilotos_carga_schema
 from bson import ObjectId
 from bson.errors import InvalidId
+from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put, validaciones
+
 
 router = APIRouter(prefix="/Pilotos",
                    tags=["Pilotos"], 
@@ -14,6 +16,14 @@ def validate_object_id(id: str):
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
+    
+peticiones_http_post.cargar_uno(
+    PilotoCarga,
+    router,
+    "Pilotos",
+    piloto_schema,
+    validaciones.validacion_carga_piloto
+)
 
 @router.get("/", response_model=list[Piloto])
 async def show_pilotos():
@@ -41,50 +51,8 @@ async def show_teams_for_load():
     pilotos = pilotos_carga_schema(db_client.pilotos.find({"tipo":"Piloto"}))
     return pilotos
     
-    
-        
-
-@router.post("/Cargar/Uno", response_model= Piloto, status_code=status.HTTP_201_CREATED)
-async def create_piloto (piloto:Piloto):
-    dict_piloto = cargar_piloto(piloto)
-
-    id = db_client.pilotos.insert_one(dict_piloto).inserted_id
-    new_piloto = piloto_schema(db_client.pilotos.find_one({"_id":id}))
-    
-    return Piloto(**new_piloto)
 
 
-@router.post("/Cargar/Muchos", response_model=list[Piloto], status_code=status.HTTP_201_CREATED)
-async def create_many_pilotos(pilotos:list[Piloto]):
-    lista_pilotos = []
-    for piloto in pilotos:
-        if any(c["piloto_participante"] == piloto.piloto_participante for c in pilotos):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Mismo piloto ingresado 2 veces")
-        dict_piloto = cargar_piloto(piloto)
-        lista_pilotos.append(dict_piloto)
-        
-    resultado = db_client.pilotos.insert_many(lista_pilotos)
-    
-    ids = resultado.inserted_ids
-    documentos = db_client.pilotos.find({"_id":{"$in": ids}})
-    
-    news_pilotos = pilotos_schema(documentos)
-    
-    return list(news_pilotos)
-
-def cargar_piloto(piloto):
-        filtros = {
-            "piloto_participante": {"$regex": f"^{piloto.piloto_participante}$", "$options": "i"},
-            "edad_piloto": piloto.edad_piloto,
-            }
-        
-        if db_client.pilotos.find_one(filtros):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail = "Piloto ya existente en la Base de datos")
-        
-        dict_piloto = dict(piloto)
-        del dict_piloto["id"]
-        dict_piloto["tipo"] = "Piloto"
-        return dict_piloto
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_piloto(id:str):
