@@ -23,7 +23,6 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
     for dato in datos:
         validacion(dato, base_de_datos)
         dict_dato = dict(dato)
-        del dict_dato["id"]
         dict_dato["tipo"] = base_de_datos
         lista.append(dict_dato)
         
