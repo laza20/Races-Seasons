@@ -10,4 +10,13 @@ class Temporada(BaseModel):
     year                        : int
     categoria                   : str
     estado                      : bool
-
+    
+class TemporadaCarga(BaseModel):
+    descripcion                 : str
+    cantidad_de_grandes_premios : int
+    cantidad_de_equipos         : int
+    observaciones               : str #campeones, curiosidades
+    tipo                        : str
+    year                        : int
+    categoria                   : str
+    estado                      : bool
