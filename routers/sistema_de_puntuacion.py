@@ -5,6 +5,7 @@ from db.client import db_client
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
 from bson import ObjectId
 from bson.errors import InvalidId
+from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put, validaciones
 
 router = APIRouter(prefix="/Sistema/Puntuacion",
                    tags=["Sistema de puntuacion"], 
@@ -15,6 +16,15 @@ def validate_object_id(id: str):
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
+    
+    
+peticiones_http_post.cargar_uno(
+    PuntosPorPosicionCarreraCarga,
+    router,
+    "Sistema_de_puntuacion",
+    punto_schema,
+    validaciones.validar_carga_sistema_de_puntuacion
+)
 
 @router.get("/", response_model=list[PuntosPorPosicionCarrera])
 async def show_puntos():
@@ -55,53 +65,6 @@ async def show_pilotos_by_category (temporada:str, tipo:str):
         data["temporada"] = temporada["descripcion"] if temporada else "Desconocida"
         
     return datas
-    
-    
-
-@router.post("/Cargar/Uno", response_model=PuntosPorPosicionCarrera, status_code=status.HTTP_201_CREATED)
-async def create_puntos(puntos_por_posicion:PuntosPorPosicionCarrera):
-     
-    dict_puntos = realizar_carga(puntos_por_posicion)
-    id = db_client.sistema_de_puntuacion.insert_one(dict_puntos).inserted_id
-    new_puntos = punto_schema(db_client.sistema_de_puntuacion.find_one({"_id":id}))
-    
-    return PuntosPorPosicionCarrera(**new_puntos)
-
-@router.post("/Cargar/Muchos", response_model=list[PuntosPorPosicionCarrera], status_code=status.HTTP_201_CREATED)
-async def create_many_puntos(puntos_por_posiciones:list[PuntosPorPosicionCarrera]):
-    lista_puntos = []
-    for puntos in puntos_por_posiciones:
-        dict_puntos = realizar_carga(puntos)
-        lista_puntos.append(dict_puntos)
-        
-    resultado = db_client.sistema_de_puntuacion.insert_many(lista_puntos)
-    
-    ids = resultado.inserted_ids
-    documentos = db_client.sistema_de_puntuacion.find({"_id":{"$in":ids}})
-    
-    news_puntos = puntos_schema(documentos)
-    
-    return list(news_puntos)
-
-def realizar_carga(puntos):
-    temporada_oid = validate_object_id(puntos.temporada)
-    datos = {
-        "posicion" : puntos.posicion,
-        "puntos"   : puntos.puntos,
-        "tipo"     : puntos.tipo,
-        "temporada": temporada_oid
-        }
-    temporada = db_client.temporadas.find_one({"_id":temporada_oid})
-    
-    if db_client.sistema_de_puntuacion.find_one(datos):
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, 
-                            detail=f"La posicion {puntos.posicion} de la '{temporada["descripcion"]}' para el tipo de carrera {puntos.tipo} ya estan cargados")
-    
-    dict_puntos = dict(puntos)
-    del dict_puntos["id"]
-    dict_puntos["temporada"] = temporada_oid
-    return dict_puntos
-    
         
 @router.delete("/Borrar/Todo/{temporada}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_data_by_type_and_category(temporada:str):
