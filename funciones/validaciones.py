@@ -100,7 +100,7 @@ def validar_carga_sistema_de_puntuacion(datos, base_de_datos):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Sistema de puntos ya ingresados")
             puntos.add(key)
             
-            if db_client.Temporadas.find_one({"_id": temporada_oid}):
+            if not db_client.Temporadas.find_one({"_id": temporada_oid}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
             
             if coleccion.find_one({"posicion": dato.posicion, "puntos": dato.puntos, "tipo": dato.tipo, "temporada":temporada_oid}):
