@@ -92,7 +92,7 @@ def validar_carga_sistema_de_puntuacion(datos, base_de_datos):
         puntos = set()
         for dato in datos:
             temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
-            key = (dato.posicion.lower(), dato.puntos, dato.tipo.capitalize(), temporada_oid)
+            key = (dato.posicion, dato.puntos, dato.tipo.capitalize(), dato.temporada)
             
             if key in puntos:
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Sistema de puntos ya ingresados")
