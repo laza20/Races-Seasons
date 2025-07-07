@@ -28,8 +28,6 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
         dict_dato = dict(dato)
         if base_de_datos != "Sistema_de_puntuacion":
             dict_dato["tipo"] = base_de_datos
-        else:
-            continue
         lista.append(dict_dato)
         
     resultado = coleccion.insert_many(lista)
