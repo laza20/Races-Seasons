@@ -26,6 +26,14 @@ peticiones_http_post.cargar_uno(
     validaciones.validar_carga_sistema_de_puntuacion
 )
 
+peticiones_http_post.cargar_muchos(
+    PuntosPorPosicionCarreraCarga,
+    router,
+    "Sistema_de_puntuacion",
+    puntos_schema,
+    validaciones.validar_carga_sistema_de_puntuacion  
+)
+
 @router.get("/", response_model=list[PuntosPorPosicionCarrera])
 async def show_puntos():
     return puntos_schema(db_client.sistema_de_puntuacion.find())
