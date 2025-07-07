@@ -59,7 +59,6 @@ def validacion_carga_equipo(datos, base_de_datos):
             if coleccion.find_one({"nombre_equipo": dato.nombre_equipo, "pais_equipo": dato.pais_equipo}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El Equipo {dato.nombre_equipo} ya está cargado")
     else:
-        # Es un único circuito
         dato = datos if not isinstance(datos, list) else datos[0]
 
         if coleccion.find_one({"nombre_equipo": dato.nombre_equipo, "pais_equipo": dato.pais_equipo}):
@@ -81,7 +80,6 @@ def validacion_carga_piloto(datos, base_de_datos):
             if coleccion.find_one({"piloto_participante": dato.piloto_participante, "edad_piloto": dato.edad_piloto}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
     else:
-        # Es un único circuito
         dato = datos if not isinstance(datos, list) else datos[0]
 
         if coleccion.find_one({"piloto_participante": dato.piloto_participante, "edad_piloto": dato.edad_piloto}):
@@ -103,10 +101,10 @@ def validar_carga_sistema_de_puntuacion(datos, base_de_datos):
             if not db_client.Temporadas.find_one({"_id": temporada_oid}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
             
-            if coleccion.find_one({"posicion": dato.posicion, "puntos": dato.puntos, "tipo": dato.tipo, "temporada":temporada_oid}):
+            if coleccion.find_one({"posicion": dato.posicion, "puntos": dato.puntos, "tipo": dato.tipo, "temporada":dato.temporada}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Sistema de puntos ya ingresados en Base de datos")
     else:
-        # Es un único circuito
+    
         dato = datos if not isinstance(datos, list) else datos[0]
         
         temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
@@ -115,5 +113,5 @@ def validar_carga_sistema_de_puntuacion(datos, base_de_datos):
         if not db_client.Temporadas.find_one({"_id": temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
 
-        if coleccion.find_one({"posicion": dato.posicion, "puntos": dato.puntos, "tipo": dato.tipo, "temporada":temporada_oid}):
+        if coleccion.find_one({"posicion": dato.posicion, "puntos": dato.puntos, "temporada":dato.temporada, "tipo": dato.tipo}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Sistema de puntos ya ingresados en Base de datos")
