@@ -34,7 +34,7 @@ peticiones_http_post.cargar_muchos(
 
 @router.get("/", response_model=list[Circuitos])
 async def show_circuitos():
-    return circuitos_schema(db_client.circuitos.find())
+    return circuitos_schema(db_client.Circuitos.find())
 
 @router.get("/Buscar/{id}")
 async def show_circuito_by_id(id:str):
