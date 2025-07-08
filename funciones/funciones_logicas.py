@@ -53,6 +53,25 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
     documentos = coleccion.find({"_id":{"$in":ids}})
     return schema(documentos)
 
+def cargar_muchos_temporada(datos, base_de_datos, schema, validacion, campo):
+    coleccion = getattr(db_client, base_de_datos)
+    lista = []
+    validacion(datos, base_de_datos)
+    for dato in datos:
+        dict_dato = dict(dato)
+        if base_de_datos in ["Equipos_por_temporada", "Pilotos_por_temporada", "Circuitos_por_temporada"]:
+            dict_dato = buscar_data(dict_dato, campo, base_de_datos)
+        dict_dato["tipo"] = base_de_datos
+        lista.append(dict_dato)
+        
+    resultado = coleccion.insert_many(lista)
+    ids = resultado.inserted_ids
+    documentos = coleccion.find({"_id":{"$in":ids}})
+    return schema(documentos)
+
+
+
+
 def buscar_data(dict_dato, campo, base_de_datos):
     dict_dato[campo] = dict_dato["circuito"]
     if campo is None or campo not in dict_dato:
