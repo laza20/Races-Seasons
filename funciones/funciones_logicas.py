@@ -10,6 +10,13 @@ def validate_object_id(id: str):
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
     
+def validate_object_id_or_false(id: str):
+    try:
+        return ObjectId(id)
+    except InvalidId:
+        return False
+    
+    
 def cargar_uno(dato, base_de_datos, schema, validacion):
         coleccion = getattr(db_client, base_de_datos)
         dict_dato = dict(dato)
@@ -23,11 +30,10 @@ def cargar_uno(dato, base_de_datos, schema, validacion):
 def cargar_uno_temporada(dato, base_de_datos, schema, validacion, campo):
         coleccion = getattr(db_client, base_de_datos)
         dict_dato = dict(dato)
-        if base_de_datos != "Sistema_de_puntuacion":
-            dict_dato["tipo"] = base_de_datos
         if base_de_datos in ["Equipos_por_temporada", "Pilotos_por_temporada", "Circuitos_por_temporada"]:
             dict_dato = buscar_data(dict_dato, campo, base_de_datos)
         validacion(dato, base_de_datos)
+        dict_dato["tipo"] = base_de_datos
         id = coleccion.insert_one(dict_dato).inserted_id
         new_formato = schema(coleccion.find_one({"_id":id}))
         return new_formato
@@ -48,6 +54,7 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
     return schema(documentos)
 
 def buscar_data(dict_dato, campo, base_de_datos):
+    dict_dato[campo] = dict_dato["circuito"]
     if campo is None or campo not in dict_dato:
         raise HTTPException(status_code=400, detail="Falta el campo necesario para búsqueda de datos")
 
