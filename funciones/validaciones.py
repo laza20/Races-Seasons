@@ -123,21 +123,29 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
         circuitos = set()
         for dato in datos:
             temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
-            circuito_oid    = funciones_logicas.validate_object_id(dato.circuito)
+            circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
+            circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
+            if not circuito and not circuito_oid:
+                raise HTTPException(status_code=400, detail="Circuito no válido")
+        
+            if circuito:
+                dict_circuito = dict(circuito)
+                circuito_oid = funciones_logicas.validate_object_id(dict_circuito["_id"])
+                
             key = (temporada_oid, circuito_oid)
             
             if key in circuitos:
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Circuito duplicado en la entrega")
             circuitos.add(key)
             
-            if not db_client.Temporadas.find_one({"_id": temporada_oid}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
+        if not db_client.Temporadas.find_one({"_id": temporada_oid}):
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
             
-            if not db_client.Circuitos.find_one({"_id":circuito_oid}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito incorrecto (no encontrado en la base de datos {dato.ciudad_circuito})")
+        if not db_client.Circuitos.find_one({"_id":circuito_oid}):
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito incorrecto (no encontrado en la base de datos)")
             
-            if coleccion.find_one({"temporada": dato.temporada, "circuito":dato.circuito}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito ya ingresado en la temporada {dato.ciudad_circuito}")
+        if coleccion.find_one({"temporada": temporada_oid, "circuito":circuito_oid}):
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito ya ingresado en la temporada")
             
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
