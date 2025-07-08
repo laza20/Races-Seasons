@@ -142,12 +142,19 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
         try:
-            circuito_oid = funciones_logicas.validate_object_id(dato.circuito)
             temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         except:
             raise HTTPException(status_code=400, detail="ID de la temporada o circuito no válido")
         
-    
+        circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
+        circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
+        if not circuito and not circuito_oid:
+            raise HTTPException(status_code=400, detail="Circuito no válido")
+        
+        if circuito:
+            dict_circuito = dict(circuito)
+            circuito_oid = funciones_logicas.validate_object_id(dict_circuito["_id"])
+            
         if not db_client.Temporadas.find_one({"_id": temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
             
