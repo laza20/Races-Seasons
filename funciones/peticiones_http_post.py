@@ -18,8 +18,14 @@ def cargar_uno_temporada(Clase: Type[BaseModel], router, base_de_datos, schema, 
     
         return new_document
     
-def cargar_muchos(Clase: Type[BaseModel], router, base_de_datos, schema, validacion, campo=None):
+def cargar_muchos(Clase: Type[BaseModel], router, base_de_datos, schema, validacion):
     @router.post("/Cargar/Muchos", response_model=List[Clase], status_code=status.HTTP_201_CREATED)
     async def create_many(clase: List[Clase] = Body(...)):
-        documentos = funciones_logicas.cargar_muchos(clase, base_de_datos, schema, validacion, campo=None)
+        documentos = funciones_logicas.cargar_muchos(clase, base_de_datos, schema, validacion)
+        return documentos
+    
+def cargar_muchos_temporada(Clase: Type[BaseModel], router, base_de_datos, schema, validacion, campo):
+    @router.post("/Cargar/Muchos/Temporada", response_model=List[Clase], status_code=status.HTTP_201_CREATED)
+    async def create_many_season(clase: List[Clase] = Body(...)):
+        documentos = funciones_logicas.cargar_muchos_temporada(clase, base_de_datos, schema, validacion, campo)
         return documentos
