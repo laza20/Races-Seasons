@@ -140,6 +140,10 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
             
         if not db_client.Temporadas.find_one({"_id": temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
+        
+        season = db_client.Temporadas.find_one({"_id": temporada_oid})
+        
+        limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, datos)
             
         if not db_client.Circuitos.find_one({"_id":circuito_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito incorrecto (no encontrado en la base de datos)")
@@ -153,6 +157,10 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
             temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         except:
             raise HTTPException(status_code=400, detail="ID de la temporada o circuito no válido")
+        
+        season = db_client.Temporadas.find_one({"_id": temporada_oid})
+        
+        limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, dato)
         
         circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
         circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
@@ -171,3 +179,20 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
             
         if coleccion.find_one({"temporada": temporada_oid, "circuito":circuito_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito ya ingresado en la temporada")
+        
+        
+        
+def limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, datos):
+        cantidad_actual = db_client.Circuitos_por_temporada.count_documents({"temporada": temporada_oid})
+
+        cantidad_maxima = season.get("cantidad_de_grandes_premios")
+        if not isinstance(cantidad_maxima, int):
+            raise HTTPException(status_code=500, detail="El campo 'cantidad_de_grandes_premios' no está bien definido en la temporada")
+        
+        cantidad_nueva = len(datos) if isinstance(datos, list) else 1
+        
+        if cantidad_actual + cantidad_nueva > cantidad_maxima:
+            raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=f"No se pueden agregar {cantidad_nueva} circuitos: la temporada ya tiene {cantidad_actual}/{cantidad_maxima}"
+            )
