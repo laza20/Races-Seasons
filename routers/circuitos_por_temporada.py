@@ -20,6 +20,15 @@ peticiones_http_post.cargar_uno_temporada(
     "ciudad_circuito"
 )
 
+peticiones_http_post.cargar_muchos_temporada(
+    CircuitosPorTemporadaCarga,
+    router,
+    "Circuitos_por_temporada",
+    circuitos_por_temporada_schema,
+    validaciones.validar_carga_circuito_por_temporada,
+    "ciudad_circuito"
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
@@ -52,6 +61,6 @@ async def show_teams_for_load(categoria:str, year:int):
 
 @router.delete("/Borrar/Todo", status_code=status.HTTP_202_ACCEPTED)
 async def delete_old_circuit():
-    borrado = db_client.circuitos_por_temporada.delete_many({"tipo":"Circuito"})
+    borrado = db_client.Circuitos_por_temporada.delete_many({"tipo":"Circuitos_por_temporada"})
     if not borrado:
         raise HTTPException(status_code=404, detail="")
