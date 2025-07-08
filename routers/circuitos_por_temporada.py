@@ -17,7 +17,7 @@ peticiones_http_post.cargar_uno_temporada(
     "Circuitos_por_temporada",
     circuito_por_temporada_schema,
     validaciones.validar_carga_circuito_por_temporada,
-    "circuito"
+    "ciudad_circuito"
 )
 
 def validate_object_id(id: str):
