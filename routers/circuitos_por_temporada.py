@@ -37,7 +37,7 @@ def validate_object_id(id: str):
     
 @router.get("/Ver", response_model=list[CircuitosPorTemporada])
 async def show_pilotos():
-    return circuitos_por_temporada_schema(db_client.circuitos_por_temporada.find())
+    return circuitos_por_temporada_schema(db_client.Circuitos_por_temporada.find())
 
 @router.get("/Cargas/{categoria}/{year}")
 async def show_teams_for_load(categoria:str, year:int):
