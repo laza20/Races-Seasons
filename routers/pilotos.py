@@ -5,7 +5,7 @@ from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_carga_schem
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validaciones
+from Validaciones import validar_piloto
 
 
 router = APIRouter(prefix="/Pilotos",
@@ -23,7 +23,7 @@ peticiones_http_post.cargar_uno(
     router,
     "Pilotos",
     piloto_schema,
-    validaciones.validacion_carga_piloto
+    validar_piloto.validacion_carga_piloto
 )
 
 peticiones_http_post.cargar_muchos(
@@ -31,7 +31,7 @@ peticiones_http_post.cargar_muchos(
     router,
     "Pilotos",
     pilotos_schema,
-    validaciones.validacion_carga_piloto    
+    validar_piloto.validacion_carga_piloto    
 )
 
 @router.get("/", response_model=list[Piloto])
