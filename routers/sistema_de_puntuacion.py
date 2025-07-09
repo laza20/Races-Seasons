@@ -6,7 +6,7 @@ from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validaciones
+from Validaciones import validar_sistema_de_puntuacion
 
 router = APIRouter(prefix="/Sistema/Puntuacion",
                    tags=["Sistema de puntuacion"], 
@@ -24,7 +24,7 @@ peticiones_http_post.cargar_uno(
     router,
     "Sistema_de_puntuacion",
     punto_schema,
-    validaciones.validar_carga_sistema_de_puntuacion
+    validar_sistema_de_puntuacion.validar_carga_sistema_de_puntuacion
 )
 
 peticiones_http_post.cargar_muchos(
@@ -32,7 +32,7 @@ peticiones_http_post.cargar_muchos(
     router,
     "Sistema_de_puntuacion",
     puntos_schema,
-    validaciones.validar_carga_sistema_de_puntuacion  
+    validar_sistema_de_puntuacion.validar_carga_sistema_de_puntuacion  
 )
 
 @router.get("/", response_model=list[PuntosPorPosicionCarrera])
