@@ -4,7 +4,8 @@ from db.client import db_client
 from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_carga_schema, pilotos_carga_schema
 from bson import ObjectId
 from bson.errors import InvalidId
-from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put, validaciones
+from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
+from Validaciones import validaciones
 
 
 router = APIRouter(prefix="/Pilotos",
