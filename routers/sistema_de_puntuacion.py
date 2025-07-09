@@ -5,7 +5,7 @@ from db.client import db_client
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
 from bson import ObjectId
 from bson.errors import InvalidId
-from funciones import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
+from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validaciones
 
 router = APIRouter(prefix="/Sistema/Puntuacion",
