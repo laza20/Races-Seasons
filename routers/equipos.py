@@ -5,7 +5,7 @@ from db.schemas.equipos import equipo_schema, equipos_schema, equipo_carga_schem
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validaciones
+from Validaciones import validar_equipo
 
 
 router = APIRouter(prefix="/Equipos",
@@ -23,7 +23,7 @@ peticiones_http_post.cargar_uno(
     router,
     "Equipos",
     equipo_schema,
-    validaciones.validacion_carga_equipo
+    validar_equipo.validacion_carga_equipo
 )
 
 peticiones_http_post.cargar_muchos(
@@ -31,7 +31,7 @@ peticiones_http_post.cargar_muchos(
     router,
     "Equipos",
     equipos_schema,
-    validaciones.validacion_carga_equipo    
+    validar_equipo.validacion_carga_equipo    
 )
 
 @router.get("/", response_model=list[Equipos])
