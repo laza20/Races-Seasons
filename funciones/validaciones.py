@@ -143,7 +143,7 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
         
         season = db_client.Temporadas.find_one({"_id": temporada_oid})
         
-        limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, datos)
+        limitacion_cantidad_por_temporada(season, temporada_oid, datos, coleccion)
             
         if not db_client.Circuitos.find_one({"_id":circuito_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito incorrecto (no encontrado en la base de datos)")
@@ -160,7 +160,7 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
         
         season = db_client.Temporadas.find_one({"_id": temporada_oid})
         
-        limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, dato)
+        limitacion_cantidad_por_temporada(season, temporada_oid, dato, coleccion)
         
         circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
         circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
@@ -182,9 +182,9 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
         
         
         
-def limitacion_cantidad_circuitos_por_temporada(season, temporada_oid, datos):
-        cantidad_actual = db_client.Circuitos_por_temporada.count_documents({"temporada": temporada_oid})
-
+def limitacion_cantidad_por_temporada(season, temporada_oid, datos, coleccion):
+        cantidad_actual = coleccion.count_documents({"temporada": temporada_oid})
+        
         cantidad_maxima = season.get("cantidad_de_grandes_premios")
         if not isinstance(cantidad_maxima, int):
             raise HTTPException(status_code=500, detail="El campo 'cantidad_de_grandes_premios' no está bien definido en la temporada")
