@@ -6,7 +6,7 @@ from db.schemas.temporada import temporada_schema, temporadas_schema
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validaciones
+from Validaciones import validar_circuito_por_temporada
 
 router = APIRouter(prefix="/Circuitos_Temporada",
                    tags=["Circuitos por temporada"], 
@@ -17,7 +17,7 @@ peticiones_http_post.cargar_uno_temporada(
     router,
     "Circuitos_por_temporada",
     circuito_por_temporada_schema,
-    validaciones.validar_carga_circuito_por_temporada,
+    validar_circuito_por_temporada.validar_carga_circuito_por_temporada,
     "ciudad_circuito"
 )
 
@@ -26,7 +26,7 @@ peticiones_http_post.cargar_muchos_temporada(
     router,
     "Circuitos_por_temporada",
     circuitos_por_temporada_schema,
-    validaciones.validar_carga_circuito_por_temporada,
+    validar_circuito_por_temporada.validar_carga_circuito_por_temporada,
     "ciudad_circuito"
 )
 
