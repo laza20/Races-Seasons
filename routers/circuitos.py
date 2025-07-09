@@ -5,7 +5,7 @@ from db.schemas.circuitos import circuito_schema, circuitos_schema, circuito_car
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validaciones
+from Validaciones import validar_circuito
 
 router = APIRouter(prefix="/Circuitos",
                    tags=["Circuitos"], 
@@ -22,7 +22,7 @@ peticiones_http_post.cargar_uno(
     router,
     "Circuitos",
     circuito_schema,
-    validaciones.validar_carga_circuito
+    validar_circuito.validar_carga_circuito
 )
 
 peticiones_http_post.cargar_muchos(
@@ -30,7 +30,7 @@ peticiones_http_post.cargar_muchos(
     router,
     "Circuitos",
     circuitos_schema,
-    validaciones.validar_carga_circuito    
+    validar_circuito.validar_carga_circuito    
 )
 
 @router.get("/", response_model=list[Circuitos])
