@@ -24,6 +24,15 @@ peticiones_http_post.cargar_uno_temporada(
     "nombre_equipo"
 )
 
+peticiones_http_post.cargar_muchos_temporada(
+    EquiposPorTemporada,
+    router,
+    "Equipos_por_temporada",
+    equipos_historicos_schema,
+    validar_equipo_por_temporada.validar_carga_equipo_por_temporada,
+    "nombre_equipo"
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
