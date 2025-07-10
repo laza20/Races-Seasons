@@ -36,7 +36,7 @@ peticiones_http_post.cargar_muchos(
 
 @router.get("/", response_model=list[Equipos])
 async def show_equipos():
-    return equipos_schema(db_client.equipos.find())
+    return equipos_schema(db_client.Equipos.find())
 
 @router.get("/Buscar/{id}")
 async def show_equipo(id:str):
