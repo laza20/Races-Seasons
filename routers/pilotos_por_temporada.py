@@ -30,15 +30,18 @@ peticiones_http_post.cargar_muchos_temporada(
     "piloto_participante"
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Pilotos_por_temporada", 
+    PilotoTemporada, 
+    pilotos_por_temporada_schema
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
-    
-@router.get("/Ver", response_model=list[PilotoTemporada])
-async def show_pilotos_for_charge ():
-    return pilotos_por_temporada_schema(db_client.pilotos_por_temporada.find())
 
 @router.get("/Ver/Datos/Temporada/{temporada}", response_model=list[PilotoTemporada])
 async def show_pilotos_by_category (temporada:str):
