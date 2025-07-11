@@ -21,6 +21,15 @@ peticiones_http_post.cargar_uno_temporada(
     "piloto_participante"
 )
 
+peticiones_http_post.cargar_muchos_temporada(
+    PilotoTemporada,
+    router,
+    "Pilotos_por_temporada",
+    pilotos_por_temporada_schema,
+    validar_pilotos_por_temporada.validar_carga_piloto_por_temporada,
+    "piloto_participante"
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
