@@ -33,15 +33,19 @@ peticiones_http_post.cargar_muchos_temporada(
     "nombre_equipo"
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Equipos_por_temporada", 
+    EquiposPorTemporada, 
+    equipos_historicos_schema
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
     
-@router.get("/Ver", response_model=list[EquiposPorTemporada])
-async def show_old_teams():
-    return equipos_historicos_schema(db_client.equipos_por_temporada.find())
 
 @router.get("/Ver/Datos/Temporada/{temporada}", response_model=list[EquiposPorTemporada])
 async def show_pilotos_by_category (temporada:str):
