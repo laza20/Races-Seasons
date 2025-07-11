@@ -30,15 +30,20 @@ peticiones_http_post.cargar_muchos_temporada(
     "ciudad_circuito"
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Circuitos_por_temporada", 
+    CircuitosPorTemporada, 
+    circuitos_por_temporada_schema
+)
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
     
-@router.get("/Ver", response_model=list[CircuitosPorTemporada])
-async def show_pilotos():
-    return circuitos_por_temporada_schema(db_client.Circuitos_por_temporada.find())
+
 
 @router.get("/Cargas/{categoria}/{year}")
 async def show_teams_for_load(categoria:str, year:int):
