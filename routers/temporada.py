@@ -40,6 +40,12 @@ peticiones_http_get.view_old_data(
     temporadas_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Temporadas", 
+    Temporada, 
+    temporada_schema
+)
 
 
 
