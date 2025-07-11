@@ -40,6 +40,13 @@ peticiones_http_get.view_old_data(
     equipos_historicos_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Equipos_por_temporada", 
+    EquiposPorTemporada, 
+    equipo_historico_schema
+    )
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
