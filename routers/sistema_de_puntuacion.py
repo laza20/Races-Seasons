@@ -42,14 +42,15 @@ peticiones_http_get.view_old_data(
     puntos_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Sistema_de_puntuacion", 
+    PuntosPorPosicionCarrera, 
+    punto_schema
+)
 
-@router.get("/Ver/{id}")
-async def show_puntos_by_id(id:str):
-    try:
-        object_id = validate_object_id(id)
-        return punto_schema(db_client.puntosxposicion.find_one({"_id":object_id}))
-    except:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="ID sin puntos")
+
+
     
 @router.get("/Ver/Datos/Temporada/{temporada}", response_model=list[PuntosPorPosicionCarrera])
 async def show_pilotos_by_category (temporada:str):
