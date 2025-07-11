@@ -8,7 +8,7 @@ from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_sistema_de_puntuacion
 
-router = APIRouter(prefix="/Sistema/Puntuacion",
+router = APIRouter(prefix="/Sistema_puntuacion",
                    tags=["Sistema de puntuacion"], 
                    responses={404:{ "message":"No encontrado"}})
 
@@ -35,9 +35,13 @@ peticiones_http_post.cargar_muchos(
     validar_sistema_de_puntuacion.validar_carga_sistema_de_puntuacion  
 )
 
-@router.get("/", response_model=list[PuntosPorPosicionCarrera])
-async def show_puntos():
-    return puntos_schema(db_client.sistema_de_puntuacion.find())
+peticiones_http_get.view_old_data(
+    router, 
+    "Sistema_de_puntuacion", 
+    PuntosPorPosicionCarrera, 
+    puntos_schema
+)
+
 
 @router.get("/Ver/{id}")
 async def show_puntos_by_id(id:str):
