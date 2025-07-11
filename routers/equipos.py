@@ -34,9 +34,12 @@ peticiones_http_post.cargar_muchos(
     validar_equipo.validacion_carga_equipo    
 )
 
-@router.get("/", response_model=list[Equipos])
-async def show_equipos():
-    return equipos_schema(db_client.Equipos.find())
+peticiones_http_get.view_old_data(
+    router, 
+    "Equipos", 
+    Equipos, 
+    equipos_schema
+)
 
 @router.get("/Buscar/{id}")
 async def show_equipo(id:str):
