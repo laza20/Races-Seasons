@@ -40,13 +40,13 @@ peticiones_http_get.view_old_data(
     circuitos_schema
 )
 
-@router.get("/Buscar/{id}")
-async def show_circuito_by_id(id:str):
-    try:
-        objeto_id = validate_object_id(id)
-        return circuito_schema(db_client.circuitos.find_one({"_id":objeto_id}))
-    except:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="ID sin cicuito")
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Circuitos", 
+    Circuitos, 
+    circuito_schema
+)
+
     
 @router.get("/Pais/{pais_circuito}")
 async def show_circuito_by_pais(pais_circuito:str):
