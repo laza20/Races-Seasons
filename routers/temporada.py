@@ -33,14 +33,13 @@ peticiones_http_post.cargar_muchos(
     validar_temporada.validar_carga_temporada    
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Temporadas", 
+    Temporada, 
+    temporadas_schema
+)
 
-@router.get("/Ver/Datos")
-async def show_seasons():
-    temporadas = temporadas_schema(db_client.temporadas.find())
-    if not temporadas:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="No se han encontrado temporadas")
-    
-    return temporadas
 
 
 
