@@ -36,7 +36,7 @@ peticiones_http_post.cargar_muchos(
 
 @router.get("/", response_model=list[Piloto])
 async def show_pilotos():
-    return pilotos_schema(db_client.pilotos.find())
+    return pilotos_schema(db_client.Pilotos.find())
 
 @router.get ("/Ver/{id}")
 async def show_piloto_by_id (id:str):
@@ -57,7 +57,7 @@ async def show_pilotos_by_name (piloto_participante:str):
     
 @router.get("/Carga", response_model=list[PilotoCarga])
 async def show_teams_for_load():
-    pilotos = pilotos_carga_schema(db_client.pilotos.find({"tipo":"Piloto"}))
+    pilotos = pilotos_carga_schema(db_client.Pilotos.find({"tipo":"Pilotos"}))
     return pilotos
     
 
