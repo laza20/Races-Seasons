@@ -41,6 +41,13 @@ peticiones_http_get.view_old_data(
     equipos_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Equipos", 
+    Equipos, 
+    equipo_schema
+)
+
 @router.get("/Buscar/{id}")
 async def show_equipo(id:str):
     try:
