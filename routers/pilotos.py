@@ -41,6 +41,13 @@ peticiones_http_get.view_old_data(
     pilotos_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Pilotos", 
+    Piloto, 
+    piloto_schema
+)
+
 @router.get ("/Ver/{id}")
 async def show_piloto_by_id (id:str):
     object_id = validate_object_id(id)
