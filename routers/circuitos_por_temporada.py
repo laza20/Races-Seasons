@@ -37,6 +37,15 @@ peticiones_http_get.view_old_data(
     circuitos_por_temporada_schema
 )
 
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Circuitos_por_temporada", 
+    CircuitosPorTemporada, 
+    circuito_por_temporada_schema
+)
+
+
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
