@@ -44,6 +44,15 @@ def transformar_de_id_a_descripcion_o_nombre(id, base_de_datos,schema, base_de_d
         # Para objetos tipo Pydantic o clases normales
         valores = list(resultado.__dict__.values())
         
-    #busqueda = buscar_data(valores[1], base_de_datos_2)
-    #return list(busqueda.values())[1] if len(busqueda) >= 2 else list(busqueda.values())[0]
+    busqueda = buscar_data(valores[1], base_de_datos_2)
+    return list(busqueda.values())[1] if len(busqueda) >= 2 else list(busqueda.values())[0]
 
+  
+def buscar_data(id, base_de_datos_2):
+    coleccion = getattr(db_client, base_de_datos_2)
+    oid = validate_object_id(id)
+    data = coleccion.find_one({"_id":oid})
+    if not data:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Dato incorrecta")
+    
+    return data
