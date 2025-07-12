@@ -47,6 +47,14 @@ peticiones_http_get.view_data_by_id(
     equipo_historico_schema
     )
 
+peticiones_http_get.view_data_for_season_by_category_and_year(
+    router,
+    "nombre_equipo", 
+    "Equipos_por_temporada", 
+    equipo_historico_schema,
+    "Equipos"
+    )
+
 def validate_object_id(id: str):
     try:
         return ObjectId(id)
@@ -54,21 +62,6 @@ def validate_object_id(id: str):
         raise HTTPException(status_code=400, detail="ID inválido")
     
 
-@router.get("/Ver/Datos/Temporada/{temporada}", response_model=list[EquiposPorTemporada])
-async def show_pilotos_by_category (temporada:str):
-    objeto_id = validate_object_id(temporada)
-    datas = equipos_historicos_schema(db_client.equipos_por_temporada.find({"temporada":objeto_id}))
-    for data in datas:
-        equipo_oid    = ObjectId(data["nombre_equipo"])
-        equipo = db_client.equipos.find_one({"_id":equipo_oid})
-        
-        temporada_oid     = ObjectId(data["temporada"])
-        temporada = db_client.temporadas.find_one({"_id":temporada_oid})
-        
-        data["nombre_equipo"] = equipo["nombre_equipo"] if equipo else "Desconocido"
-        data["temporada"] = temporada["descripcion"] if temporada else "Desconocida"
-        
-    return datas
 
 @router.get("/Carga/{temporada}")
 async def show_pilotos_by_category (temporada:str):
