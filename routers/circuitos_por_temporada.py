@@ -44,6 +44,14 @@ peticiones_http_get.view_data_by_id(
     circuito_por_temporada_schema
 )
 
+peticiones_http_get.view_data_for_season_by_category_and_year(
+    router,
+    "ciudad_circuito", 
+    "Circuitos_por_temporada", 
+    circuito_por_temporada_schema,
+    "Circuitos"
+    )
+
 
 
 def validate_object_id(id: str):
@@ -52,26 +60,6 @@ def validate_object_id(id: str):
     except InvalidId:
         raise HTTPException(status_code=400, detail="ID inválido")
     
-
-
-@router.get("/Cargas/{categoria}/{year}")
-async def show_teams_for_load(categoria:str, year:int):
-    lista_circuitos=[]
-    temporada = temporada_schema(db_client.temporadas.find_one({"year":year,"categoria":categoria}))
-    if not temporada:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="temporada incorrecta")
-    temporada_id = temporada["_id"]
-    temporada_oid = validate_object_id(temporada_id)
-    circuitos = circuitos_por_temporada_schema(db_client.circuitos_por_temporada.find({"temporada":temporada_oid}))
-    for circuito in circuitos:
-        dict_circuito={
-            "circuito":circuito["ciudad_circuito"],
-            "temporada":str(temporada_oid),
-            "estado":circuito["estado"]
-        }
-        lista_circuitos.append(dict_circuito)
-        
-    return lista_circuitos
 
 
 @router.delete("/Borrar/Todo", status_code=status.HTTP_202_ACCEPTED)
