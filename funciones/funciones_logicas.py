@@ -24,4 +24,26 @@ def identificar_temporada(year, categoria):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="temporada incorrecta")
         return temporada
     
+def transformar_de_id_a_descripcion_o_nombre(id, base_de_datos,schema, base_de_datos_2):
+    coleccion = getattr(db_client, base_de_datos)
+    documento = coleccion.find_one({"_id": id})
+    
+    if not documento:
+        return None 
+
+    resultado = schema(documento)
+    
+    descripcion = resultado.get("descripcion") if isinstance(resultado, dict) else None
+
+    if descripcion:
+        return descripcion
+    
+    if isinstance(resultado, dict):
+        valores = list(resultado.values())
+    else:
+        # Para objetos tipo Pydantic o clases normales
+        valores = list(resultado.__dict__.values())
+        
+    #busqueda = buscar_data(valores[1], base_de_datos_2)
+    #return list(busqueda.values())[1] if len(busqueda) >= 2 else list(busqueda.values())[0]
 
