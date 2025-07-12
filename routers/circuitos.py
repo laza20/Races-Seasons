@@ -72,7 +72,7 @@ async def show_teams_for_load():
 
 @router.delete("/Borrar/Todo", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_circuito():
-    borrado = db_client.circuitos.delete_many({"tipo":"Circuito"})
+    borrado = db_client.Circuitos.delete_many({"tipo":"Circuitos"})
     if not borrado:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="No se encontro el circuito que se desea eliminar")
     
