@@ -1,0 +1,39 @@
+Peticiones_htpp_post.cargar_uno_temporada():
+Esta funcion permite cargar un documentos de temporada, solamente se le deben pasar los siguientes parametros:
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Es necesario para las validaciones, y demas. Tambien servira para mostrar al usuario el tipo de dato de la tabla.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Campo_extra: Por medio de este se permitira que el usuario elija si cargar los datos por medio del id o de un campo identificador.
+
+Peticiones_http_post.cargar_muchos_temporada:
+Esta funcion permite cargar muchos documentos de temporada, solamente se le deben pasar los siguientes parametros:
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Es necesario para las validaciones, y demas. Tambien servira para mostrar al usuario el tipo de dato de la tabla.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Campo_extra: Por medio de este se permitira que el usuario elija si cargar los datos por medio del id o de un campo identificador.
+
+
+peticiones_http_get.view_old_data():
+Esta funcion permite al usuario ver todos los datos cargados dentro de una tabla de documentos, solo necesita los siguientes parametros:
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Nos permitira buscar todos los datos de esta base de datos.
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+
+peticiones_http_get.view_data_by_id():
+Esta funcion permite al usuario ver un dato en particular, por medio del id:
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Nos permitira buscar en la base de datos el dato que necesitamos
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+
+peticiones_http_get.view_data_for_season_by_category_and_year():
+Esta funcion permite al usuario ver una serie de datos por medio del año(en la busqueda es year) y la categoria (ej. 2025, Formula 1):
+router: Necesario para la llamada.
+Campo_extra: Servira para mostrar al usuario un dato mas ameno a la vista en lugar de un id.
+Nombre de la base de datos (Tabla): Nos permitira buscar en la base de datos el dato que necesitamos.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Nombre de la segunda base de datos: Servira para buscar el dato el cual simplificara la vista de los documentos.
+
