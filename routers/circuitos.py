@@ -41,7 +41,11 @@ peticiones_http_get.view_data_by_id(
     circuito_schema
 )
 
-    
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Circuitos"
+)
+
 @router.get("/Pais/{pais_circuito}")
 async def show_circuito_by_pais(pais_circuito:str):
     circuito = circuitos_schema(db_client.circuitos.find({"pais_circuito":pais_circuito}))
