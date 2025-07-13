@@ -1,21 +1,12 @@
-from fastapi import APIRouter, Path,  HTTPException, status
+from fastapi import APIRouter
 from db.models.temporada import Temporada, TemporadaCarga
-from db.client import db_client
 from db.schemas.temporada import temporada_schema, temporadas_schema
-from bson import ObjectId
-from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_temporada
 
 router = APIRouter(prefix="/Temporada",
                    tags=["Temporada"], 
                    responses={404:{ "message":"No encontrado"}})
-
-def validate_object_id(id: str):
-    try:
-        return ObjectId(id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="ID inválido")
     
 peticiones_http_post.cargar_uno(
     TemporadaCarga,
