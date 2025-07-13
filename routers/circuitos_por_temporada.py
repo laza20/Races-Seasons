@@ -47,4 +47,9 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     circuito_por_temporada_schema,
     "Circuitos"
     )
+
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Circuitos_por_temporada"
+)
     
