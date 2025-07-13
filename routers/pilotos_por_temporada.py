@@ -48,3 +48,8 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     piloto_por_temporada_schema,
     "Pilotos"
     )
+
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Pilotos_por_temporada"
+)
