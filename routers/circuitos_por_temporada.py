@@ -1,10 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter
 from db.models.circuitos import CircuitosPorTemporada, CircuitosPorTemporadaCarga
-from db.client import db_client
 from db.schemas.circuitos import circuito_por_temporada_schema, circuitos_por_temporada_schema, circuito_carga_por_temporada_schema, circuitos_por_temporada_carga_schema
-from db.schemas.temporada import temporada_schema, temporadas_schema
-from bson import ObjectId
-from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_circuito_por_temporada
 
@@ -51,19 +47,4 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     circuito_por_temporada_schema,
     "Circuitos"
     )
-
-
-
-def validate_object_id(id: str):
-    try:
-        return ObjectId(id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="ID inválido")
     
-
-
-@router.delete("/Borrar/Todo", status_code=status.HTTP_202_ACCEPTED)
-async def delete_old_circuit():
-    borrado = db_client.Circuitos_por_temporada.delete_many({"tipo":"Circuitos_por_temporada"})
-    if not borrado:
-        raise HTTPException(status_code=404, detail="")
