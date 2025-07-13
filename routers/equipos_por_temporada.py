@@ -51,3 +51,8 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     equipo_historico_schema,
     "Equipos"
     )
+
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Equipos_por_temporada"
+)
