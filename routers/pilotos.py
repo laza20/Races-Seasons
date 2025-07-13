@@ -39,4 +39,8 @@ peticiones_http_get.view_data_by_id(
     piloto_schema
 )
 
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Pilotos"
+)
     
