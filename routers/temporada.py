@@ -38,6 +38,9 @@ peticiones_http_get.view_data_by_id(
     temporada_schema
 )
 
-
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Temporadas"
+)
 
 
