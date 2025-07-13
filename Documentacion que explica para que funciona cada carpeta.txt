@@ -1,0 +1,32 @@
+El programa cuenta con una serie de carpetas las cuales estan distribuidas para mejorar la comprension del proyecto.
+Esta es la siguiente:
+
+{
+db: Contara con datos relacionados a la base de datos. Dentro contendra:
+Carpeta models:
+Cuenta con todos los modelos los cuales tienen la conformacion de las propiedades y las posibilidades de las llamadas.
+Carpeta schema:
+Cuenta con todos los schemas los cuales nos permitiran realizar las llamadas los documentos y plasmar los datos en un formato json.
+Archivo client.py:
+Es el archivo el cual tiene el nombre de la base de datos y el http por el medio del cual se realizaran las llamadas.
+}
+
+{
+back ups: Una serie de back ups los cuales permitiran relizar cargas de manera mas rapida.
+}
+
+{
+Funciones: Carpeta la cual nos permitira guardar todo tipo de funciones las cuales simplificaran y modularizaran el codigo.
+}
+
+{
+peticiones_http: Carpeta la cual tendra las llamadas y permitira mayor modularizacion de codigo, simplificando el proyecto.
+}
+
+{
+Routers: Carpeta la cual nos permitira contener las hojas principales con las llamadas a las funciones.
+}
+
+{
+Validaciones: Carpeta la cual contendra distintos tipos de validaciones separados en distintos archivos.
+}
