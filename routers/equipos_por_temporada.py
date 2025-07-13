@@ -1,10 +1,7 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter
 from db.models.equipos import Equipos, EquiposPorTemporada
-from db.client import db_client
 from db.schemas.equipos import equipo_schema, equipos_schema, equipo_historico_schema, equipos_historicos_schema
-from bson import ObjectId
-from bson.errors import InvalidId
-from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post,peticiones_http_put
+from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_equipo_por_temporada
 
 
@@ -54,37 +51,3 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     equipo_historico_schema,
     "Equipos"
     )
-
-def validate_object_id(id: str):
-    try:
-        return ObjectId(id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="ID inválido")
-    
-
-
-@router.get("/Carga/{temporada}")
-async def show_pilotos_by_category (temporada:str):
-    objeto_id = validate_object_id(temporada)
-    lista_equipos = []
-    
-    datas = equipos_historicos_schema(db_client.equipos_por_temporada.find({"temporada":objeto_id}))
-    for data in datas:
-        equipo_oid    = ObjectId(data["nombre_equipo"])
-        equipo = db_client.equipos.find_one({"_id":equipo_oid})
-        nombre_equipo = equipo["nombre_equipo"] if equipo else "Desconocido"
-        dict_equipos = {
-            "nombre_equipo": nombre_equipo,
-            "temporada": temporada,
-            "estado": data.get("estado", "Desconocido")
-        }
-        lista_equipos.append(dict_equipos)
-        
-    return lista_equipos
-
-
-@router.delete("/Borrar/Todo", status_code=status.HTTP_202_ACCEPTED)
-async def delete_old_teams():
-    borrado = db_client.equipos_por_temporada.delete_many({"tipo":"Equipo"})
-    if not borrado:
-        raise HTTPException(status_code=404, detail="")
