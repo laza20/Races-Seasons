@@ -1,10 +1,7 @@
-from fastapi import APIRouter, HTTPException, status
-from pydantic import BaseModel
+from fastapi import APIRouter
 from db.models.sistema_de_puntuacion import PuntosPorPosicionCarrera , PuntosPorPosicionCarreraCarga
 from db.client import db_client
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
-from bson import ObjectId
-from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_sistema_de_puntuacion
 
@@ -12,12 +9,6 @@ router = APIRouter(prefix="/Sistema_puntuacion",
                    tags=["Sistema de puntuacion"], 
                    responses={404:{ "message":"No encontrado"}})
 
-def validate_object_id(id: str):
-    try:
-        return ObjectId(id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="ID inválido")
-    
     
 peticiones_http_post.cargar_uno(
     PuntosPorPosicionCarreraCarga,
@@ -48,53 +39,3 @@ peticiones_http_get.view_data_by_id(
     PuntosPorPosicionCarrera, 
     punto_schema
 )
-
-
-
-    
-@router.get("/Ver/Datos/Temporada/{temporada}", response_model=list[PuntosPorPosicionCarrera])
-async def show_pilotos_by_category (temporada:str):
-    objeto_id = validate_object_id(temporada)
-    datas = puntos_schema(db_client.sistema_de_puntuacion.find({"temporada":objeto_id}))
-    for data in datas:  
-        temporada_oid     = ObjectId(data["temporada"])
-        temporada = db_client.temporadas.find_one({"_id":temporada_oid})
-        data["temporada"] = temporada["descripcion"] if temporada else "Desconocida"
-        
-    return datas 
-    
-@router.get("/Ver/Datos/Carga/{temporada}", response_model=list[PuntosPorPosicionCarreraCarga])
-async def show_pilotos_by_category (temporada:str):
-    objeto_id = validate_object_id(temporada)
-    datas = puntos_schema(db_client.sistema_de_puntuacion.find({"temporada":objeto_id}))
-    return datas
-
-@router.get("/Ver/Datos/Temporada/Tipo/{temporada}/{tipo}", response_model=list[PuntosPorPosicionCarrera])
-async def show_pilotos_by_category (temporada:str, tipo:str):
-    objeto_id = validate_object_id(temporada)
-    datas = puntos_schema(db_client.sistema_de_puntuacion.find({"temporada":objeto_id, "tipo":tipo}))
-    for data in datas:  
-        temporada_oid     = ObjectId(data["temporada"])
-        temporada = db_client.temporadas.find_one({"_id":temporada_oid})
-        data["temporada"] = temporada["descripcion"] if temporada else "Desconocida"
-        
-    return datas
-        
-@router.delete("/Borrar/Todo/{temporada}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_data_by_type_and_category(temporada:str):
-    temporada_oid = validate_object_id(temporada)
-    borrado = db_client.sistema_de_puntuacion.delete_many({"temporada":temporada_oid})
-    
-    if not borrado:
-         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="No se encontro el circuito que se desea eliminar")
-    
-
-
-
-
-def search_data(key:str, value):
-    try:
-        equipo = db_client.puntosxposicion.find_one({key:value})
-        return PuntosPorPosicionCarrera(**punto_schema(equipo))
-    except:
-        return {"ERROR": "Datos no encontrado"}
