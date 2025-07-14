@@ -16,6 +16,18 @@ def view_old_data(router, base_de_datos, Clase: Type[BaseModel], schema):
     async def show_many_data():
         coleccion = getattr(db_client, base_de_datos)
         return schema(coleccion.find())
+    
+def view_one_document_for_data_str(router, base_de_datos, schema, lista_de_propiedades):
+    @router.get("/Dato/{data}")
+    async def show_many_data_for_data(data:str):
+        coleccion = getattr(db_client, base_de_datos)
+        for propiedad in lista_de_propiedades:
+            resultado = coleccion.find_one({propiedad:{"$regex": f"^{data}$", "$options": "i"}})
+            if resultado:
+                return schema(resultado)
+        
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+            detail="No se encontro ningun documento con ese dato")    
 
 
 def view_data_by_id(router, base_de_datos, Clase: Type[BaseModel], schema):
