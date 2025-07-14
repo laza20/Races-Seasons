@@ -41,6 +41,15 @@ peticiones_http_get.view_one_document_for_data_str(
     lista_de_propiedades_str_sing
     )
 
+peticiones_http_get.view_data_charge(
+    router, 
+    pilotos_carga_schema, 
+    PilotoCarga,
+    "" ,#Solo si es una base de datos de temporada,
+    "",#campo que modifica
+    ""#Campo que busca
+    )
+
 peticiones_http_get.view_data_by_id(
     router, 
     "Pilotos", 

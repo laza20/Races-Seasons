@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from db.models.equipos import Equipos, EquiposPorTemporada
-from db.schemas.equipos import equipo_schema, equipos_schema, equipo_historico_schema, equipos_historicos_schema
+from db.models.equipos import Equipos, EquiposPorTemporada, EquiposPorTemporadaCarga
+from db.schemas.equipos import equipo_schema, equipos_schema, equipo_historico_schema, equipos_historicos_schema, equipo_carga_schema, equipos_por_temporada_carga_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_equipo_por_temporada
 
@@ -44,6 +44,15 @@ peticiones_http_get.view_one_document_for_data_str(
     "Equipos_por_temporada", 
     equipos_historicos_schema, 
     lista_de_propiedades_str_sing
+    )
+
+peticiones_http_get.view_data_charge(
+    router, 
+    equipos_por_temporada_carga_schema, 
+    EquiposPorTemporadaCarga,
+    "Equipos" ,#Solo si es una base de datos de temporada,
+    "nombre_equipo",#campo que modifica
+    "nombre_equipo"#Campo que busca
     )
 
 peticiones_http_get.view_data_by_id(

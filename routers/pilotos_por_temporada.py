@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from db.models.pilotos import PilotoTemporada
-from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_por_temporada_schema, pilotos_por_temporada_schema
+from db.models.pilotos import PilotoTemporada, PilotoTemporadaCarga
+from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_por_temporada_schema, pilotos_por_temporada_schema, piloto_por_temporada_carga_schema, pilotos_por_temporada_carga_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_pilotos_por_temporada
 
@@ -41,6 +41,15 @@ peticiones_http_get.view_one_document_for_data_str(
     "Pilotos_por_temporada", 
     pilotos_por_temporada_schema, 
     lista_de_propiedades_str_sing
+    )
+
+peticiones_http_get.view_data_charge(
+    router, 
+    pilotos_por_temporada_carga_schema, 
+    PilotoTemporadaCarga,
+    "Pilotos" ,#Solo si es una base de datos de temporada,
+    "piloto_participante",#campo que modifica
+    "piloto_participante"#Campo que busca
     )
 
 peticiones_http_get.view_data_by_id(

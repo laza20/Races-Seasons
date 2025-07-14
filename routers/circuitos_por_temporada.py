@@ -42,6 +42,16 @@ peticiones_http_get.view_one_document_for_data_str(
     lista_de_propiedades_str_sing
     )
 
+peticiones_http_get.view_data_charge(
+    router, 
+    circuitos_por_temporada_schema, 
+    CircuitosPorTemporadaCarga,
+    "Circuitos" ,#Solo si es una base de datos de temporada,
+    "circuito",#campo que modifica
+    "ciudad_circuito"#Campo que busca
+    )
+
+
 peticiones_http_get.view_data_by_id(
     router, 
     "Circuitos_por_temporada", 
