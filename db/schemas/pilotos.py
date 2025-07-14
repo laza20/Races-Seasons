@@ -25,7 +25,12 @@ def piloto_por_temporada_schema (piloto)->dict:
             "estado"             : str(piloto["estado"])}
 
 
-          
+def piloto_por_temporada_carga_schema (piloto)->dict:
+        return {
+            "piloto_participante": str(piloto["piloto_participante"]).title().strip(),
+            "temporada"          : str(piloto["nacionalidad_piloto"]).capitalize().strip(),
+            "estado"             : str(piloto["estado"])}
+
 def pilotos_schema(pilotos)->list:
     return [piloto_schema(piloto) for piloto in pilotos]
 
@@ -34,4 +39,7 @@ def pilotos_carga_schema(pilotos)->list:
         
         
 def pilotos_por_temporada_schema(pilotos)->list:
+    return [piloto_por_temporada_schema(piloto) for piloto in pilotos]
+
+def pilotos_por_temporada_carga_schema(pilotos)->list:
     return [piloto_por_temporada_schema(piloto) for piloto in pilotos]
