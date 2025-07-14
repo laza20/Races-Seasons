@@ -26,7 +26,7 @@ def equipo_historico_schema (equipo)->dict:
 def equipo_por_temporada_carga_schema (piloto)->dict:
         return {
             "nombre_equipo"      : str(piloto["nombre_equipo"]).title().strip(),
-            "temporada"          : str(piloto["nacionalidad_piloto"]).capitalize().strip(),
+            "temporada"          : str(piloto["temporada"]).capitalize().strip(),
             "estado"             : str(piloto["estado"])}
 
 def equipos_schema(equipos)->list:
@@ -39,4 +39,4 @@ def equipos_carga_schema(equipos)->list:
     return [equipo_carga_schema(equipo) for equipo in equipos]
 
 def equipos_por_temporada_carga_schema(equipos)->list:
-    return [equipo_carga_schema(equipo) for equipo in equipos]
+    return [equipo_por_temporada_carga_schema(equipo) for equipo in equipos]
