@@ -23,6 +23,10 @@ class PilotoTemporada(BaseModel):
     tipo                 : str | None  = None
     estado               : bool
     
+class PilotoTemporadaCarga(BaseModel):
+    piloto_participante  : str 
+    temporada            : str
+    estado               : bool
 
     
 

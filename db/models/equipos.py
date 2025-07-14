@@ -21,3 +21,8 @@ class EquiposPorTemporada(BaseModel):
     temporada                   : str
     tipo                        : str | None = None
     estado                      : bool
+    
+class EquiposPorTemporadaCarga(BaseModel):
+    nombre_equipo               : str
+    temporada                   : str
+    estado                      : bool
