@@ -7,7 +7,7 @@ from typing import Type, Any, List
 from funciones import funciones_logicas
 from fastapi import APIRouter, HTTPException, status
 from db.schemas.temporada import temporada_schema
-
+from bson import ObjectId
 
 
 
@@ -28,6 +28,32 @@ def view_one_document_for_data_str(router, base_de_datos, schema, lista_de_propi
         
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
             detail="No se encontro ningun documento con ese dato")    
+        
+def view_data_charge(router, schema, Clase: Type[BaseModel], base_de_datos_2, campo, campo2):
+    @router.get("/Datos/Cargas/{base_de_datos}", response_model=List[Clase])
+    async def show_data_charge(base_de_datos:str):
+        coleccion = getattr(db_client, base_de_datos)
+        documentos = coleccion.find({"tipo":base_de_datos})
+        if base_de_datos_2 != "":
+            coleccion_2 = getattr(db_client, base_de_datos_2)
+            lista_docts = []
+            for documento in documentos:
+                referencia_id = documento.get(campo)
+                if isinstance(referencia_id, ObjectId):  # asegurate de que sea un ObjectId
+                    relacionado = coleccion_2.find_one({"_id": referencia_id})
+                if relacionado:
+                    documento[campo] = relacionado.get(campo2, "No encontrado")
+
+                lista_docts.append(documento)  # convertir cada documento con el schema
+
+            return schema(lista_docts)
+                
+        if not documentos:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT,
+                                detail="No se encontro la base de datos")
+        
+        return schema(documentos)
+        
 
 
 def view_data_by_id(router, base_de_datos, Clase: Type[BaseModel], schema):
