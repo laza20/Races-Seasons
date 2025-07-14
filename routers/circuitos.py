@@ -27,6 +27,15 @@ peticiones_http_post.cargar_muchos(
     validar_circuito.validar_carga_circuito    
 )
 
+lista_de_propiedades_str_sing = ["ciudad_circuito"]
+
+peticiones_http_get.view_one_document_for_data_str(
+    router, 
+    "Circuitos", 
+    circuito_schema, 
+    lista_de_propiedades_str_sing
+    )
+
 peticiones_http_get.view_old_data(
     router, 
     "Circuitos", 
@@ -45,22 +54,6 @@ peticiones_http_delete.delete_old_by_type(
     router,
     "Circuitos"
 )
-
-@router.get("/Pais/{pais_circuito}")
-async def show_circuito_by_pais(pais_circuito:str):
-    circuito = circuitos_schema(db_client.circuitos.find({"pais_circuito":pais_circuito}))
-    if not circuito:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No se encontraron circuitos de ese pais")
-    
-    return circuito
-
-@router.get("/Ciudad/{ciudad_circuito}")
-async def show_circuito_by_ciudad(ciudad_circuito:str):
-    circuito = circuitos_schema(db_client.circuitos.find({"ciudad_circuito":ciudad_circuito}))
-    if not circuito:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No se encontraron circuitos de esa ciudad")
-    
-    return circuito
 
 @router.get("/Cargas", response_model=list[CircuitosCarga])
 async def show_teams_for_load():

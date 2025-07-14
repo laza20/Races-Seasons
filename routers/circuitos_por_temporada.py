@@ -33,6 +33,15 @@ peticiones_http_get.view_old_data(
     circuitos_por_temporada_schema
 )
 
+lista_de_propiedades_str_sing = ["ciudad_circuito"]
+
+peticiones_http_get.view_one_document_for_data_str(
+    router, 
+    "Circuitos_por_temporada", 
+    circuito_por_temporada_schema, 
+    lista_de_propiedades_str_sing
+    )
+
 peticiones_http_get.view_data_by_id(
     router, 
     "Circuitos_por_temporada", 
@@ -47,6 +56,8 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     circuito_por_temporada_schema,
     "Circuitos"
     )
+
+
 
 peticiones_http_delete.delete_old_by_type(
     router,

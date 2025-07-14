@@ -32,12 +32,22 @@ peticiones_http_get.view_old_data(
     pilotos_schema
 )
 
+lista_de_propiedades_str_sing = ["piloto_participante"]
+
+peticiones_http_get.view_one_document_for_data_str(
+    router, 
+    "Pilotos", 
+    piloto_schema, 
+    lista_de_propiedades_str_sing
+    )
+
 peticiones_http_get.view_data_by_id(
     router, 
     "Pilotos", 
     Piloto, 
     piloto_schema
 )
+
 
 peticiones_http_delete.delete_old_by_type(
     router,

@@ -34,6 +34,15 @@ peticiones_http_get.view_old_data(
     pilotos_por_temporada_schema
 )
 
+lista_de_propiedades_str_sing = ["piloto_participante"]
+
+peticiones_http_get.view_one_document_for_data_str(
+    router, 
+    "Pilotos_por_temporada", 
+    pilotos_por_temporada_schema, 
+    lista_de_propiedades_str_sing
+    )
+
 peticiones_http_get.view_data_by_id(
     router, 
     "Pilotos_por_temporada", 
