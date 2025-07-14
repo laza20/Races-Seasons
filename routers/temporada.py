@@ -34,7 +34,7 @@ peticiones_http_get.view_old_data(
 lista_de_propiedades_str_sing = ["descripcion", "observaciones"]
 
 peticiones_http_get.view_one_document_for_data_str(
-    Temporada, 
+    router, 
     "Temporadas", 
     temporada_schema, 
     lista_de_propiedades_str_sing

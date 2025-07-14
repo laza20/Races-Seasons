@@ -40,7 +40,7 @@ peticiones_http_get.view_old_data(
 lista_de_propiedades_str_sing = ["nombre_equipo"]
 
 peticiones_http_get.view_one_document_for_data_str(
-    EquiposPorTemporada, 
+    router, 
     "Equipos_por_temporada", 
     equipos_historicos_schema, 
     lista_de_propiedades_str_sing
