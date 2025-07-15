@@ -20,6 +20,14 @@ peticiones_http_post.cargar_uno(
     piloto_x_equipo_schema,
     validar_conformacion_de_equipos.validar_carga_de_conformacion_de_equipos
 )
+peticiones_http_post.cargar_muchos(
+    ConformacionDeEquipos,
+    router,
+    "Conformacion_de_equipos",
+    pilotos_x_equipos_schema,
+    validar_conformacion_de_equipos.validar_carga_de_conformacion_de_equipos    
+)
+
 
 peticiones_http_get.view_old_data(
     router, 
