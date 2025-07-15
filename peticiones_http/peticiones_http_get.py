@@ -92,3 +92,29 @@ def view_data_for_season_by_category_and_year(router, campo, base_de_datos, sche
             lista.append(dict)
         
         return lista
+    
+    
+def view_data_for_season_by_category_and_year_season_id(router, campo, base_de_datos, schema, base_de_datos_2):
+    @router.get("/Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}")
+    async def show_teams_for_load_and_season_id(categoria:str, year:int):
+        coleccion = getattr(db_client, base_de_datos)
+        lista=[]
+        temporada = funciones_logicas.identificar_temporada(year, categoria)
+        temporada_id = temporada["_id"]
+        temporada_oid = funciones_logicas.validate_object_id(temporada_id)
+        datas = coleccion.find({"temporada":temporada_oid})
+        for data in datas:
+            obj = schema(data)
+            data_id = data["_id"]
+            data_oid = funciones_logicas.validate_object_id(data_id)
+            valor = funciones_logicas.transformar_de_id_a_descripcion_o_nombre(
+                data_oid, base_de_datos, schema, base_de_datos_2
+            )
+            dict={
+                campo : valor,
+                "temporada":temporada_id,
+                "estado":obj["estado"]
+            }
+            lista.append(dict)
+        
+        return lista
