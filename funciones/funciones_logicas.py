@@ -26,7 +26,7 @@ def identificar_temporada_por_year_y_categoria(year, categoria):
     
 def identificar_temporada_por_id(id):
     oid = validate_object_id_or_false(id)
-    temporada = temporada_schema(db_client.Temporadas.find_one({"_id":oid}))
+    temporada = db_client.Temporadas.find_one({"_id":oid})
     if not temporada:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
     
