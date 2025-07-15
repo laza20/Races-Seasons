@@ -18,11 +18,19 @@ def validate_object_id_or_false(id: str):
     except InvalidId:
         return False
     
-def identificar_temporada(year, categoria):
+def identificar_temporada_por_year_y_categoria(year, categoria):
         temporada = temporada_schema(db_client.Temporadas.find_one({"year":year,"categoria":categoria}))
         if not temporada:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="temporada incorrecta")
         return temporada
+    
+def identificar_temporada_por_id(id):
+    oid = validate_object_id_or_false(id)
+    temporada = temporada_schema(db_client.Temporadas.find_one({"_id":oid}))
+    if not temporada:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
+    
+    return temporada
     
 def transformar_de_id_a_descripcion_o_nombre(id, base_de_datos,schema, base_de_datos_2):
     coleccion = getattr(db_client, base_de_datos)
