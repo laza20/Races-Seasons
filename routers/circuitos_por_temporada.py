@@ -81,3 +81,7 @@ peticiones_http_delete.delete_old_by_type(
     "Circuitos_por_temporada"
 )
     
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Circuitos_por_temporada"
+)

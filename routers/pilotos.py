@@ -62,4 +62,9 @@ peticiones_http_delete.delete_old_by_type(
     router,
     "Pilotos"
 )
+
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Pilotos"
+)
     

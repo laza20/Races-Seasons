@@ -63,3 +63,8 @@ peticiones_http_delete.delete_old_by_type(
     router,
     "Equipos"
 )
+
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Equipos"
+)

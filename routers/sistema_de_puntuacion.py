@@ -44,3 +44,8 @@ peticiones_http_delete.delete_old_by_type(
     router,
     "Sistema_de_puntuacion"
 )
+
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Sistema_de_puntuacion"
+)

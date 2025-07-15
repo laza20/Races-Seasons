@@ -64,8 +64,8 @@ peticiones_http_delete.delete_old_by_type(
     "Circuitos"
 )
 
-@router.get("/Cargas", response_model=list[CircuitosCarga])
-async def show_teams_for_load():
-    circuitos = circuitos_carga_schema(db_client.circuitos.find({"tipo":"Circuito"}))
-    return circuitos
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Circuitos_por_temporada"
+)
         

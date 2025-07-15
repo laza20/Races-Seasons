@@ -82,3 +82,8 @@ peticiones_http_delete.delete_old_by_type(
     router,
     "Equipos_por_temporada"
 )
+
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Equipos_por_temporada"
+)

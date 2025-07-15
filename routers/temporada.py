@@ -52,4 +52,7 @@ peticiones_http_delete.delete_old_by_type(
     "Temporadas"
 )
 
-
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Temporadas"
+)
