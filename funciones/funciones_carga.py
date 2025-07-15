@@ -3,6 +3,7 @@ from bson.errors import InvalidId
 from fastapi import HTTPException, status
 from db.client import db_client
 from typing import get_type_hints
+from funciones import funciones_logicas
     
     
 def cargar_uno(dato, base_de_datos, schema, validacion):
@@ -11,6 +12,8 @@ def cargar_uno(dato, base_de_datos, schema, validacion):
         if base_de_datos != "Sistema_de_puntuacion":
             dict_dato["tipo"] = base_de_datos
         validacion(dato, base_de_datos)
+        if dict_dato["temporada"]:
+            dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         id = coleccion.insert_one(dict_dato).inserted_id
         new_formato = schema(coleccion.find_one({"_id":id}))
         return new_formato
