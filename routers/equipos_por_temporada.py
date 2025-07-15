@@ -70,6 +70,14 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     "Equipos"
     )
 
+peticiones_http_get.view_data_for_season_by_category_and_year_season_id(
+    router,
+    "nombre_equipo", 
+    "Equipos_por_temporada", 
+    equipo_historico_schema,
+    "Equipos"
+    )
+
 peticiones_http_delete.delete_old_by_type(
     router,
     "Equipos_por_temporada"

@@ -67,6 +67,13 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
     "Circuitos"
     )
 
+peticiones_http_get.view_data_for_season_by_category_and_year_season_id(
+    router,
+    "ciudad_circuito", 
+    "Circuitos_por_temporada", 
+    circuito_por_temporada_schema,
+    "Circuitos"
+    )
 
 
 peticiones_http_delete.delete_old_by_type(
