@@ -12,7 +12,7 @@ def cargar_uno(dato, base_de_datos, schema, validacion):
         if base_de_datos != "Sistema_de_puntuacion":
             dict_dato["tipo"] = base_de_datos
         validacion(dato, base_de_datos)
-        if dict_dato["temporada"]:
+        if dict_dato.get("temporada", "") != "":
             dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         id = coleccion.insert_one(dict_dato).inserted_id
         new_formato = schema(coleccion.find_one({"_id":id}))
@@ -24,6 +24,8 @@ def cargar_uno_temporada(dato, base_de_datos, schema, validacion, campo):
         if base_de_datos in ["Equipos_por_temporada", "Pilotos_por_temporada", "Circuitos_por_temporada"]:
             dict_dato = buscar_data(dict_dato, campo, base_de_datos)
         validacion(dato, base_de_datos)
+        if dict_dato.get("temporada", "") != "":
+            dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         dict_dato["tipo"] = base_de_datos
         id = coleccion.insert_one(dict_dato).inserted_id
         new_formato = schema(coleccion.find_one({"_id":id}))
@@ -37,6 +39,8 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
         dict_dato = dict(dato)
         if base_de_datos != "Sistema_de_puntuacion":
             dict_dato["tipo"] = base_de_datos
+        if dict_dato.get("temporada", "") != "":
+            dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         lista.append(dict_dato)
         
     resultado = coleccion.insert_many(lista)
@@ -52,6 +56,8 @@ def cargar_muchos_temporada(datos, base_de_datos, schema, validacion, campo):
         dict_dato = dict(dato)
         if base_de_datos in ["Equipos_por_temporada", "Pilotos_por_temporada", "Circuitos_por_temporada"]:
             dict_dato = buscar_data(dict_dato, campo, base_de_datos)
+        if dict_dato.get("temporada", "") != "":
+            dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         dict_dato["tipo"] = base_de_datos
         lista.append(dict_dato)
         
