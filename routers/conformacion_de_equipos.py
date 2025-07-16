@@ -58,4 +58,17 @@ peticiones_http_get.view_data_by_id(
     "Conformacion_de_equipos", 
     ConformacionDeEquipos, 
     piloto_x_equipo_schema
+<<<<<<< HEAD
+=======
+)
+
+peticiones_http_delete.delete_old_by_type(
+    router,
+    "Conformacion_de_equipos"
+)
+
+peticiones_http_delete.delete_one_by_id(
+    router,
+    "Conformacion_de_equipos"
+>>>>>>> 910cd20 (Feat(routers/conformacion_de_equipos.py): Agregar las llamadas de eliminacion actuales. (Eliminar todo mediante el tipo, eliminar mediante el ID).)
 )
