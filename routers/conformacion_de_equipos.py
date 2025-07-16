@@ -52,3 +52,10 @@ peticiones_http_get.view_old_data(
     ConformacionDeEquipos, 
     pilotos_x_equipos_schema
 )
+
+peticiones_http_get.view_data_by_id(
+    router, 
+    "Conformacion_de_equipos", 
+    ConformacionDeEquipos, 
+    piloto_x_equipo_schema
+)
