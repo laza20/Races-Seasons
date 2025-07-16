@@ -36,4 +36,4 @@ Campo_extra: Servira para mostrar al usuario un dato mas ameno a la vista en lug
 Nombre de la base de datos (Tabla): Nos permitira buscar en la base de datos el dato que necesitamos.
 Schema: Necesario para devolver los datos al usuario una vez guardados.
 Nombre de la segunda base de datos: Servira para buscar el dato el cual simplificara la vista de los documentos.
-
+.
