@@ -13,11 +13,11 @@ def validacion_carga_equipo(datos, base_de_datos):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Mismo Equipo ingresado 2 veces")
             equipos.add(key)
             
-            if coleccion.find_one({"nombre_equipo": dato.nombre_equipo, "pais_equipo": dato.pais_equipo}):
+            if coleccion.find_one({"nombre_equipo":{"$regex": f"^{dato.nombre_equipo}$", "$options": "i"}, "pais_equipo": {"$regex": f"^{dato.pais_equipo}$", "$options": "i"}}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El Equipo {dato.nombre_equipo} ya está cargado")
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
 
-        if coleccion.find_one({"nombre_equipo": dato.nombre_equipo, "pais_equipo": dato.pais_equipo}):
+        if coleccion.find_one({"nombre_equipo":{"$regex": f"^{dato.nombre_equipo}$", "$options": "i"}, "pais_equipo": {"$regex": f"^{dato.pais_equipo}$", "$options": "i"}}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El Equipo {dato.nombre_equipo} ya está cargado")
         
