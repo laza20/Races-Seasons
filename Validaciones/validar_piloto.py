@@ -15,7 +15,7 @@ def validacion_carga_piloto(datos, base_de_datos):
             pilotos.add(key)
             
 
-            if coleccion.find_one({"piloto_participante": dato.piloto_participante, "edad_piloto": dato.edad_piloto}):
+            if coleccion.find_one({"piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"}, "edad_piloto": dato.edad_piloto}):
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
