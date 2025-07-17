@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from db.models.sistema_de_puntuacion import PuntosPorPosicionCarrera , PuntosPorPosicionCarreraCarga
 from db.client import db_client
-from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
+from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema, punto_temporada_schema, puntos_temporada_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from Validaciones import validar_sistema_de_puntuacion
 
@@ -25,6 +25,15 @@ peticiones_http_post.cargar_muchos(
     puntos_schema,
     validar_sistema_de_puntuacion.validar_carga_sistema_de_puntuacion  
 )
+
+peticiones_http_get.view_data_charge(
+    router, 
+    puntos_temporada_schema, 
+    PuntosPorPosicionCarreraCarga,
+    "" ,#Solo si es una base de datos de temporada,
+    "",#campo que modifica
+    ""#Campo que busca
+    )
 
 peticiones_http_get.view_old_data(
     router, 
