@@ -7,6 +7,7 @@ class PuntosPorPosicionCarrera(BaseModel):
     puntos                   : int
     temporada                : str
     tipo                     : str
+    tipo_carrera             : str
     estado                   : bool
     
 class PuntosPorPosicionCarreraCarga(BaseModel):
@@ -14,4 +15,5 @@ class PuntosPorPosicionCarreraCarga(BaseModel):
     puntos                   : int
     temporada                : str
     tipo                     : str
+    tipo_carrera             : str
     estado                   : bool
