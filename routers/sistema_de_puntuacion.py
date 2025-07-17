@@ -11,7 +11,7 @@ router = APIRouter(prefix="/Sistema_puntuacion",
 
     
 peticiones_http_post.cargar_uno(
-    PuntosPorPosicionCarreraCarga,
+    PuntosPorPosicionCarrera,
     router,
     "Sistema_de_puntuacion",
     punto_schema,
@@ -19,7 +19,7 @@ peticiones_http_post.cargar_uno(
 )
 
 peticiones_http_post.cargar_muchos(
-    PuntosPorPosicionCarreraCarga,
+    PuntosPorPosicionCarrera,
     router,
     "Sistema_de_puntuacion",
     puntos_schema,
