@@ -25,7 +25,7 @@ def validar_carga_circuito_por_temporada_2(dato, coleccion, datos):
         circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
         circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
         if not circuito and not circuito_oid:
-            raise HTTPException(status_code=400, detail="Circuito no válido")
+            raise HTTPException(status_code=400, detail=f"Circuito {dato.circuito} no válido")
         
         if circuito:
             dict_circuito = dict(circuito)

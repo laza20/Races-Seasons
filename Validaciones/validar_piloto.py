@@ -11,7 +11,7 @@ def validacion_carga_piloto(datos, base_de_datos):
             key = (dato.piloto_participante.lower(), dato.edad_piloto)
             
             if key in pilotos:
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Mismo piloto ingresado 2 veces")
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Mismo piloto ingresado 2 veces {dato.piloto_participante}")
             pilotos.add(key)
             
 
