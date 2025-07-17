@@ -9,8 +9,7 @@ from funciones import funciones_logicas
 def cargar_uno(dato, base_de_datos, schema, validacion):
         coleccion = getattr(db_client, base_de_datos)
         dict_dato = dict(dato)
-        if base_de_datos != "Sistema_de_puntuacion":
-            dict_dato["tipo"] = base_de_datos
+        dict_dato["tipo"] = base_de_datos
         validacion(dato, base_de_datos)
         if dict_dato.get("temporada", "") != "":
             dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
@@ -37,8 +36,7 @@ def cargar_muchos(datos, base_de_datos , schema, validacion):
     validacion(datos, base_de_datos)
     for dato in datos:
         dict_dato = dict(dato)
-        if base_de_datos != "Sistema_de_puntuacion":
-            dict_dato["tipo"] = base_de_datos
+        dict_dato["tipo"] = base_de_datos
         if dict_dato.get("temporada", "") != "":
             dict_dato["temporada"] = funciones_logicas.validate_object_id(dict_dato["temporada"])
         lista.append(dict_dato)
