@@ -6,7 +6,7 @@ class PuntosPorPosicionCarrera(BaseModel):
     posicion                 : int
     puntos                   : int
     temporada                : str
-    tipo                     : str
+    tipo                     : str | None = None
     tipo_carrera             : str
     estado                   : bool
     
