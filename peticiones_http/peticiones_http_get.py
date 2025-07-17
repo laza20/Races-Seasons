@@ -72,7 +72,7 @@ def view_data_for_season_by_category_and_year(router, campo, base_de_datos, sche
     async def show_teams_for_load(categoria:str, year:int):
         coleccion = getattr(db_client, base_de_datos)
         lista=[]
-        temporada = funciones_logicas.identificar_temporada(year, categoria)
+        temporada = funciones_logicas.identificar_temporada_por_year_y_categoria(year, categoria)
         temporada_id = temporada["_id"]
         temporada_oid = funciones_logicas.validate_object_id(temporada_id)
         temporada_descripcion = funciones_logicas.transformar_de_id_a_descripcion_o_nombre(temporada_oid, "Temporadas", temporada_schema, base_de_datos_2)
@@ -99,7 +99,7 @@ def view_data_for_season_by_category_and_year_season_id(router, campo, base_de_d
     async def show_teams_for_load_and_season_id(categoria:str, year:int):
         coleccion = getattr(db_client, base_de_datos)
         lista=[]
-        temporada = funciones_logicas.identificar_temporada(year, categoria)
+        temporada = funciones_logicas.identificar_temporada_por_year_y_categoria(year, categoria)
         temporada_id = temporada["_id"]
         temporada_oid = funciones_logicas.validate_object_id(temporada_id)
         datas = coleccion.find({"temporada":temporada_oid})
