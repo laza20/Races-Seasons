@@ -5,7 +5,7 @@ def punto_schema(punto)->dict:
             "puntos"                  : int(punto["puntos"]),
             "temporada"               : str(punto["temporada"]),
             "tipo"                    : str(punto["tipo"]),
-            "tipo_carrera"                    : str(punto["tipo_carrera"]),
+            "tipo_carrera"            : str(punto["tipo_carrera"]),
             "estado"                  : bool(punto["estado"])}
         
 def punto_temporada_schema(punto)->dict:
@@ -14,7 +14,7 @@ def punto_temporada_schema(punto)->dict:
             "puntos"                  : int(punto["puntos"]),
             "temporada"               : str(punto["temporada"]),
             "tipo"                    : str(punto["tipo"]),
-            "tipo_carrera"                    : str(punto["tipo_carrera"]),
+            "tipo_carrera"            : str(punto["tipo_carrera"]),
             "estado"                  : bool(punto["estado"])}
         
 def puntos_schema(puntos)->list:
