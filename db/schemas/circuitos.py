@@ -1,8 +1,8 @@
 def circuito_schema (circuito)->dict:
         return {
             "id"                      : str(circuito["_id"]),
-            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "ciudad_circuito"         : str(circuito["ciudad_circuito"]).title().strip(),
+            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "distancia_del_circuito"  : float(circuito["distancia_del_circuito"]),
             "sistema_medicion"        : str(circuito["sistema_medicion"]).upper().strip(),
             "tipo"                    : str(circuito["tipo"]),
@@ -11,8 +11,8 @@ def circuito_schema (circuito)->dict:
         
 def circuito_carga_schema (circuito)->dict:
         return {
-            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "ciudad_circuito"         : str(circuito["ciudad_circuito"]).title().strip(),
+            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "distancia_del_circuito"  : float(circuito["distancia_del_circuito"]),
             "sistema_medicion"        : str(circuito["sistema_medicion"]).upper().strip(),
             "tipo"                    : str(circuito["tipo"]),
@@ -30,8 +30,8 @@ def circuito_por_temporada_schema (circuito)->dict:
         return {
             "id"                      : str(circuito["_id"]),
             "circuito"                : str(circuito["circuito"]),
-            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "ciudad_circuito"         : str(circuito["ciudad_circuito"]).title().strip(),
+            "pais_circuito"           : str(circuito["pais_circuito"]).capitalize().strip(),
             "distancia_del_circuito"  : float(circuito["distancia_del_circuito"]),
             "temporada"               : str(circuito["temporada"]),
             "tipo"                    : str(circuito["tipo"]),
