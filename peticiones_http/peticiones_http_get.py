@@ -33,7 +33,7 @@ def view_data_charge(router, schema, Clase: Type[BaseModel], base_de_datos_2, ca
     @router.get("/Datos/Cargas/{base_de_datos}", response_model=List[Clase])
     async def show_data_charge(base_de_datos:str):
         coleccion = getattr(db_client, base_de_datos)
-        documentos = coleccion.find({"tipo":base_de_datos})
+        documentos = coleccion.find({"tipo":{"$regex": f"^{base_de_datos}$", "$options": "i"}})
         if base_de_datos_2 != "":
             coleccion_2 = getattr(db_client, base_de_datos_2)
             lista_docts = []
