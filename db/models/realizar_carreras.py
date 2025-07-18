@@ -5,8 +5,11 @@ class Carreras(BaseModel):
     piloto_participante      : str
     equipo_participante      : str
     posicion                 : int
+    vuelta_rapida_piloto     : str | None = None
+    vuelta_rapida_equipo     : str | None = None
     ciudad_circuito          : str
     dnf                      : bool
+    fecha                    : str
     temporada                : str
     tipo                     : str 
     estado                   : bool
@@ -15,8 +18,11 @@ class CarrerasCarga(BaseModel):
     piloto_participante      : str
     equipo_participante      : str
     posicion                 : int
+    vuelta_rapida_piloto     : str | None = None
+    vuelta_rapida_equipo     : str | None = None
     ciudad_circuito          : str
     dnf                      : bool
+    fecha                    : str
     temporada                : str
     tipo                     : str 
     estado                   : bool
