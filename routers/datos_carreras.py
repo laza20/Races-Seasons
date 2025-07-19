@@ -4,11 +4,11 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from db.models.puntos_por_equipos import PuntosXEquipo
 from db.models.puntos_por_pilotos import PuntosXPiloto
-from db.models.realizar_carreras import Carreras
+from db.models.carreras import Carreras
 from db.models.carrera_todos_los_datos import DatosTotales
 from db.models.podios import PodiosPorEquipo, PodiosPorEquipoTemporada,PodiosPorPilotoTemporada, PodiosPorPilotoTotal
 from db.schemas.carreras_todos_los_datos import carrera_todos_los_datos_schema_una_carrera, carrera_todos_los_datos_schema_todas_las_carrera
-from db.schemas.realizar_carreras import carrera_schema , carreras_schema
+from db.schemas.carreras import carrera_schema , carreras_schema
 from db.schemas.puntos_por_equipos import puntos_por_equipo_schema, puntos_por_equipos_schema
 from db.schemas.puntos_por_piloto import puntos_por_piloto_schema, puntos_por_pilotos_schema
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema

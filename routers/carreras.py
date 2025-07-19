@@ -2,9 +2,9 @@ from fastapi import APIRouter, HTTPException, status,Path
 from db.client import db_client
 from bson import ObjectId
 from bson.errors import InvalidId
-from db.models.realizar_carreras import Carreras, CarrerasCarga
+from db.models.carreras import Carreras, CarrerasCarga
 from db.models.carrera_todos_los_datos import DatosTotales
-from db.schemas.realizar_carreras import carrera_schema , carreras_schema
+from db.schemas.carreras import carrera_schema , carreras_schema
 from db.schemas.puntos_por_equipos import puntos_por_equipo_schema, puntos_por_equipos_schema
 from db.schemas.puntos_por_piloto import puntos_por_piloto_schema, puntos_por_pilotos_schema
 from db.schemas.temporada import temporada_schema, temporadas_schema
