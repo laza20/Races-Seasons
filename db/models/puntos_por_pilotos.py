@@ -6,6 +6,7 @@ class PuntosXPiloto(BaseModel):
     puntos_piloto            : int
     ciudad_circuito          : str
     dnf                      : bool
+    fecha                    : str
     temporada                : str
     tipo                     : str
     estado                   : bool

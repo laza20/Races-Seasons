@@ -5,6 +5,8 @@ class PuntosXEquipo(BaseModel):
     equipo_participante      : str
     puntos_equipo            : int
     ciudad_circuito          : str
+    cant_dnf                 : int
+    fecha                    : str
     temporada                : str
     tipo                     : str
     estado                   : bool
