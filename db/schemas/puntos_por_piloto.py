@@ -5,6 +5,7 @@ def puntos_por_piloto_schema(punto)->dict:
             "puntos_piloto"           : int(punto["puntos_piloto"]),
             "ciudad_circuito"         : str(punto["ciudad_circuito"]).title().strip(),
             "dnf"                     : bool(punto["dnf"]),
+            "fecha"                   : str(punto["fecha"]),
             "temporada"               : str(punto["temporada"]),
             "tipo"                    : str(punto["tipo"]),
             "estado"                  : bool(punto["estado"])}
