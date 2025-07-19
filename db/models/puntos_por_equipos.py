@@ -8,7 +8,7 @@ class PuntosXEquipo(BaseModel):
     cant_dnf                 : int
     fecha                    : str
     temporada                : str
-    tipo                     : str
+    tipo                     : str | None = None
     estado                   : bool
     
     
