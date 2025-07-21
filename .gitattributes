@@ -1,5 +1,4 @@
-# Ignorar los archivos .js y .json del cálculo de lenguaje
 *.js linguist-detectable=false
 *.json linguist-detectable=false
 
-back ups/* linguist-detectable=false
+"back ups/"* linguist-detectable=false
