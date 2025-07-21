@@ -11,7 +11,8 @@ class Carreras(BaseModel):
     dnf                      : bool
     fecha                    : str
     temporada                : str
-    tipo                     : str 
+    tipo_carrera             : str
+    tipo                     : str | None = None 
     estado                   : bool
     
 class CarrerasCarga(BaseModel):
@@ -24,5 +25,6 @@ class CarrerasCarga(BaseModel):
     dnf                      : bool
     fecha                    : str
     temporada                : str
-    tipo                     : str 
+    tipo_carrera             : str
+    tipo                     : str | None = None 
     estado                   : bool

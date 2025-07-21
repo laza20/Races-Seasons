@@ -7,6 +7,7 @@ def puntos_por_equipo_schema(punto)->dict:
             "cant_dnf"                : int(punto["cant_dnf"]),
             "fecha"                   : str(punto["fecha"]),
             "temporada"               : str(punto["temporada"]),
+            "tipo_carrera"            : str(punto["tipo_carrera"]),
             "tipo"                    : str(punto["tipo"]),
             "estado"                  : bool(punto["estado"])}
         

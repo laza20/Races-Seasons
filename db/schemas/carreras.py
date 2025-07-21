@@ -10,6 +10,7 @@ def carrera_schema(carrera)->dict:
             "dnf"                     : bool(carrera["dnf"]),
             "fecha"                   : str(carrera["fecha"]),
             "temporada"               : str(carrera["temporada"]),
+            "tipo_carrera"            : str(carrera["tipo_carrera"]),
             "tipo"                    : str(carrera["tipo"]),
             "estado"                  : bool(carrera["estado"])}
         
@@ -24,6 +25,7 @@ def carrera_carga_schema(carrera)->dict:
         "dnf"                     : bool(carrera["dnf"]),
         "fecha"                   : str(carrera["vuelta_rapida_equipo"]),
         "temporada"               : str(carrera["temporada"]),
+        "tipo_carrera"            : str(carrera["tipo_carrera"]),
         "tipo"                    : str(carrera["tipo"]),
         "estado"                  : bool(carrera["estado"])}
 

@@ -8,6 +8,7 @@ class PuntosXPiloto(BaseModel):
     dnf                      : bool
     fecha                    : str
     temporada                : str
+    tipo_carrera             : str
     tipo                     : str | None = None
     estado                   : bool
     

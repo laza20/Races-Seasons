@@ -7,6 +7,7 @@ def puntos_por_piloto_schema(punto)->dict:
             "dnf"                     : bool(punto["dnf"]),
             "fecha"                   : str(punto["fecha"]),
             "temporada"               : str(punto["temporada"]),
+            "tipo_carrera"            : str(punto["tipo_carrera"]),
             "tipo"                    : str(punto["tipo"]),
             "estado"                  : bool(punto["estado"])}
         

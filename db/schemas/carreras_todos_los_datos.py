@@ -8,6 +8,7 @@ def carrera_todos_los_datos_schema_una_carrera(carrera, piloto, equipo) -> tuple
         "dnf"                :bool(carrera["dnf"]),
         "fecha"              : str(equipo["fecha"]),
         "temporada"          : str(carrera["temporada"]),
+        "tipo_carrera"               : str(carrera["tipo_carrera"]),
         "tipo"               : str(carrera["tipo"]),
         "estado"             : bool(carrera["estado"]),
     }
@@ -20,6 +21,7 @@ def carrera_todos_los_datos_schema_una_carrera(carrera, piloto, equipo) -> tuple
         "cant_dnf"           : int(equipo["cant_dnf"]),
         "fecha"              : str(equipo["fecha"]),
         "temporada"          : str(equipo["temporada"]),
+        "tipo_carrera"               : str(carrera["tipo_carrera"]),
         "tipo"               : str(equipo["tipo"]),
         "estado"             : bool(equipo["estado"]),
     }
@@ -32,6 +34,7 @@ def carrera_todos_los_datos_schema_una_carrera(carrera, piloto, equipo) -> tuple
         "dnf"                : bool(piloto["dnf"]),
         "fecha"              : str(equipo["fecha"]),
         "temporada"          : str(equipo["temporada"]),
+        "tipo_carrera"               : str(carrera["tipo_carrera"]),
         "tipo"               : str(piloto["tipo"]),
         "estado"             : bool(piloto["estado"]),
     }
