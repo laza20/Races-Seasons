@@ -54,7 +54,7 @@ async def cargar_carrera(dato, base_de_datos, schema, validacion):
     
     
 def buscar_puntos_por_posicion(carrera, temporada_oid):
-    puntos_doc = db_client.Sistema_de_puntuacion.find_one({"posicion": carrera.posicion,"tipo":carrera.tipo, "temporada":temporada_oid})
+    puntos_doc = db_client.Sistema_de_puntuacion.find_one({"posicion": carrera.posicion,"tipo_carrera":carrera.tipo_carrera, "temporada":temporada_oid})
     if puntos_doc:
         puntos = puntos_doc["puntos"]
     else:
@@ -71,6 +71,7 @@ def logica_carga_equipo(carrera, temporada_oid, puntos):
             "cant_dnf"            : carrera.dnf,
             "fecha"               : carrera.fecha,
             "temporada"           : temporada_oid,
+            "tipo_carrera"        : carrera.tipo_carrera,
             "tipo"                : "Carreras_por_equipos",
             "estado"              : carrera.estado
         }
@@ -90,6 +91,7 @@ def logica_carga_piloto(carrera, temporada_oid, puntos):
             "dnf"                : carrera.dnf,
             "fecha"              : carrera.fecha, 
             "temporada"          : temporada_oid,
+            "tipo_carrera"        : carrera.tipo_carrera,
             "tipo"                : "Carreras_por_pilotos",
             "estado"             : carrera.estado
         }
@@ -104,7 +106,8 @@ def logica_carga_piloto(carrera, temporada_oid, puntos):
 def  logica_carga_carrera(carrera, temporada_oid):    
     dict_carrera              = dict(carrera)
     del dict_carrera["id"]    
-    dict_carrera["fecha"]     = carrera.fecha 
+    dict_carrera["fecha"]     = carrera.fecha
+    dict_carrera["tipo"]      = "Carreras" 
     dict_carrera["temporada"] = temporada_oid
     
     return dict_carrera

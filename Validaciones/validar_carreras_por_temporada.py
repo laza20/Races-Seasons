@@ -27,7 +27,7 @@ def validar_carga_carrera_por_temporada_2(dato):
             "piloto_participante": dato.piloto_participante,
             "ciudad_circuito"    : dato.ciudad_circuito,
             "temporada"          : temporada_oid,
-            "tipo"               : dato.tipo
+            "tipo"               : dato.tipo_carrera
             }
 
         if db_client.Carreras.find_one(filtro) :
@@ -52,16 +52,16 @@ def validar_carga_carrera_por_temporada_2(dato):
                 "nombre_equipo": {"$regex": f"^{dato.equipo_participante}$", "$options": "i"}
             }): raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} no está en ese equipo")
 
-        if not db_client.Sistema_de_puntuacion.find_one({"tipo_carrera":dato.tipo, "temporada":temporada_oid}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"La temporada '{temporada["descripcion"]}' no cuenta con el tipo de carrera {dato.tipo}")
+        if not db_client.Sistema_de_puntuacion.find_one({"tipo_carrera":dato.tipo_carrera, "temporada":temporada_oid}):
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"La temporada '{temporada["descripcion"]}' no cuenta con el tipo de carrera {dato.tipo_carrera}")
 
-        if db_client.Carreras.find_one({"piloto_participante":dato.piloto_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,  "tipo":dato.tipo }):
+        if db_client.Carreras.find_one({"piloto_participante":dato.piloto_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,  "tipo":dato.tipo_carrera }):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El piloto ingresado ya existe en esa carrera")
 
-        if db_client.Puntos_por_equipo.count_documents({"equipo_participante":dato.equipo_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,"tipo":dato.tipo}) == 2:
+        if db_client.Puntos_por_equipo.count_documents({"equipo_participante":dato.equipo_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,"tipo":dato.tipo_carrera}) == 2:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El equipo {dato.equipo_participante} esta completo en ese carrera")
 
-        if db_client.Carreras.find_one({"ciudad_circuito":dato.ciudad_circuito,"temporada":temporada_oid, "posicion": dato.posicion,"tipo":dato.tipo}):
+        if db_client.Carreras.find_one({"ciudad_circuito":dato.ciudad_circuito,"temporada":temporada_oid, "posicion": dato.posicion,"tipo":dato.tipo_carrera}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="La posicion ingresada de esa carrera ya existe")
 
         if not db_client.Circuitos.find_one({"ciudad_circuito":dato.ciudad_circuito}):
