@@ -6,6 +6,7 @@ def carrera_todos_los_datos_schema_una_carrera(carrera, piloto, equipo) -> tuple
         "posicion"           : int(carrera["posicion"]),
         "ciudad_circuito"    : str(carrera["ciudad_circuito"]).title().strip(),
         "dnf"                :bool(carrera["dnf"]),
+        "fecha"              : str(equipo["fecha"]),
         "temporada"          : str(carrera["temporada"]),
         "tipo"               : str(carrera["tipo"]),
         "estado"             : bool(carrera["estado"]),

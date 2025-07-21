@@ -8,7 +8,7 @@ def carrera_schema(carrera)->dict:
             "vuelta_rapida_equipo"    : str(carrera["vuelta_rapida_equipo"]),
             "ciudad_circuito"         : str(carrera["ciudad_circuito"]).title().strip(),
             "dnf"                     : bool(carrera["dnf"]),
-            "fecha"                   : str(carrera["vuelta_rapida_equipo"]),
+            "fecha"                   : str(carrera["fecha"]),
             "temporada"               : str(carrera["temporada"]),
             "tipo"                    : str(carrera["tipo"]),
             "estado"                  : bool(carrera["estado"])}
