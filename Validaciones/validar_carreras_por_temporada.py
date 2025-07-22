@@ -1,33 +1,61 @@
 from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
-
+from collections import defaultdict
         
 def validar_carga_carrera_por_temporada(datos, base_de_datos):
-    coleccion = getattr(db_client, base_de_datos)
     if isinstance(datos, list) and len(datos) >= 2:
         carreras = set()
+        pilotos  = set() 
+        equipos = defaultdict(int)
+        ciudad  = defaultdict(int)
         for dato in datos:
-            key = validar_carga_carrera_por_temporada_2(dato)
-            if key in carreras:
+            temporada_oid, max_posicion = validar_carga_carrera_por_temporada_2(dato)
+            key_carrera = (temporada_oid, dato.ciudad_circuito, dato.posicion, dato.tipo_carrera)
+            key_piloto  = (temporada_oid, dato.piloto_participante, dato.tipo_carrera, dato.ciudad_circuito)
+            key_equipos = (temporada_oid, dato.equipo_participante, dato.ciudad_circuito, dato.tipo_carrera)
+            key_ciudad  = (temporada_oid, dato.ciudad_circuito, dato.tipo_carrera)
+
+            if key_carrera in carreras:
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
-                    detail="Carrera duplicada en la entrega"
+                    detail=f"Carrera {dato.ciudad_circuito}, en la posicion {dato.posicion} esta duplicado para el tipo de carrera {dato.tipo_carrera}."
                 )
-            carreras.add(key)
+            carreras.add(key_carrera)
+            
+            if key_piloto in pilotos:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=f"Piloto {dato.piloto_participante} duplicada en la entrega para esa carrera"
+                )
+            pilotos.add(key_piloto)
+            
+            ciudad[key_ciudad] += 1
+            if ciudad[key_ciudad] > max_posicion:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="Para esta ciudad en esta tipo de carrera en esta temporada ya se cargaron todas las posiciones"
+                )
+                
+            equipos[key_equipos] += 1
+            if equipos[key_equipos] > max_posicion:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="Equipo ingresado mas de 2 veces para una carrera"
+                )
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_carrera_por_temporada_2(dato)
+        temporada_oid, max_posicion = validar_carga_carrera_por_temporada_2(dato)
 
 #Funcion para evitar la duplicidad de la carga de documentos de circuitos por temporada
 def validar_carga_carrera_por_temporada_2(dato):
         temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         temporada = db_client.Temporadas.find_one({"_id":temporada_oid})
         filtro = {
-            "piloto_participante": dato.piloto_participante,
-            "ciudad_circuito"    : dato.ciudad_circuito,
+            "piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"},
+            "ciudad_circuito"    : {"$regex": f"^{dato.ciudad_circuito}$", "$options": "i"},
             "temporada"          : temporada_oid,
-            "tipo"               : dato.tipo_carrera
+            "tipo_carrera"       : {"$regex": f"^{dato.tipo_carrera}$", "$options": "i"}
             }
 
         if db_client.Carreras.find_one(filtro) :
@@ -39,7 +67,7 @@ def validar_carga_carrera_por_temporada_2(dato):
 
 
         if not db_client.Equipos.find_one({"nombre_equipo": {"$regex": f"^{dato.equipo_participante}$", "$options": "i"}}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El equipo ingresado no esta en la base de datos")
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El equipo {dato.equipo_participante} ingresado no esta en la base de datos")
 
         if not db_client.Conformacion_de_equipos.find_one({
                 "$or": [
@@ -52,16 +80,21 @@ def validar_carga_carrera_por_temporada_2(dato):
                 "nombre_equipo": {"$regex": f"^{dato.equipo_participante}$", "$options": "i"}
             }): raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} no está en ese equipo")
 
-        if not db_client.Sistema_de_puntuacion.find_one({"tipo_carrera":dato.tipo_carrera, "temporada":temporada_oid}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"La temporada '{temporada["descripcion"]}' no cuenta con el tipo de carrera {dato.tipo_carrera}")
-
-        if db_client.Carreras.find_one({"piloto_participante":dato.piloto_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,  "tipo":dato.tipo_carrera }):
+        if not db_client.Sistema_de_puntuacion.find_one({"temporada":temporada_oid, "tipo_carrera":dato.tipo_carrera}):
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"La temporada '{temporada["descripcion"]}' no cuenta con el tipo de carrera {dato.tipo_carrera} ")
+        
+        max_posicion = temporada["cantidad_de_equipos"] * 2
+        
+        if dato.posicion > max_posicion:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"La temporada '{temporada['descripcion']}' no tiene posiciones mas alla de {max_posicion} y el usuario ingreso {dato.posicion}")
+                
+        if db_client.Carreras.find_one({"piloto_participante":dato.piloto_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,  "tipo_carrera":dato.tipo_carrera }):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El piloto ingresado ya existe en esa carrera")
 
-        if db_client.Puntos_por_equipo.count_documents({"equipo_participante":dato.equipo_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,"tipo":dato.tipo_carrera}) == 2:
+        if db_client.Puntos_por_equipo.count_documents({"equipo_participante":dato.equipo_participante, "ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid,"tipo_carrera":dato.tipo_carrera}) == 2:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El equipo {dato.equipo_participante} esta completo en ese carrera")
 
-        if db_client.Carreras.find_one({"ciudad_circuito":dato.ciudad_circuito,"temporada":temporada_oid, "posicion": dato.posicion,"tipo":dato.tipo_carrera}):
+        if db_client.Carreras.find_one({"ciudad_circuito":dato.ciudad_circuito,"temporada":temporada_oid, "posicion": dato.posicion,"tipo_carrera":dato.tipo_carrera}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="La posicion ingresada de esa carrera ya existe")
 
         if not db_client.Circuitos.find_one({"ciudad_circuito":dato.ciudad_circuito}):
@@ -70,5 +103,5 @@ def validar_carga_carrera_por_temporada_2(dato):
         if not db_client.Circuitos_por_temporada.find_one({"ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El circuito ingresado no esta cargado en esa temporada")
 
-        
+        return temporada_oid, max_posicion
         
