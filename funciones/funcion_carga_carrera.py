@@ -6,7 +6,52 @@ from db.models.carrera_todos_los_datos import DatosTotales
 from funciones import funciones_carga, funciones_logicas
 
 
+async def cargar_muchas_carreras(datos, base_de_datos, schema, validacion):
+    lista_carreras = []
+    lista_pilotos  = []
+    lista_equipos  = []
+    validacion(datos, base_de_datos)
+    filtros = set()
+    for dato in datos:
+                
+        temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
+        puntos = buscar_puntos_por_posicion(dato, temporada_oid)
+        
+        dict_puntos_por_piloto =  logica_carga_piloto (dato, temporada_oid, puntos)
+        dict_puntos_equipo     =  logica_carga_equipo (dato, temporada_oid, puntos)
+        dict_carrera           =  logica_carga_carrera(dato, temporada_oid)
+        
+        
+        lista_carreras.append(dict_carrera)
+        lista_pilotos.append(dict_puntos_por_piloto)
+        lista_equipos.append(dict_puntos_equipo)
+        
+        filtros.add((dato.ciudad_circuito, dato.tipo_carrera, temporada_oid))
+        
+    or_filtros = [
+        {
+            "ciudad_circuito": ciudad,
+            "tipo_carrera": tipo_carrera,
+            "temporada": temporada
+        }
+        for ciudad, tipo_carrera, temporada in filtros
+        ]
+    
+    db_client.Carreras.insert_many(lista_carreras)
+    db_client.Carreras_por_pilotos.insert_many(lista_pilotos)
+    db_client.Carreras_por_equipos.insert_many(lista_equipos)
+    
+            
+    new_carreras = carreras_schema(db_client.Carreras.find({"$or": or_filtros}))
+    new_equipos  = puntos_por_equipos_schema(db_client.Carreras_por_equipos.find({"$or": or_filtros}))
+    new_pilotos  = puntos_por_pilotos_schema(db_client.Carreras_por_pilotos.find({"$or": or_filtros}))
 
+    
+    return DatosTotales(
+        carreras=new_carreras,
+        puntos_x_equipo=new_equipos,
+        puntos_x_piloto=new_pilotos
+    )
 
 async def cargar_carrera(dato, base_de_datos, schema, validacion):
     coleccion_carreras = getattr(db_client, base_de_datos)
