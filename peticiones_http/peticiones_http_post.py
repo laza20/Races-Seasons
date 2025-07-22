@@ -41,3 +41,15 @@ def cargar_muchos_temporada(Clase: Type[BaseModel], router, base_de_datos, schem
     async def create_many_season(clase: List[Clase] = Body(...)):
         documentos = funciones_carga.cargar_muchos_temporada(clase, base_de_datos, schema, validacion, campo)
         return documentos
+    
+    
+def cargar_muchos_carrera(Clase: Type[BaseModel], router, base_de_datos, schema, validacion):
+    @router.post("/Cargar/Muchos", response_model=DatosTotales, status_code=status.HTTP_201_CREATED)
+    async def create_many_races(datos: list[Clase] = Body(...)):
+        new_documents = await funcion_carga_carrera.cargar_muchas_carreras(
+            datos,
+            base_de_datos,
+            schema,
+            validacion
+        )
+        return new_documents
