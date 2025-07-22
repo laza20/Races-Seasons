@@ -1,4 +1,4 @@
 *.js linguist-detectable=false
 *.json linguist-detectable=false
 
-"back ups/"* linguist-detectable=false
+"back ups/*" linguist-detectable=false
