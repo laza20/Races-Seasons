@@ -33,6 +33,16 @@ peticiones_http_post.cargar_uno_carrera(
     validar_carreras_por_temporada.validar_carga_carrera_por_temporada
 ) 
 
+peticiones_http_post.cargar_muchos_carrera(
+    Carreras,  
+    router,
+    "Carreras",
+    "",
+    validar_carreras_por_temporada.validar_carga_carrera_por_temporada
+)
+
+
+
 
 @router.get("/Carga/{ciudad_circuito}/{year}/{categoria}/{tipo}", response_model=list[CarrerasCarga])
 async def show_race_for_load (categoria:str, year:int, ciudad_circuito:str, tipo:str):
