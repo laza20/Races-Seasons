@@ -4,7 +4,7 @@ from db.models.puntos_por_equipos import PuntosXEquipo
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_put
 
 router = APIRouter(prefix="/Carreras/Por/Equipos",
-                   tags=["Carreras por piloto"],
+                   tags=["Carreras por equipos"],
                    responses={404:{"Message":"No encontrado"}}
 )
 
