@@ -14,3 +14,9 @@ peticiones_http_get.view_old_data(
     PuntosXEquipo, 
     puntos_por_equipos_schema    
 )
+
+lista_de_datos_str_plural= ["ciudad_circuito","fecha" ]
+peticiones_http_delete.delete_many_by_data_str(
+    router, 
+    "Carreras_por_equipos", 
+    lista_de_datos_str_plural)
