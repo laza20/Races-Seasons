@@ -4,7 +4,7 @@ from routers import  carreras, conformacion_de_equipos
 from routers import tabla_posiciones, datos_carreras
 from routers import temporada
 from routers import equipos_por_temporada, pilotos_por_temporada, circuitos_por_temporada
-from routers import users, carreras_por_piloto
+from routers import users, carreras_por_piloto, Carreras_por_equipos
 
 
 app = FastAPI()
@@ -24,3 +24,4 @@ app.include_router(pilotos_por_temporada.router)
 app.include_router(circuitos_por_temporada.router)
 app.include_router(users.router)
 app.include_router(carreras_por_piloto.router)
+app.include_router(Carreras_por_equipos.router)
