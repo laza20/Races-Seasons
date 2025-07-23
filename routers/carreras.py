@@ -41,6 +41,12 @@ peticiones_http_post.cargar_muchos_carrera(
     validar_carreras_por_temporada.validar_carga_carrera_por_temporada
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Carreras", 
+    Carreras, 
+    carreras_schema    
+)
 
 
 
@@ -57,43 +63,7 @@ async def show_race_for_load (categoria:str, year:int, ciudad_circuito:str, tipo
         
     return posiciones
 
-        
-
-    
-
-#------------------------------------REALIZAR UNA CARGA---------------------------------------------------#
-#------------------------------------REALIZAR MUCHAS CARGA------------------------------------------------#
-
-    
-
-
-                
-                
-                
-
-                
-                
-@router.delete("/Borrar/Todo/{temporada}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_race_by_year(temporada:str):
-    temporada = validate_object_id(temporada)
-    borrado = db_client.carreras.delete_many({"temporada":temporada})
-    borrado = db_client.carreras_por_equipo.delete_many({"temporada":temporada})
-    borrado = db_client.carreras_por_piloto.delete_many({"temporada":temporada})         
-
-    if not borrado:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="No se encontro el año que se desea eliminar")
-    
-    
-    
-@router.delete("/borrar/carrera/{ciudad_circuito}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_circuito(ciudad_circuito:str):
-    borrado = db_client.carreras.delete_many({"ciudad_circuito":ciudad_circuito})
-    borrado = db_client.puntos_por_equipo.delete_many({"ciudad_circuito":ciudad_circuito})
-    borrado = db_client.puntos_por_piloto.delete_many({"ciudad_circuito":ciudad_circuito})
-    
-    if not borrado:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="No se encontro el circuito que se desea eliminar")
-    
+     
 @router.delete("/borrar/carreras/tipo/{ciudad_circuito}/{tipo}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_circuito(ciudad_circuito:str, tipo:str):
     borrado = db_client.carreras.delete_many({"ciudad_circuito":ciudad_circuito, "tipo":tipo})
