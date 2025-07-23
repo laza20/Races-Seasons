@@ -8,3 +8,9 @@ router = APIRouter(prefix="/Carreras/Por/Equipos",
                    responses={404:{"Message":"No encontrado"}}
 )
 
+peticiones_http_get.view_old_data(
+    router, 
+    "Carreras_por_equipos", 
+    PuntosXEquipo, 
+    puntos_por_equipos_schema    
+)
