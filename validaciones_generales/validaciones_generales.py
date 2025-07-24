@@ -41,4 +41,4 @@ def validacion_doble(base_de_datos, dato_uno, dato_dos):
             if i == j:
                 continue
             if coleccion.find_one({campo_uno:dato_uno, campo_dos:dato_dos}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El documento con los datos ({dato_uno} y {dato_dos}) ya se encuentra en la base de datos")
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El documento con los datos ({dato_uno} y {dato_dos}) ya se encuentra en la base de datos de {base_de_datos}")
