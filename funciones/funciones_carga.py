@@ -100,7 +100,7 @@ def carga_datos_faltantes(resultado, base_de_datos, dict_dato, valor):
     if not resultado:
         return {"error": "No se encontraron datos"}
     
-    temporada_oid = ObjectId(dict_dato["temporada"])
+    temporada_oid = funciones_logicas.validate_object_id(dict_dato["temporada"])
     dato_oid = ObjectId(resultado["_id"])
     
     if base_de_datos == "Equipos_por_temporada":
