@@ -6,7 +6,7 @@ class Temporada(BaseModel):
     cantidad_de_grandes_premios : int
     cantidad_de_equipos         : int
     observaciones               : str #campeones, curiosidades
-    tipo                        : str
+    tipo                        : str | None = None
     year                        : int
     categoria                   : str
     estado                      : bool
@@ -16,7 +16,7 @@ class TemporadaCarga(BaseModel):
     cantidad_de_grandes_premios : int
     cantidad_de_equipos         : int
     observaciones               : str #campeones, curiosidades
-    tipo                        : str
+    tipo                        : str | None = None
     year                        : int
     categoria                   : str
     estado                      : bool
