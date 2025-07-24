@@ -4,22 +4,21 @@ from funciones import funciones_logicas
 
 
 def validacion_carga_piloto(datos, base_de_datos):
-    coleccion = getattr(db_client, base_de_datos)
     if isinstance(datos, list) and len(datos) >= 2:
         pilotos = set()
         for dato in datos:
-            key = (dato.piloto_participante.lower(), dato.edad_piloto)
-            
+            key = validacion_carga_piloto_2(dato)
             if key in pilotos:
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Mismo piloto ingresado 2 veces {dato.piloto_participante}")
-            pilotos.add(key)
-            
-
-            if coleccion.find_one({"piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"}, "edad_piloto": dato.edad_piloto}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
+            pilotos.add(key)   
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-
-        if coleccion.find_one({"piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"}, "edad_piloto": dato.edad_piloto}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
-        
+        key = validacion_carga_piloto_2(dato)
+            
+def validacion_carga_piloto_2(dato):
+    key = (dato.piloto_participante.lower(), dato.edad_piloto)
+    
+    if db_client.Pilotos.find_one({"piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"}, "edad_piloto": dato.edad_piloto}):
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
+    
+    return key
