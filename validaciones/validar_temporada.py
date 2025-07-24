@@ -1,7 +1,7 @@
 from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
-from validaciones_generales import validaciones_generales_temporada
+from validaciones_generales import validaciones_generales
         
         
 def validar_carga_temporada(datos, base_de_datos):
@@ -9,12 +9,12 @@ def validar_carga_temporada(datos, base_de_datos):
         claves = set()
         for dato in datos:
             key = (dato.year , dato.categoria.lower())
-            validaciones_generales_temporada.validar_temporada_mediante_categoria_y_year(dato.categoria, dato.year)
+            validaciones_generales.validacion_doble(base_de_datos, dato.categoria, dato.year)
             if key in claves:
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Misma temporada ingresada 2 veces")
             claves.add(key)
     else:
         # Es un único circuito
         dato = datos if not isinstance(datos, list) else datos[0]
-        
-        validaciones_generales_temporada.validar_temporada_mediante_categoria_y_year(dato.categoria, dato.year)
+    
+        validaciones_generales.validacion_doble(base_de_datos, dato.categoria, dato.year)
