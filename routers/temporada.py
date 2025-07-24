@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from db.models.temporada import Temporada, TemporadaCarga
 from db.schemas.temporada import temporada_schema, temporadas_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_temporada
+from validaciones import validar_temporada
 
 router = APIRouter(prefix="/Temporada",
                    tags=["Temporada"], 

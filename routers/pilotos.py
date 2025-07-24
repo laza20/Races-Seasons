@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from db.models.pilotos import Piloto, PilotoCarga
 from db.schemas.pilotos import piloto_schema, pilotos_schema, piloto_carga_schema, pilotos_carga_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_piloto
+from validaciones import validar_piloto
 
 
 router = APIRouter(prefix="/Pilotos",

@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from db.models.carreras import Carreras
 from db.schemas.carreras import carrera_schema , carreras_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_carreras_por_temporada
+from validaciones import validar_carreras_por_temporada
 
 
 

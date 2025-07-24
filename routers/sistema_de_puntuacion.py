@@ -3,7 +3,7 @@ from db.models.sistema_de_puntuacion import PuntosPorPosicionCarrera , PuntosPor
 from db.client import db_client
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema, punto_temporada_schema, puntos_temporada_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_sistema_de_puntuacion
+from validaciones import validar_sistema_de_puntuacion
 
 router = APIRouter(prefix="/Sistema_puntuacion",
                    tags=["Sistema de puntuacion"], 

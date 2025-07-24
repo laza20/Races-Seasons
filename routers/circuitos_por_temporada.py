@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from db.models.circuitos import CircuitosPorTemporada, CircuitosPorTemporadaCarga
 from db.schemas.circuitos import circuito_por_temporada_schema, circuitos_por_temporada_schema, circuito_carga_por_temporada_schema, circuitos_por_temporada_carga_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_circuito_por_temporada
+from validaciones import validar_circuito_por_temporada
 
 router = APIRouter(prefix="/Circuitos_Temporada",
                    tags=["Circuitos por temporada"], 

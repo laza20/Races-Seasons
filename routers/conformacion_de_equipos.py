@@ -6,7 +6,7 @@ from db.schemas.conformacion_de_equipos import piloto_x_equipo_schema, pilotos_x
 from bson import ObjectId
 from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete,peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_conformacion_de_equipos
+from validaciones import validar_conformacion_de_equipos
 
 router = APIRouter( prefix="/Conformacion_equipos",
                    tags=["Conformacion de equipos"],

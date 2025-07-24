@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from db.models.equipos import Equipos, EquipoCarga
 from db.schemas.equipos import equipo_schema, equipos_schema, equipo_carga_schema, equipos_carga_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
-from Validaciones import validar_equipo
+from validaciones import validar_equipo
 
 
 router = APIRouter(prefix="/Equipos",
