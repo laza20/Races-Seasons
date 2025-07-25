@@ -7,5 +7,5 @@ listas_de_campos = {
     "Pilotos_por_temporada": ["_id", "piloto_participante", "edad_piloto", "nacionalidad_piloto", "temporada", "tipo", "estado"],
     "PuntosPorPosicionCarrera": ["_id", "posicion", "puntos", "temporada", "tipo", "tipo_carrera", "estado"],
     "Temporadas": ["_id", "descripcion", "cantidad_de_grandes_premios", "cantidad_de_equipos", "observaciones", "tipo", "year", "categoria", "estado"],
-    "Piloto": ["_id", "piloto_participante", "edad_piloto", "nacionalidad_piloto", "tipo", "estado"]
+    "Pilotos": ["_id", "piloto_participante", "edad_piloto", "nacionalidad_piloto", "tipo", "estado"]
 }
