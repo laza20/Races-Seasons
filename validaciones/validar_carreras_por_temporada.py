@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from collections import defaultdict
 from validaciones_generales import validaciones_generales_simples, validaciones_generales_dobles
+from db.schemas.pilotos import piloto_schema
         
 def validar_carga_carrera_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
@@ -52,6 +53,7 @@ def validar_carga_carrera_por_temporada(datos, base_de_datos):
 def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
         temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         temporada = db_client.Temporadas.find_one({"_id":temporada_oid})
+        piloto = db_client.Pilotos.find_one({"piloto_participante":dato.piloto_participante})
         filtro = {
             "piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"},
             "ciudad_circuito"    : {"$regex": f"^{dato.ciudad_circuito}$", "$options": "i"},
@@ -61,8 +63,8 @@ def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
 
         if db_client.Carreras.find_one(filtro) :
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Datos existentes")
-
-        validaciones_generales_simples.validacion_simple_general_negativa("Pilotos_por_temporada", dato.piloto_participante)
+        
+        validaciones_generales_simples.validacion_simple_general_negativa("Pilotos_por_temporada", piloto["_id"])
         
         validaciones_generales_simples.validacion_simple_general_negativa("Pilotos", dato.piloto_participante)
         
