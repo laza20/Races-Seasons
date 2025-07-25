@@ -15,7 +15,7 @@ listas_de_campos = {
     "Piloto": ["_id", "piloto_participante", "edad_piloto", "nacionalidad_piloto", "tipo", "estado"]
 }
 
-def validacion_simple(base_de_datos, dato):
+def validacion_simple_str(base_de_datos, dato):
     coleccion = getattr(db_client, base_de_datos)
     
     if base_de_datos not in listas_de_campos:
@@ -35,7 +35,7 @@ def validacion_simple(base_de_datos, dato):
             )
         
         
-def validacion_simple_negativa(base_de_datos, dato):
+def validacion_simple_negativa_str(base_de_datos, dato):
     coleccion = getattr(db_client, base_de_datos)
     
     if base_de_datos not in listas_de_campos:
@@ -51,33 +51,93 @@ def validacion_simple_negativa(base_de_datos, dato):
         if coleccion.find_one(query):
             return
         
-        raise HTTPException(
-                status_code=status.HTTP_409_CONFLICT,
-                detail=f"El dato '{dato}' no se encuentra en la base de datos '{base_de_datos}'"
-            )
-
-
-
-def validacion_doble(base_de_datos, dato_uno, dato_dos):
-    coleccion = getattr(db_client, base_de_datos)
+    raise HTTPException(
+        status_code=status.HTTP_409_CONFLICT,
+        detail=f"El dato '{dato}' no se encuentra en la base de datos '{base_de_datos}'"
+        )
     
-    if base_de_datos not in listas_de_campos:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"No hay definición de campos para la colección {base_de_datos}")
+    
+    
 
+def validacion_doble_general(base_de_datos, dato_uno, dato_dos):
+    if base_de_datos not in listas_de_campos:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"No hay definición de campos para la colección {base_de_datos}"
+        )
+    coleccion = getattr(db_client, base_de_datos)
     campos = listas_de_campos[base_de_datos]
     
-    for i,campo_uno in enumerate(campos):
-        for j,campo_dos in enumerate(campos):
+    if isinstance(dato_uno, str) and isinstance(dato_dos, str):
+        validacion_doble_str(coleccion,campos, base_de_datos, dato_uno, dato_dos)
+    elif isinstance(dato_uno, str) or isinstance(dato_dos, str):
+        validacion_doble_one_str(coleccion,campos, base_de_datos, dato_uno, dato_dos)
+    else:
+        validacion_doble_no_str(coleccion,campos, base_de_datos, dato_uno, dato_dos)
+        
+        
+
+def validacion_doble_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
+    for i, campo_uno in enumerate(campos):
+        for j, campo_dos in enumerate(campos):
             if i == j:
-                continue
+                continue  # Evita comparar el mismo campo contra sí mismo
             
-            query_1 = (
-            {campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"}} if isinstance(dato_uno, str)
-            else {campo_uno: dato_uno}
-            )
-            query_2 = (
-            {campo_dos: {"$regex": f"^{dato_dos}$", "$options": "i"}} if isinstance(dato_dos, str)
-            else {campo_dos: dato_dos}
-            )
-            if coleccion.find_one({**query_1, **query_2}):
-                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El documento con los datos ({dato_uno} y {dato_dos}) ya se encuentra en la base de datos de {base_de_datos}")
+            query = {
+                campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
+                campo_dos:{"$regex": f"^{dato_dos}$", "$options": "i"}
+            }
+            
+            if coleccion.find_one(query):
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=f"Ya existe un documento en '{base_de_datos}' con {campo_uno} = '{dato_uno}' y {campo_dos} = '{dato_dos}'"
+                )
+    
+def validacion_doble_one_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
+    
+    for i, campo_uno in enumerate(campos):
+        for j, campo_dos in enumerate(campos):
+            if i == j:
+                continue  # Evita comparar el mismo campo contra sí mismo
+            if isinstance(dato_uno, str):
+                query = {
+                campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
+                campo_dos: dato_dos
+                }
+            
+                if coleccion.find_one(query):
+                    raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=f"Ya existe un documento en '{base_de_datos}' con {campo_uno} = '{dato_uno}' y {campo_dos} = '{dato_dos}'"
+                    )
+            else:
+                query = {
+                campo_uno: dato_uno,
+                campo_dos: {"$regex": f"^{dato_dos}$", "$options": "i"},
+                }
+                
+                if coleccion.find_one(query):
+                    raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=f"Ya existe un documento en '{base_de_datos}' con {campo_uno} = '{dato_uno}' y {campo_dos} = '{dato_dos}'"
+                    )
+
+
+
+def validacion_doble_no_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
+    for i, campo_uno in enumerate(campos):
+        for j, campo_dos in enumerate(campos):
+            if i == j:
+                continue  # Evita comparar el mismo campo contra sí mismo
+            
+            query = {
+                campo_uno : dato_uno,
+                campo_dos : dato_dos
+            }
+
+            if coleccion.find_one(query):
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail=f"Ya existe un documento en '{base_de_datos}' con {campo_uno} = '{dato_uno}' y {campo_dos} = '{dato_dos}'"
+                )
