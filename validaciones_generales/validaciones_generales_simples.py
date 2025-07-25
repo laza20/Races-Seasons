@@ -53,7 +53,7 @@ def validacion_simple_negativa_str(coleccion, campos, base_de_datos, dato):
         query = {
             campo: {"$regex": f"^{dato}$", "$options": "i"}
             }
-        if  coleccion.find_one(query):
+        if coleccion.find_one(query):
             return
                 
     errores_simples.error_simple_negativo(dato, base_de_datos)
