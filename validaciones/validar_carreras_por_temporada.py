@@ -46,7 +46,7 @@ def validar_carga_carrera_por_temporada(datos, base_de_datos):
                 )
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        temporada_oid, max_posicion = validar_carga_carrera_por_temporada_2(dato)
+        temporada_oid, max_posicion = validar_carga_carrera_por_temporada_2(dato, base_de_datos)
 
 #Funcion para evitar la duplicidad de la carga de documentos de circuitos por temporada
 def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
@@ -62,13 +62,13 @@ def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
         if db_client.Carreras.find_one(filtro) :
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Datos existentes")
 
-        validaciones_generales_simples.validacion_simple_negativa("Pilotos_por_temporada", dato.piloto_participante)
+        validaciones_generales_simples.validacion_simple_general_negativa("Pilotos_por_temporada", dato.piloto_participante)
         
-        validaciones_generales_simples.validacion_simple_negativa("Pilotos", dato.piloto_participante)
+        validaciones_generales_simples.validacion_simple_general_negativa("Pilotos", dato.piloto_participante)
         
-        validaciones_generales_simples.validacion_simple_negativa("Equipos", dato.equipo_participante)
+        validaciones_generales_simples.validacion_simple_general_negativa("Equipos", dato.equipo_participante)
         
-        validaciones_generales_simples.validacion_simple_negativa("Circuitos", dato.ciudad_circuito)
+        validaciones_generales_simples.validacion_simple_general_negativa("Circuitos", dato.ciudad_circuito)
         
         if not db_client.Circuitos_por_temporada.find_one({"ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El circuito ingresado no esta cargado en esa temporada")
