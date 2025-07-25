@@ -1,7 +1,7 @@
 from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
-from validaciones_generales import validaciones_generales
+from validaciones_generales import validaciones_generales_dobles
         
         
 def validar_carga_temporada(datos, base_de_datos):
@@ -19,5 +19,5 @@ def validar_carga_temporada(datos, base_de_datos):
         
 def validar_carga_temporada_2(dato, base_de_datos):
     key = (dato.year , dato.categoria.lower())
-    validaciones_generales.validacion_doble(base_de_datos, dato.categoria, dato.year)
+    validaciones_generales_dobles.validacion_doble_general(base_de_datos, dato.categoria, dato.year)
     return key
