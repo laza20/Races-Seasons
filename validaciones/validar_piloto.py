@@ -1,24 +1,20 @@
-from db.client import db_client
 from fastapi import HTTPException, status
-from funciones import funciones_logicas
+from validaciones_generales import validaciones_generales_dobles
 
 
 def validacion_carga_piloto(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
         pilotos = set()
         for dato in datos:
-            key = validacion_carga_piloto_2(dato)
+            key = validacion_carga_piloto_2(dato, base_de_datos)
             if key in pilotos:
                 raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Mismo piloto ingresado 2 veces {dato.piloto_participante}")
             pilotos.add(key)   
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        key = validacion_carga_piloto_2(dato)
+        key = validacion_carga_piloto_2(dato, base_de_datos)
             
-def validacion_carga_piloto_2(dato):
-    key = (dato.piloto_participante.lower(), dato.edad_piloto)
-    
-    if db_client.Pilotos.find_one({"piloto_participante": {"$regex": f"^{dato.piloto_participante}$", "$options": "i"}, "edad_piloto": dato.edad_piloto}):
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"El piloto {dato.piloto_participante} ya está cargado")
-    
+def validacion_carga_piloto_2(dato, base_de_datos):
+    key = (dato.piloto_participante.lower(), dato.edad_piloto)    
+    validaciones_generales_dobles.validacion_doble_general(base_de_datos, dato.piloto_participante, dato.edad_piloto)
     return key
