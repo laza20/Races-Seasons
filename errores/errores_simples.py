@@ -12,3 +12,9 @@ def error_simple_positivo(dato, base_de_datos, campo):
         status_code=status.HTTP_409_CONFLICT,
         detail=f"El dato '{dato}' ya se encuentra en la base de datos '{base_de_datos}' en el campo '{campo}'"
         )
+
+def error_sin_base_de_datos(base_de_datos):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"No hay definición de campos para la colección {base_de_datos}"
+        )
