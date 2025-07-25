@@ -1,6 +1,7 @@
 from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
+from validaciones_generales import validaciones_generales_dobles, validaciones_generales_simples
 
         
 def validar_carga_circuito_por_temporada(datos, base_de_datos):
@@ -8,7 +9,7 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
         circuitos = set()
         for dato in datos:
-            key = validar_carga_circuito_por_temporada_2(dato, coleccion, datos)
+            key = validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos)
             if key in circuitos:
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
@@ -17,10 +18,10 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
             circuitos.add(key)
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_circuito_por_temporada_2(dato, coleccion, datos)
+        validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos)
 
 #Funcion para evitar la duplicidad de la carga de documentos de circuitos por temporada
-def validar_carga_circuito_por_temporada_2(dato, coleccion, datos):
+def validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos):
         temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         circuito_oid = funciones_logicas.validate_object_id_or_false(dato.circuito)
         circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
@@ -34,15 +35,12 @@ def validar_carga_circuito_por_temporada_2(dato, coleccion, datos):
             
         season = db_client.Temporadas.find_one({"_id": temporada_oid})
                     
-        if not db_client.Temporadas.find_one({"_id": temporada_oid}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Temporada incorrecta")
-            
-        if not db_client.Circuitos.find_one({"_id":circuito_oid}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito incorrecto (no encontrado en la base de datos)")
-            
-        if coleccion.find_one({"temporada": temporada_oid, "circuito":circuito_oid}):
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Circuito ya ingresado en la temporada")
+        validaciones_generales_simples.validacion_simple_general_negativa("Temporadas", temporada_oid)
         
+        validaciones_generales_simples.validacion_simple_general_negativa("Circuitos", circuito_oid)
+        
+        validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, circuito_oid )     
+
         limitacion_cantidad_por_temporada(season, temporada_oid, datos, coleccion)
         
         return key
