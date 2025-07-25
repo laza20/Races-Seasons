@@ -64,6 +64,7 @@ def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
         if db_client.Carreras.find_one(filtro) :
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Datos existentes")
         
+        #Se debe buscar asi ya que en pilotos por temporada esta el id del piloto.
         validaciones_generales_simples.validacion_simple_general_negativa("Pilotos_por_temporada", piloto["_id"])
         
         validaciones_generales_simples.validacion_simple_general_negativa("Pilotos", dato.piloto_participante)
@@ -75,9 +76,10 @@ def validar_carga_carrera_por_temporada_2(dato, base_de_datos):
         if not db_client.Circuitos_por_temporada.find_one({"ciudad_circuito":dato.ciudad_circuito, "temporada":temporada_oid}):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="El circuito ingresado no esta cargado en esa temporada")
         
-        validaciones_generales_dobles.validacion_doble_general("Circuitos_por_temporada", dato.ciudad_circuito, temporada_oid)
-        
-        validaciones_generales_dobles.validacion_doble_general("Sistema_de_puntuacion", temporada_oid, dato.tipo_carrera)
+        #negativa
+        validaciones_generales_dobles.validacion_doble_negativa_general("Circuitos_por_temporada", dato.ciudad_circuito, temporada_oid)
+        #negativa
+        validaciones_generales_dobles.validacion_doble_negativa_general("Sistema_de_puntuacion", temporada_oid, dato.tipo_carrera)
         
         max_posicion = temporada["cantidad_de_equipos"] * 2
         
