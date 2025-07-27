@@ -1,6 +1,7 @@
 from db.client import db_client
 from validaciones_generales.lista_de_campos import listas_de_campos
 from errores import errores_dobles, errores_simples
+from itertools import permutations
 
 def validacion_doble_general(base_de_datos, dato_uno, dato_dos):
     if base_de_datos not in listas_de_campos:
@@ -18,11 +19,7 @@ def validacion_doble_general(base_de_datos, dato_uno, dato_dos):
         
 
 def validacion_doble_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
-            
+    for campo_uno, campo_dos in permutations(campos, 2):
             query = {
                 campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
                 campo_dos:{"$regex": f"^{dato_dos}$", "$options": "i"}
@@ -32,11 +29,7 @@ def validacion_doble_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
                 errores_dobles.error_doble_positivo(base_de_datos, campo_uno, campo_dos, dato_uno, dato_dos)
     
 def validacion_doble_one_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
+    for campo_uno, campo_dos in permutations(campos, 2):
             if isinstance(dato_uno, str):
                 query = {
                 campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
@@ -57,11 +50,7 @@ def validacion_doble_one_str(coleccion,campos, base_de_datos, dato_uno, dato_dos
 
 
 def validacion_doble_no_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
-            
+    for campo_uno, campo_dos in permutations(campos, 2):
             query = {
                 campo_uno : dato_uno,
                 campo_dos : dato_dos
@@ -86,10 +75,7 @@ def validacion_doble_negativa_general(base_de_datos, dato_uno, dato_dos):
         
         
 def validacion_doble_negativa_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
+    for campo_uno, campo_dos in permutations(campos, 2):
             
             query = {
                 campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
@@ -104,10 +90,7 @@ def validacion_doble_negativa_str(coleccion,campos, base_de_datos, dato_uno, dat
     
 
 def validacion_doble_negativa_one_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
+    for campo_uno, campo_dos in permutations(campos, 2):
             if isinstance(dato_uno, str):
                 query = {
                 campo_uno: {"$regex": f"^{dato_uno}$", "$options": "i"},
@@ -135,10 +118,7 @@ def validacion_doble_negativa_one_str(coleccion,campos, base_de_datos, dato_uno,
 
 
 def validacion_doble_negativa_no_str(coleccion,campos, base_de_datos, dato_uno, dato_dos):
-    for i, campo_uno in enumerate(campos):
-        for j, campo_dos in enumerate(campos):
-            if i == j:
-                continue  # Evita comparar el mismo campo contra sí mismo
+    for campo_uno, campo_dos in permutations(campos, 2):
             
             query = {
                 campo_uno : dato_uno,
