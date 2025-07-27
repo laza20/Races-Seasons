@@ -1,10 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
-import re
-from db.client import db_client
+from fastapi import APIRouter
 from db.models.conformacion_de_equipos import ConformacionDeEquipos, ConformacionDeEquiposCarga
 from db.schemas.conformacion_de_equipos import piloto_x_equipo_schema, pilotos_x_equipos_schema, piloto_x_equipo_carga_schema, pilotos_x_equipos_cargas_schema
-from bson import ObjectId
-from bson.errors import InvalidId
 from peticiones_http import peticiones_http_delete,peticiones_http_get, peticiones_http_post, peticiones_http_put
 from validaciones import validar_conformacion_de_equipos
 

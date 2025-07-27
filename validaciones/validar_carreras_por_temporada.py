@@ -3,7 +3,6 @@ from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from collections import defaultdict
 from validaciones_generales import validaciones_generales_simples, validaciones_generales_dobles
-from db.schemas.pilotos import piloto_schema
         
 def validar_carga_carrera_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:

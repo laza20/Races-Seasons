@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter
 from db.models.circuitos import Circuitos, CircuitosCarga
 from db.client import db_client
 from db.schemas.circuitos import circuito_schema, circuitos_schema, circuito_carga_schema, circuitos_carga_schema

@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from db.models.sistema_de_puntuacion import PuntosPorPosicionCarrera , PuntosPorPosicionCarreraCarga
-from db.client import db_client
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema, punto_temporada_schema, puntos_temporada_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from validaciones import validar_sistema_de_puntuacion

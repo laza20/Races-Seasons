@@ -1,6 +1,4 @@
-from db.client import db_client
 from fastapi import HTTPException, status
-from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_dobles
         
         

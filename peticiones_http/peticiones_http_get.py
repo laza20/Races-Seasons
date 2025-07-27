@@ -1,11 +1,11 @@
 #pyright: reportInvalidTypeForm=false
-from funciones import funciones_carga, funciones_logicas
-from fastapi import status, Body
+from funciones import funciones_logicas
+from fastapi import status
 from pydantic import BaseModel
 from db.client import db_client
-from typing import Type, Any, List
+from typing import Type, List
 from funciones import funciones_logicas
-from fastapi import APIRouter, HTTPException, status
+from fastapi import  HTTPException, status
 from db.schemas.temporada import temporada_schema
 from bson import ObjectId
 

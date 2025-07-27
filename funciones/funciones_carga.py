@@ -1,8 +1,6 @@
 from bson import ObjectId
-from bson.errors import InvalidId
 from fastapi import HTTPException, status
 from db.client import db_client
-from typing import get_type_hints
 from funciones import funciones_logicas
     
     
@@ -76,7 +74,7 @@ def buscar_data(dict_dato, campo, base_de_datos):
         dict_dato[campo] = dict_dato["piloto_participante"]
     
     if campo is None or campo not in dict_dato:
-        raise HTTPException(status_code=400, detail="Falta el campo necesario para búsqueda de datos")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Falta el campo necesario para búsqueda de datos")
 
     valor = dict_dato[campo]
     condiciones = [{campo: {"$regex": f"^{valor}$", "$options": "i"}}]
@@ -92,7 +90,7 @@ def buscar_data(dict_dato, campo, base_de_datos):
     elif base_de_datos == "Circuitos_por_temporada":
         resultado = db_client.Circuitos.find_one({"$or": condiciones})
     else:
-        raise HTTPException(status_code=409, detail="Base de datos inválida para carga de datos faltantes")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Base de datos inválida para carga de datos faltantes")
 
     return carga_datos_faltantes(resultado, base_de_datos, dict_dato, campo)
 
