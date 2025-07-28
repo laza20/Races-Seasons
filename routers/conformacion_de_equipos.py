@@ -8,18 +8,19 @@ router = APIRouter( prefix="/Conformacion_equipos",
                    tags=["Conformacion de equipos"],
                    responses={404:{ "message":"No encontrado"}})
 
+base_de_datos ="Conformacion_de_equipos"
 
 peticiones_http_post.cargar_uno(
     ConformacionDeEquipos,
     router,
-    "Conformacion_de_equipos",
+    base_de_datos,
     piloto_x_equipo_schema,
     validar_conformacion_de_equipos.validar_carga_de_conformacion_de_equipos
 )
 peticiones_http_post.cargar_muchos(
     ConformacionDeEquipos,
     router,
-    "Conformacion_de_equipos",
+    base_de_datos,
     pilotos_x_equipos_schema,
     validar_conformacion_de_equipos.validar_carga_de_conformacion_de_equipos    
 )
@@ -28,7 +29,7 @@ lista_de_propiedades_str_sing = ["nombre_equipo"]
 
 peticiones_http_get.view_one_document_for_data_str(
     router, 
-    "Conformacion_de_equipos", 
+    base_de_datos, 
     piloto_x_equipo_schema, 
     lista_de_propiedades_str_sing
     )
@@ -44,24 +45,24 @@ peticiones_http_get.view_data_charge(
 
 peticiones_http_get.view_old_data(
     router, 
-    "Conformacion_de_equipos", 
+    base_de_datos, 
     ConformacionDeEquipos, 
     pilotos_x_equipos_schema
 )
 
 peticiones_http_get.view_data_by_id(
     router, 
-    "Conformacion_de_equipos", 
+    base_de_datos, 
     ConformacionDeEquipos, 
     piloto_x_equipo_schema
 )
 
 peticiones_http_delete.delete_old_by_type(
     router,
-    "Conformacion_de_equipos"
+    base_de_datos
 )
 
 peticiones_http_delete.delete_one_by_id(
     router,
-    "Conformacion_de_equipos"
+    base_de_datos
 )

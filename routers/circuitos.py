@@ -9,12 +9,12 @@ router = APIRouter(prefix="/Circuitos",
                    tags=["Circuitos"], 
                    responses={404:{ "message":"No encontrado"}})
 
-
+base_de_datos = "Circuitos"
     
 peticiones_http_post.cargar_uno(
     CircuitosCarga,
     router,
-    "Circuitos",
+    base_de_datos,
     circuito_schema,
     validar_circuito.validar_carga_circuito
 )
@@ -22,7 +22,7 @@ peticiones_http_post.cargar_uno(
 peticiones_http_post.cargar_muchos(
     CircuitosCarga,
     router,
-    "Circuitos",
+    base_de_datos,
     circuitos_schema,
     validar_circuito.validar_carga_circuito    
 )
@@ -31,7 +31,7 @@ lista_de_propiedades_str_sing = ["ciudad_circuito"]
 
 peticiones_http_get.view_one_document_for_data_str(
     router, 
-    "Circuitos", 
+    base_de_datos, 
     circuito_schema, 
     lista_de_propiedades_str_sing
     )
@@ -47,25 +47,25 @@ peticiones_http_get.view_data_charge(
 
 peticiones_http_get.view_old_data(
     router, 
-    "Circuitos", 
+    base_de_datos, 
     Circuitos, 
     circuitos_schema
 )
 
 peticiones_http_get.view_data_by_id(
     router, 
-    "Circuitos", 
+    base_de_datos, 
     Circuitos, 
     circuito_schema
 )
 
 peticiones_http_delete.delete_old_by_type(
     router,
-    "Circuitos"
+    base_de_datos
 )
 
 peticiones_http_delete.delete_one_by_id(
     router,
-    "Circuitos"
+    base_de_datos
 )
         

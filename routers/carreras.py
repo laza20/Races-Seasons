@@ -11,6 +11,7 @@ router = APIRouter(prefix="/Carreras",
                    responses={404:{"Message":"No encontrado"}}
 )
 
+base_de_datos ="Carreras" 
     
 peticiones_http_post.cargar_uno_carrera(
     Carreras,  

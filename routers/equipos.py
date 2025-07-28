@@ -9,11 +9,12 @@ router = APIRouter(prefix="/Equipos",
                    tags=["Equipos"], 
                    responses={404:{ "message":"No encontrado"}})
 
+base_de_datos ="Equipos"  
     
 peticiones_http_post.cargar_uno(
     EquipoCarga,
     router,
-    "Equipos",
+    base_de_datos,
     equipo_schema,
     validar_equipo.validacion_carga_equipo
 )
@@ -21,14 +22,14 @@ peticiones_http_post.cargar_uno(
 peticiones_http_post.cargar_muchos(
     EquipoCarga,
     router,
-    "Equipos",
+    base_de_datos,
     equipos_schema,
     validar_equipo.validacion_carga_equipo    
 )
 
 peticiones_http_get.view_old_data(
     router, 
-    "Equipos", 
+    base_de_datos, 
     Equipos, 
     equipos_schema
 )
@@ -54,17 +55,17 @@ peticiones_http_get.view_data_charge(
 
 peticiones_http_get.view_data_by_id(
     router, 
-    "Equipos", 
+    base_de_datos, 
     Equipos, 
     equipo_schema
 )
 
 peticiones_http_delete.delete_old_by_type(
     router,
-    "Equipos"
+    base_de_datos
 )
 
 peticiones_http_delete.delete_one_by_id(
     router,
-    "Equipos"
+    base_de_datos
 )

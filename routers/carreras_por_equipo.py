@@ -7,10 +7,11 @@ router = APIRouter(prefix="/Carreras/Por/Equipos",
                    tags=["Carreras por equipos"],
                    responses={404:{"Message":"No encontrado"}}
 )
+base_de_datos = "Carreras_por_equipos"
 
 peticiones_http_get.view_old_data(
     router, 
-    "Carreras_por_equipos", 
+    base_de_datos, 
     PuntosXEquipo, 
     puntos_por_equipos_schema    
 )
@@ -18,5 +19,5 @@ peticiones_http_get.view_old_data(
 lista_de_datos_str_plural= ["fecha" ]
 peticiones_http_delete.delete_many_by_data_str(
     router, 
-    "Carreras_por_equipos", 
+    base_de_datos, 
     lista_de_datos_str_plural)

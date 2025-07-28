@@ -8,11 +8,12 @@ router = APIRouter(prefix="/Pilotos_Temporada",
                    tags=["Pilotos por temporada"], 
                    responses={404:{ "message":"No encontrado"}})
 
+base_de_datos = "Pilotos_por_temporada"
 
 peticiones_http_post.cargar_uno_temporada(
     PilotoTemporada,
     router,
-    "Pilotos_por_temporada",
+    base_de_datos,
     piloto_por_temporada_schema,
     validar_pilotos_por_temporada.validar_carga_piloto_por_temporada,
     "piloto_participante"
@@ -21,7 +22,7 @@ peticiones_http_post.cargar_uno_temporada(
 peticiones_http_post.cargar_muchos_temporada(
     PilotoTemporada,
     router,
-    "Pilotos_por_temporada",
+    base_de_datos,
     pilotos_por_temporada_schema,
     validar_pilotos_por_temporada.validar_carga_piloto_por_temporada,
     "piloto_participante"
@@ -29,7 +30,7 @@ peticiones_http_post.cargar_muchos_temporada(
 
 peticiones_http_get.view_old_data(
     router, 
-    "Pilotos_por_temporada", 
+    base_de_datos, 
     PilotoTemporada, 
     pilotos_por_temporada_schema
 )
@@ -38,7 +39,7 @@ lista_de_propiedades_str_sing = ["piloto_participante"]
 
 peticiones_http_get.view_one_document_for_data_str(
     router, 
-    "Pilotos_por_temporada", 
+    base_de_datos, 
     pilotos_por_temporada_schema, 
     lista_de_propiedades_str_sing
     )
@@ -54,7 +55,7 @@ peticiones_http_get.view_data_charge(
 
 peticiones_http_get.view_data_by_id(
     router, 
-    "Pilotos_por_temporada", 
+    base_de_datos, 
     PilotoTemporada, 
     piloto_por_temporada_schema
 )
@@ -70,17 +71,17 @@ peticiones_http_get.view_data_for_season_by_category_and_year(
 peticiones_http_get.view_data_for_season_by_category_and_year_season_id(
     router,
     "piloto_participante", 
-    "Pilotos_por_temporada", 
+    base_de_datos, 
     piloto_por_temporada_schema,
     "Pilotos"
     )
 
 peticiones_http_delete.delete_old_by_type(
     router,
-    "Pilotos_por_temporada"
+    base_de_datos
 )
 
 peticiones_http_delete.delete_one_by_id(
     router,
-    "Pilotos_por_temporada"
+    base_de_datos
 )
