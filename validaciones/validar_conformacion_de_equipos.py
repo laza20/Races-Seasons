@@ -6,51 +6,51 @@ from validaciones_generales import validaciones_generales_dobles, validaciones_g
 
 #VALIDAR QUE EL PRIMERO Y EL SEGUNDO PILOTO SEAN DIFERENTES
 def validar_carga_de_conformacion_de_equipos(datos, base_de_datos):
-    
-        # Si es una lista con más de un circuito
+    # Si es una lista con más de un circuito
     if isinstance(datos, list) and len(datos) >= 2:
         equipos = set()
         for dato in datos:
-            key = validar_carga_de_conformacion_de_equipos_2(dato, datos, base_de_datos)
-            # Verificar duplicados en la misma carga
-            if key in equipos:
-                raise HTTPException(
-                    status_code=status.HTTP_409_CONFLICT,
-                    detail="Conformacion de equipo duplicada en la entrega"
-                )
+            key = validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos)
+            validar_carga_repetida(key, equipos)
             equipos.add(key)
-
     else:
         # Es un único circuito
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_de_conformacion_de_equipos_2(dato,  datos, base_de_datos)
+        validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos)
                 
+def validar_carga_repetida(key, equipos):
+    # Verificar duplicados en la misma carga
+    if key in equipos:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Conformacion de equipo duplicada en la entrega"
+        )
 
 
 #Funcion para evitar la duplicidad de la carga de documentos de circuitos por temporada
-def validar_carga_de_conformacion_de_equipos_2(dato,  datos, base_de_datos):
+def validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos):
         temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
         conformacion_oid = funciones_logicas.validate_object_id_or_false(dato.id)
-        
         key = (temporada_oid, conformacion_oid)
-        
         buscar_pilotos = verificar_pilotos(dato)
         validar_busqueda_de_pilotos(buscar_pilotos, temporada_oid)
-        
-        
-        
         validaciones_generales_simples.validacion_simple_general_negativa("Equipos", dato.nombre_equipo)
-        equipo = db_client.Equipos.find_one({"nombre_equipo": {"$regex": f"^{dato.nombre_equipo}$", "$options": "i"}})
-        equipo_oid = equipo["_id"]
-
-
-        validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, dato.nombre_equipo)
-        
-        validaciones_generales_dobles.validacion_doble_negativa_general("Equipos_por_temporada", equipo_oid, temporada_oid)
-        
+        equipo_oid = buscar_equipo(dato)
+        validaciones_dobles(dato, base_de_datos, temporada_oid, equipo_oid)
             
         return key
     
+def buscar_equipo(dato):
+    equipo = db_client.Equipos.find_one({"nombre_equipo": {"$regex": f"^{dato.nombre_equipo}$", "$options": "i"}})
+    equipo_oid = equipo["_id"]
+    return equipo_oid
+    
+    
+def validaciones_dobles(dato, base_de_datos, temporada_oid, equipo_oid):
+    validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, dato.nombre_equipo)
+    validaciones_generales_dobles.validacion_doble_negativa_general("Equipos_por_temporada", equipo_oid, temporada_oid)
+        
+
 
 def verificar_pilotos(dato):
         buscar_pilotos = {}
