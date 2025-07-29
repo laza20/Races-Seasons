@@ -14,7 +14,7 @@ def validar_carga_sistema_de_puntuacion(datos):
     else:
     
         dato = datos if not isinstance(datos, list) else datos[0]
-        key  = validar_carga_sistema_de_puntuacion_2(dato)
+        key, season  = validar_carga_sistema_de_puntuacion_2(dato)
         
 
 def verificar_entrega_duplicada(dato, key, puntos, temporada):

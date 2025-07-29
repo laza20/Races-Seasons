@@ -14,7 +14,7 @@ def validar_carga_circuito_por_temporada(datos, base_de_datos):
             circuitos.add(key)
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos)
+        key = validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos)
 
 #Funcion para evitar la duplicidad de la carga de documentos de circuitos por temporada
 def validar_carga_circuito_por_temporada_2(dato, coleccion, datos, base_de_datos):

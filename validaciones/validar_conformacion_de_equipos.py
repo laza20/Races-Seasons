@@ -11,19 +11,19 @@ def validar_carga_de_conformacion_de_equipos(datos, base_de_datos):
         equipos = set()
         for dato in datos:
             key = validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos)
-            validar_carga_repetida(key, equipos)
+            validar_carga_repetida(dato ,key, equipos)
             equipos.add(key)
     else:
         # Es un único circuito
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos)
+        key = validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos)
                 
-def validar_carga_repetida(key, equipos):
+def validar_carga_repetida(dato, key, equipos):
     # Verificar duplicados en la misma carga
     if key in equipos:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="Conformacion de equipo duplicada en la entrega"
+            detail=f"Conformacion de equipo duplicada en la entrega para el equipo {dato.nombre_equipo}"
         )
 
 

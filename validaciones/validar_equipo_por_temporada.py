@@ -9,16 +9,19 @@ def validar_carga_equipo_por_temporada(datos, base_de_datos):
         equipos = set()
         for dato in datos:
             key = validar_carga_equipo_por_temporada_2(dato, base_de_datos, datos)
-            if key in equipos:
-                raise HTTPException(
-                    status_code=status.HTTP_409_CONFLICT,
-                    detail="Equipo duplicado en la entrega"
-                )
+            validar_carga_repetida(key, equipos, dato)
             equipos.add(key)
     else:
         dato = datos if not isinstance(datos, list) else datos[0]
-        validar_carga_equipo_por_temporada_2(dato, base_de_datos, datos)
+        key = validar_carga_equipo_por_temporada_2(dato, base_de_datos, datos)
 
+
+def validar_carga_repetida(key, equipos, dato):
+    if key in equipos:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=f"Equipo {dato.nombre_equipo} duplicado en la entrega"
+        )
 #Funcion para evitar la duplicidad de la carga de documentos de Equipos por temporada
 def validar_carga_equipo_por_temporada_2(dato, base_de_datos, datos):
     equipo_oid, temporada_oid = buscar_oid(dato)
