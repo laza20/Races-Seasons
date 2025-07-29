@@ -21,26 +21,42 @@ def validar_carga_equipo_por_temporada(datos, base_de_datos):
 
 #Funcion para evitar la duplicidad de la carga de documentos de Equipos por temporada
 def validar_carga_equipo_por_temporada_2(dato, base_de_datos, datos):
-        temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
-        equipo_oid = funciones_logicas.validate_object_id_or_false(dato.nombre_equipo)
-        equipo = db_client.Equipos.find_one({"nombre_equipo":dato.nombre_equipo})
-        if not equipo and not equipo_oid:
-            raise HTTPException(status_code=400, detail="Equipo no válido")
-        
-        if equipo:
-            dict_equipo = dict(equipo)
-            equipo_oid = funciones_logicas.validate_object_id(dict_equipo["_id"])
-        key = (temporada_oid, equipo_oid)
-            
-        season = db_client.Temporadas.find_one({"_id": temporada_oid})
-        
-        validaciones_generales_simples.validacion_simple_general_negativa("Temporadas", temporada_oid)
-        validaciones_generales_simples.validacion_simple_general_negativa("Equipos", equipo_oid)
-        validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, equipo_oid)
-        
-        limitacion_cantidad_por_temporada(season, temporada_oid, datos, base_de_datos)
-        
-        return key
+    equipo_oid, temporada_oid = buscar_oid(dato)
+    equipo, season = buscar_data(dato, temporada_oid)
+    verificar_data(equipo, equipo_oid)
+    key = transformar_data(equipo, temporada_oid)
+    validaciones_simples(temporada_oid, equipo_oid)
+    validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, equipo_oid)
+    
+    limitacion_cantidad_por_temporada(season, temporada_oid, datos, base_de_datos)
+    
+    return key
+
+def validaciones_simples(temporada_oid, equipo_oid):
+    validaciones_generales_simples.validacion_simple_general_negativa("Temporadas", temporada_oid)
+    validaciones_generales_simples.validacion_simple_general_negativa("Equipos", equipo_oid)
+
+def transformar_data(equipo, temporada_oid):
+    if equipo:
+        dict_equipo = dict(equipo)
+        equipo_oid = funciones_logicas.validate_object_id(dict_equipo["_id"])
+        return (temporada_oid, equipo_oid)
+    raise HTTPException(status_code=400, detail="Equipo inválido para transformar")
+
+
+def verificar_data(equipo, equipo_oid):
+    if not equipo and not equipo_oid:
+        raise HTTPException(status_code=400, detail="Equipo no válido")
+
+def buscar_data(dato, temporada_oid):
+    equipo = db_client.Equipos.find_one({"nombre_equipo":dato.nombre_equipo})
+    season = db_client.Temporadas.find_one({"_id": temporada_oid})
+    return equipo, season
+    
+def buscar_oid(dato):
+    temporada_oid = funciones_logicas.validate_object_id(dato.temporada)
+    equipo_oid = funciones_logicas.validate_object_id_or_false(dato.nombre_equipo)
+    return equipo_oid, temporada_oid
         
 def limitacion_cantidad_por_temporada(season, temporada_oid, datos, base_de_datos):
         coleccion = getattr(db_client, base_de_datos)
@@ -55,5 +71,5 @@ def limitacion_cantidad_por_temporada(season, temporada_oid, datos, base_de_dato
         if cantidad_actual + cantidad_nueva > cantidad_maxima:
             raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail=f"No se pueden agregar {cantidad_nueva} equipos: la temporada ya tiene {cantidad_actual}/{cantidad_maxima}"
+            detail=f"Solo se pueden agregar {cantidad_maxima - cantidad_actual} equipos: temporada ya tiene {cantidad_actual}/{cantidad_maxima}"
             )
