@@ -16,7 +16,7 @@ base_de_datos ="Carreras"
 peticiones_http_post.cargar_uno_carrera(
     Carreras,  
     router,
-    "Carreras",
+    base_de_datos,
     "",
     validar_carreras_por_temporada.validar_carga_carrera_por_temporada
 ) 
@@ -24,14 +24,14 @@ peticiones_http_post.cargar_uno_carrera(
 peticiones_http_post.cargar_muchos_carrera(
     Carreras,  
     router,
-    "Carreras",
+    base_de_datos,
     "",
     validar_carreras_por_temporada.validar_carga_carrera_por_temporada
 )
 
 peticiones_http_get.view_old_data(
     router, 
-    "Carreras", 
+    base_de_datos, 
     Carreras, 
     carreras_schema    
 )
@@ -40,6 +40,6 @@ peticiones_http_get.view_old_data(
 lista_de_datos_str_plural= ["fecha" ]
 peticiones_http_delete.delete_many_by_data_str(
     router, 
-    "Carreras", 
+    base_de_datos, 
     lista_de_datos_str_plural)
 
