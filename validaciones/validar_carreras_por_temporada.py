@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from collections import defaultdict
 from validaciones_generales import validaciones_generales_simples, validaciones_generales_dobles
+from funciones import funciones_busqueda
         
 def validar_carga_carrera_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
@@ -68,8 +69,8 @@ def validacion_de_carga_repetida(dato, carreras, pilotos, equipos, ciudad, tempo
 
 
 def encontrar_datos(dato, temporada_oid):
-        temporada = db_client.Temporadas.find_one({"_id":temporada_oid})
-        piloto = db_client.Pilotos.find_one({"piloto_participante":dato.piloto_participante})
+        temporada = funciones_busqueda.encontrar_un_dato(temporada_oid, "Temporadas")
+        piloto    = funciones_busqueda.encontrar_un_dato(dato.piloto_participante, "Pilotos") 
         return temporada, piloto
     
     
