@@ -21,14 +21,18 @@ def buscar_oid_con_dato(base_de_datos, dato):
     errores_simples.error_sin_oid(dato, base_de_datos)
     
     
-def encontrar_un_dato(dato, base_de_datos):
+def encontrar_un_documento(dato, base_de_datos):
     coleccion = getattr(db_client, base_de_datos)
     if base_de_datos not in listas_de_campos:
         errores_simples.error_sin_base_de_datos(base_de_datos)
         
     campos = listas_de_campos[base_de_datos]
     for campo in campos:
-        resultado = coleccion.find_one({campo:dato})
+        if isinstance(dato, str):
+            resultado = coleccion.find_one({campo:{"$regex": f"^{dato}$", "$options": "i"}})
+        else:
+            resultado = coleccion.find_one({campo:dato})
+            
         if resultado:
             return resultado
     
