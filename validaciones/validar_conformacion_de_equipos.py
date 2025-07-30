@@ -2,7 +2,7 @@ from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_dobles, validaciones_generales_simples
-
+from funciones import funciones_busqueda
 
 #VALIDAR QUE EL PRIMERO Y EL SEGUNDO PILOTO SEAN DIFERENTES
 def validar_carga_de_conformacion_de_equipos(datos, base_de_datos):
@@ -41,7 +41,7 @@ def validar_carga_de_conformacion_de_equipos_2(dato, base_de_datos):
         return key
     
 def buscar_equipo(dato):
-    equipo = db_client.Equipos.find_one({"nombre_equipo": {"$regex": f"^{dato.nombre_equipo}$", "$options": "i"}})
+    equipo = funciones_busqueda.encontrar_un_documento(dato.nombre_equipo, "Equipos")
     equipo_oid = equipo["_id"]
     return equipo_oid
     
@@ -76,6 +76,6 @@ def validar_busqueda_de_pilotos(buscar_pilotos, temporada_oid):
                 nombre = "Null"
                 continue
             validaciones_generales_simples.validacion_simple_general_negativa("Pilotos", nombre )
-            piloto = db_client.Pilotos.find_one({"piloto_participante": nombre})
+            piloto = funciones_busqueda.encontrar_un_documento(nombre, "Pilotos")
             validaciones_generales_simples.validacion_simple_general_negativa("Pilotos", piloto["_id"])
             validaciones_generales_dobles.validacion_doble_negativa_general("Pilotos_por_temporada", piloto["_id"], temporada_oid)

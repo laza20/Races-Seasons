@@ -69,8 +69,8 @@ def validacion_de_carga_repetida(dato, carreras, pilotos, equipos, ciudad, tempo
 
 
 def encontrar_datos(dato, temporada_oid):
-        temporada = funciones_busqueda.encontrar_un_dato(temporada_oid, "Temporadas")
-        piloto    = funciones_busqueda.encontrar_un_dato(dato.piloto_participante, "Pilotos") 
+        temporada = funciones_busqueda.encontrar_un_documento(temporada_oid, "Temporadas")
+        piloto    = funciones_busqueda.encontrar_un_documento(dato.piloto_participante, "Pilotos") 
         return temporada, piloto
     
     

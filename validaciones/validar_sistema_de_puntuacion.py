@@ -2,6 +2,7 @@ from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_simples
+from funciones import funciones_busqueda
 
         
 def validar_carga_sistema_de_puntuacion(datos):
@@ -14,7 +15,7 @@ def validar_carga_sistema_de_puntuacion(datos):
     else:
     
         dato = datos if not isinstance(datos, list) else datos[0]
-        key, season  = validar_carga_sistema_de_puntuacion_2(dato)
+        key, temporada  = validar_carga_sistema_de_puntuacion_2(dato)
         
 
 def verificar_entrega_duplicada(dato, key, puntos, temporada):
@@ -36,7 +37,7 @@ def create_key(dato):
     return key
 
 def buscar_data(temporada_oid):
-    season = db_client.Temporadas.find_one({"_id":temporada_oid})
+    season = funciones_busqueda.encontrar_un_documento(temporada_oid, "Temporadas")
     return season
 
 def validacion_sistema_de_puntuacion(dato, temporada_oid, season):

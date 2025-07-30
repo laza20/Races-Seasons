@@ -2,7 +2,7 @@ from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_simples, validaciones_generales_dobles
-
+from funciones import funciones_busqueda
         
 def validar_carga_piloto_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
@@ -45,7 +45,7 @@ def validar_piloto(piloto, piloto_oid):
         raise HTTPException(status_code=400, detail="Piloto no válido")
 
 def buscar_data(dato):
-    piloto  = db_client.Pilotos.find_one({"piloto_participante":dato.piloto_participante})
+    piloto = funciones_busqueda.encontrar_un_documento(dato.piloto_participante, "Pilotos")
     return piloto
 
 def buscar_oids(dato):

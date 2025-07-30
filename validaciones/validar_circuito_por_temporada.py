@@ -2,6 +2,7 @@ from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_dobles, validaciones_generales_simples
+from funciones import funciones_busqueda
 
         
 def validar_carga_circuito_por_temporada(datos, base_de_datos):
@@ -48,8 +49,8 @@ def verificar_existencia(dato, circuito, circuito_oid):
         raise HTTPException(status_code=400, detail=f"Circuito {dato.circuito} no válido")
     
 def encontrar_datos(dato, temporada_oid):
-        circuito = db_client.Circuitos.find_one({"ciudad_circuito":dato.circuito})
-        season = db_client.Temporadas.find_one({"_id": temporada_oid})
+        circuito = funciones_busqueda.encontrar_un_dato(dato.circuito, "Circuitos")
+        season   = funciones_busqueda.encontrar_un_dato(temporada_oid, "Temporadas") 
         return circuito, season
     
 def validaciones_simples(temporada_oid, circuito_oid):

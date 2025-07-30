@@ -2,7 +2,7 @@ from db.client import db_client
 from fastapi import HTTPException, status
 from funciones import funciones_logicas
 from validaciones_generales import validaciones_generales_dobles, validaciones_generales_simples
-
+from funciones import funciones_busqueda
         
 def validar_carga_equipo_por_temporada(datos, base_de_datos):
     if isinstance(datos, list) and len(datos) >= 2:
@@ -52,8 +52,8 @@ def verificar_data(equipo, equipo_oid):
         raise HTTPException(status_code=400, detail="Equipo no válido")
 
 def buscar_data(dato, temporada_oid):
-    equipo = db_client.Equipos.find_one({"nombre_equipo":dato.nombre_equipo})
-    season = db_client.Temporadas.find_one({"_id": temporada_oid})
+    equipo = funciones_busqueda.encontrar_un_documento(dato.nombre_equipo, "Equipos")
+    season = funciones_busqueda.encontrar_un_documento(temporada_oid, "Temporadas")
     return equipo, season
     
 def buscar_oid(dato):

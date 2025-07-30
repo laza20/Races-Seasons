@@ -2,6 +2,7 @@ from fastapi import HTTPException, status
 from db.client import db_client
 from validaciones_generales import validaciones_generales_dobles
 from funciones import funciones_logicas
+from funciones import funciones_busqueda
         
         
 def validar_carga_temporada(datos, base_de_datos):
@@ -32,5 +33,5 @@ def create_key(dato):
     return key
 
 def buscar_temporada(temporada_oid):
-    season = db_client.Temporadas.find_one({"_id":temporada_oid})
+    season = funciones_busqueda.encontrar_un_documento(temporada_oid, "Temporadas")
     return season
