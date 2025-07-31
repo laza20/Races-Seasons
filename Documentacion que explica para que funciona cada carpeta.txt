@@ -1,32 +1,81 @@
 El programa cuenta con una serie de carpetas las cuales estan distribuidas para mejorar la comprension del proyecto.
 Esta es la siguiente:
 
-{
-db: Contara con datos relacionados a la base de datos. Dentro contendra:
+==
+db
+==
+Contara con datos relacionados a la base de datos. Dentro contendra:
 Carpeta models:
 Cuenta con todos los modelos los cuales tienen la conformacion de las propiedades y las posibilidades de las llamadas.
 Carpeta schema:
 Cuenta con todos los schemas los cuales nos permitiran realizar las llamadas los documentos y plasmar los datos en un formato json.
 Archivo client.py:
 Es el archivo el cual tiene el nombre de la base de datos y el http por el medio del cual se realizaran las llamadas.
-}
 
-{
-back ups: Una serie de back ups los cuales permitiran relizar cargas de manera mas rapida.
-}
 
-{
-Funciones: Carpeta la cual nos permitira guardar todo tipo de funciones las cuales simplificaran y modularizaran el codigo.
-}
+=======
+ERRORES
+=======
+Nos permite almacenar todos los errores para luego ser reutilizados.
 
-{
-peticiones_http: Carpeta la cual tendra las llamadas y permitira mayor modularizacion de codigo, simplificando el proyecto.
-}
 
-{
-Routers: Carpeta la cual nos permitira contener las hojas principales con las llamadas a las funciones.
-}
+========
+back ups
+========
+Una serie de back ups los cuales permitiran relizar cargas de manera mas rapida.
 
-{
-Validaciones: Carpeta la cual contendra distintos tipos de validaciones separados en distintos archivos.
-}.
+
+=========
+Funciones
+=========
+Carpeta la cual nos permitira guardar todo tipo de funciones las cuales simplificaran y modularizaran el codigo.
+Esta dividida en:
+Funciones_carga_carrera: Al ser una carga especial se delimita por separado, ya que la misma cuenta con cargas de 3 tipos distintos de documentos que son:
+Carreras
+Carreras_por_equipos
+Carreras_por_pilotos
+
+Funciones_busqueda: Cuenta con funciones de busqueda para distintas situaciones. Por ejemplo buscar un oid o buscar un documento.
+
+Funciones_carga : Cuenta con las funciones de carga normales, es decir, cargas que no infieren en mas de un tipo de documento. Cuenta con:
+Funcion para cargar un solo documento
+funcion para cargar muchos documentos
+funcion para cargar un documento de temporada (implica la carga de campos especificos los cuales no son necesariamente ingresados por el usuario).
+funcion para cargar muchos documento de temporada (implica la carga de campos especificos los cuales no son necesariamente ingresados por el usuario).
+
+
+===============
+peticiones_http
+===============
+Carpeta la cual tendra las llamadas y permitira mayor modularizacion de codigo, simplificando el proyecto.
+
+
+=======
+Routers
+=======
+Carpeta la cual nos permitira contener las hojas principales con las llamadas a las funciones.
+
+
+============
+Validaciones
+============
+Sirve para agrupar la logica de funcionamiento de validaciones de todos los archivos a los cuales se les realizara una carga.
+
+======================
+VALIDACIONES_GENERALES
+======================
+Permitira realizar diferentes tipos de validaciones simples o dobles con solo enviar una serie de parametros.
+Contara con:
+validaciones generales simple: Estas estaran en dos formatos, tanto positiva como negativa, permitiendo aceverar que un dato exista o no en la base de 
+datos, en caso de en la positiva existe un documento se produce un error N° 409 con el detalle del mismo. En caso contrario, al no encontrarlo en la positiva continua.
+en la negativa al encontrarse un documento con el valor ingresado del dato y la coincidencia en la base de datos continuara el correcto funcionamiento y 
+en caso de no existir ningun documento con tal informacion se producira un error N° 409 con un detalle del mismo.
+Cada validacion_general -> tanto positiva como negativa contara con una serie de verificaciones, por ejemplo si un dato es str se realizara de una forma distinta a uno
+no str (permitiendo que el ingreso de datos pueda ser con cualquier tipo de letra sin producir equivaciones de por medio).
+Ejemplo negativa = validaciones_generales_simples.validacion_simple_general_negativa("Temporadas", temporada_oid) #Aqui temporadas implica el tipo de documento, el cual nos
+servira para identificarlo, mientras que temporada_oid sera el valor que se buscara.
+Ejemplo positiva = validaciones_generales_simples.validacion_simple_general(base_de_datos, dato.piloto_participante)
+
+validaciones generales doble: cuenta el mismo funcionamiento que validaciones simple pero con el funcionamiento dependiendo de dos datos.
+Ejemplo positiva = validaciones_generales_dobles.validacion_doble_general(base_de_datos, temporada_oid, equipo_oid)
+Ejemplo negativa = validaciones_generales_dobles.validacion_doble_negativa_general("Pilotos_por_temporada", piloto["_id"], temporada_oid)
