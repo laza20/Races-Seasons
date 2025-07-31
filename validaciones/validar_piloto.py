@@ -1,5 +1,5 @@
 from fastapi import HTTPException, status
-from validaciones_generales import validaciones_generales_dobles
+from validaciones_generales import validaciones_generales_simples
 
 
 def validacion_carga_piloto(datos, base_de_datos):
@@ -19,7 +19,7 @@ def validar_carga_repetida(key, pilotos, dato):
             
 def validacion_carga_piloto_2(dato, base_de_datos):
     key = create_key(dato) 
-    validaciones_generales_dobles.validacion_doble_general(base_de_datos, dato.piloto_participante, dato.edad_piloto)
+    validaciones_generales_simples.validacion_simple_general(base_de_datos, dato.piloto_participante)
     return key
 
 def create_key(dato):
