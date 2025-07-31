@@ -67,6 +67,17 @@ def view_data_by_id(router, base_de_datos, Clase: Type[BaseModel], schema):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Dato sin id o id incorrecto")
         
         
+def view_many_data_by_id(router, base_de_datos, Clase: Type[BaseModel], schema):
+    @router.get("/Buscar/Mucha/Data/Por/{id}", response_model = list[Clase])
+    async def show_circuito_by_id(id:str):
+        try:
+            coleccion = getattr(db_client, base_de_datos)
+            objeto_id = funciones_logicas.validate_object_id(id)
+            return schema(coleccion.find({"_id":objeto_id}))
+        except:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Dato sin id o id incorrecto")
+        
+        
 def view_data_for_season_by_category_and_year(router, campo, base_de_datos, schema, base_de_datos_2):
     @router.get("/Buscar/Datos/De/Cargas/{categoria}/{year}")
     async def show_teams_for_load(categoria:str, year:int):
