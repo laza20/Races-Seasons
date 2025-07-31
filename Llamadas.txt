@@ -1,25 +1,122 @@
--------------------------------------- LLAMADAS ------------------------------------- 
----------------------------------------- GETS ---------------------------------------
+=======================
+CONFORMACION DE EQUIPOS
+=======================
+método: post -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Datos/Cargas/{base_de_datos} -- base_de_datos = Conformacion_de_equipos-- 
+método: get  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Conformacion_equipos/Borrar/Por/{id}
 
-127.0.0.1:8000/Base_de_datos/Ver/Todo
-127.0.0.1:8000/Base_de_datos/Dato/{data}
-127.0.0.1:8000/Base_de_datos/Datos/Cargas/{base_de_datos}
-127.0.0.1:8000/Base_de_datos/Buscar/Data/Por/{id}
-127.0.0.1:8000/Base_de_datos/Buscar/Datos/De/Cargas/{categoria}/{year}
-127.0.0.1:8000/Base_de_datos/Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}
+=====================
+SISTEMA DE PUNTUACION
+=====================
+método: post -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Datos/Cargas/{base_de_datos} -- base_de_datos = Sistema_de_puntuacion -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Sistema_puntuacion/Borrar/Por/{id}
 
----------------------------------------- GETS ---------------------------------------
+==========
+TEMPORADAS
+==========
+método: post -- Llamada: http://127.0.0.1:8000/Temporada/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Temporada/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Temporada/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Temporada/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Temporada/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Temporada/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Temporada/Borrar/Por/{id}
 
----------------------------------------- POST ---------------------------------------
+========
+CARRERAS
+========
+método: post -- Llamada: http://127.0.0.1:8000/Carreras/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Carreras/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Ver/Todos
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Datos/Cargas/Carreras
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Data/Por/ID
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Mucha/Data/Por/ID
+método: del  -- Llamada: http://127.0.0.1:8000/Carreras/Borrar/Por/Data/{data}
 
-127.0.0.1:8000/Base_de_datos/Cargar/Uno
-127.0.0.1:8000/Base_de_datos/Cargar/Muchos
+=======
+PILOTOS
+=======
+método: post -- Llamada: http://127.0.0.1:8000/Pilotos/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Pilotos/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos/Ver/Todos
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos/Datos/Cargas/{base_de_datos} -- base_de_datos = Pilotos -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Pilotos/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Pilotos/Borrar/Por/{id}
 
----------------------------------------- POST ---------------------------------------
----------------------------------------- DELETES ------------------------------------}
+=====================
+PILOTOS POR TEMPORADA
+=====================
+método: post -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Datos/Cargas/{base_de_datos} -- base_de_datos = Pilotos_por_temporada -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Buscar/Data/Por/{id}
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Buscar/Datos/De/Cargas/{categoria}/{year}
+método: get  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}
+método: del  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Pilotos_Temporada/Borrar/Por/{id}
 
-127.0.0.1:8000/Base_de_datos/Borrar/Todo
-127.0.0.1:8000/Base_de_datos/Borrar/Por/{id}
-.
----------------------------------------- DELETES ------------------------------------
+=========
+CIRCUITOS
+=========
+método: post -- Llamada: http://127.0.0.1:8000/Circuitos/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Circuitos/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos/Datos/Cargas/{base_de_datos} -- base_de_datos = Circuitos -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Circuitos/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Circuitos/Borrar/Por/{id}
 
+=======================
+CIRCUITOS POR TEMPORADA
+=======================
+método: post -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Datos/Cargas/{base_de_datos} -- base_de_datos = Circuitos_por_temporada -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Buscar/Data/Por/{id}
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Buscar/Datos/De/Cargas/{categoria}/{year}
+método: get  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}
+método: del  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Circuitos_Temporada/Borrar/Por/{id}
+
+=======
+EQUIPOS
+=======
+método: post -- Llamada: http://127.0.0.1:8000/Equipos/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Equipos/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos/Datos/Cargas/{base_de_datos} -- base_de_datos = Equipos -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos/Buscar/Data/Por/{id}
+método: del  -- Llamada: http://127.0.0.1:8000/Equipos/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Equipos/Borrar/Por/{id}
+
+=====================
+EQUIPOS POR TEMPORADA
+=====================
+método: post -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Cargar/Uno
+método: post -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Cargar/Muchos
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Ver/Todo
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Dato/{data}
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Datos/Cargas/{base_de_datos} -- base_de_datos = Equipos_por_temporada -- 
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Buscar/Data/Por/{id}
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Buscar/Datos/De/Cargas/{categoria}/{year}
+método: get  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}
+método: del  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Borrar/Todo
+método: del  -- Llamada: http://127.0.0.1:8000/Equipos_Temporada/Circuitos_Temporada/Borrar/Por/{id}
