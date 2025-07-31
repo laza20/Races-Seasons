@@ -1,10 +1,21 @@
 from fastapi import FastAPI
-from routers import pilotos, equipos, circuitos, sistema_de_puntuacion
-from routers import  carreras, conformacion_de_equipos
-from routers import tabla_posiciones, datos_carreras
-from routers import temporada
-from routers import equipos_por_temporada, pilotos_por_temporada, circuitos_por_temporada
-from routers import users, carreras_por_piloto, carreras_por_equipo
+from routers import (
+    pilotos, 
+    equipos, 
+    circuitos, 
+    sistema_de_puntuacion, 
+    carreras, 
+    conformacion_de_equipos,
+    tabla_posiciones, 
+    datos_carreras, 
+    temporada, 
+    equipos_por_temporada, 
+    pilotos_por_temporada, 
+    circuitos_por_temporada,
+    users, 
+    carreras_por_piloto, 
+    carreras_por_equipo
+)
 
 
 app = FastAPI()
