@@ -42,6 +42,7 @@ método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Datos/Cargas/Carreras
 método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Data/Por/ID
 método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Mucha/Data/Por/ID
 método: del  -- Llamada: http://127.0.0.1:8000/Carreras/Borrar/Por/Data/{data}
+método: del  -- Llamada: http://127.0.0.1:8000/Carreras/Borrar/Datos/Carrera/{temporada}/{fecha}/{tipo_carrera}
 
 =======
 PILOTOS
