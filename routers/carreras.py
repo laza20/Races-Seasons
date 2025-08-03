@@ -65,3 +65,7 @@ peticiones_http_delete.delete_many_by_data_str(
     base_de_datos, 
     lista_de_datos_str_plural)
 
+peticiones_http_delete.delete_data_by_races(
+    router,
+    base_de_datos
+)
