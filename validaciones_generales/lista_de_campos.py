@@ -8,5 +8,7 @@ listas_de_campos = {
     "Sistema_de_puntuacion": ["_id", "posicion", "puntos", "temporada", "tipo", "tipo_carrera"],
     "Temporadas": ["_id", "descripcion", "observaciones", "tipo", "year", "categoria"],
     "Pilotos": ["_id", "piloto_participante", "edad_piloto", "nacionalidad_piloto", "tipo"],
-    "Carreras":[ "_id",  "piloto_participante","equipo_participante", "posicion","ciudad_circuito", "fecha", "temporada", "tipo_carrera", "tipo"]
+    "Carreras":[ "_id",  "piloto_participante","equipo_participante", "posicion","ciudad_circuito", "fecha", "temporada", "tipo_carrera", "tipo"],
+    "Carreras_por_equipos": ["_id","equipo_participante","fecha", "tipo", "temporada"],
+    "Carreras_por_pilotos": ["_id","piloto_participante","fecha", "tipo", "temporada"]
 }
