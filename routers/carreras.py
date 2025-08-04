@@ -3,6 +3,7 @@ from db.models.carreras import Carreras, CarrerasCarga
 from db.schemas.carreras import carrera_schema , carreras_schema
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_post, peticiones_http_put
 from validaciones import validar_carreras_por_temporada
+from peticiones_http import peticiones_http_get_datos_carreras
 
 
 
@@ -56,6 +57,12 @@ peticiones_http_get.view_many_data_by_id(
     router, 
     base_de_datos, 
     Carreras, 
+    carreras_schema
+)
+
+peticiones_http_get_datos_carreras.view_data_season_and_city(
+    router,
+    base_de_datos,
     carreras_schema
 )
 
