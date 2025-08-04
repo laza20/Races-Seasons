@@ -14,7 +14,7 @@ from db.schemas.puntos_por_piloto import puntos_por_piloto_schema, puntos_por_pi
 from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
 from db.schemas.temporada import temporada_schema, temporadas_schema
 from db.schemas.pilotos import piloto_por_temporada_schema, piloto_schema,pilotos_por_temporada_schema,pilotos_schema
-
+from peticiones_http import peticiones_http_get_datos_carreras
 
 router = APIRouter(prefix="/Datos/Carreras",
                    tags=["Datos de Carreras"],
@@ -29,32 +29,7 @@ def validate_object_id(id: str):
         raise HTTPException(status_code=400, detail="ID inválido")
 
 
-@router.get("/Totales/{temporada}",  response_model=DatosTotales)
-async def obtener_datos_totales(temporada:str):
-        temporada_oid = validate_object_id(temporada)
-        todas_las_carreras_de_una_temporada = list(db_client.carreras.find(
-            {"temporada":temporada_oid}))
-        
-        todas_las_carreras_de_un_piloto_temporada = list(db_client.carreras_por_piloto.find(
-            {"temporada":temporada_oid}))
-        
-        todas_las_carreras_de_un_equipo_temporada = list(db_client.carreras_por_equipo.find(
-            {"temporada":temporada_oid}))
-
-        
-        lista_carrera, lista_puntos_equipo, lista_puntos_piloto = [], [], []
-        
-        for carrera, piloto, equipo in zip(todas_las_carreras_de_una_temporada, todas_las_carreras_de_un_piloto_temporada,todas_las_carreras_de_un_equipo_temporada):
-            datos_carrera, datos_equipo, datos_piloto = carrera_todos_los_datos_schema_una_carrera(carrera, piloto, equipo)
-            lista_carrera.append(datos_carrera)
-            lista_puntos_equipo.append(datos_equipo)
-            lista_puntos_piloto.append(datos_piloto)
-            
-        return  DatosTotales(
-            carreras=lista_carrera,
-            puntos_x_equipo=lista_puntos_equipo,
-            puntos_x_piloto=lista_puntos_piloto
-    )
+peticiones_http_get_datos_carreras.view_old_data_of_season(router)
         
 @router.get("/Ciudad/{temporada}/{ciudad_circuito}", response_model=list[Carreras])
 async def show_carreras(ciudad_circuito: str, temporada:str):
@@ -169,7 +144,7 @@ async def show_podiums_for_drivers(equipo_participante:str, year:int, categoria:
     
     puntos_por_posicion = puntos_schema(db_client.puntosxposicion.find({"categoria":categoria}))
             
-    primer_lugar, segundo_lugar, tercer_lugar, podios = await buscar_podios(carreras_totales, puntos_por_posicion)
+    primer_lugar, segundo_lugar, tercer_lugar, podios = await buscar_podios_equipos(carreras_totales, puntos_por_posicion)
 
     podios_equipo = await transformacion_equipo(podios, primer_lugar, segundo_lugar, tercer_lugar, equipo)
     
@@ -189,7 +164,7 @@ async def show_podiums_for_drivers(equipo_participante:str, categoria:str):
     
     puntos_por_posicion = puntos_schema(db_client.puntosxposicion.find({"categoria":categoria}))
     
-    primer_lugar, segundo_lugar, tercer_lugar, podios = await buscar_podios(carreras_totales, puntos_por_posicion)
+    primer_lugar, segundo_lugar, tercer_lugar, podios = await buscar_podios_pilotos(carreras_totales, puntos_por_posicion)
     
     podios_equipo = await transformacion_equipo(podios, primer_lugar, segundo_lugar, tercer_lugar, equipo)
 
