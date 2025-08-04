@@ -28,3 +28,9 @@ peticiones_http_get_datos_carreras.view_data_season_and_city(
     base_de_datos,
     puntos_por_pilotos_schema
 )
+
+peticiones_http_get_datos_carreras.view_data_for_category_and_year(
+    router,
+    base_de_datos, 
+    puntos_por_pilotos_schema
+)
