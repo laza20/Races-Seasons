@@ -33,3 +33,9 @@ peticiones_http_get_datos_carreras.view_data_for_category_and_year(
     base_de_datos, 
     puntos_por_equipos_schema
 )
+
+peticiones_http_get_datos_carreras.view_data_for_season_city_and_type_race(
+    router, 
+    base_de_datos, 
+    puntos_por_equipos_schema, 
+    "puntos_equipo")

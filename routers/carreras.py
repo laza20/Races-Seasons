@@ -72,6 +72,12 @@ peticiones_http_get_datos_carreras.view_data_for_category_and_year(
     carreras_schema
 )
 
+peticiones_http_get_datos_carreras.view_data_for_season_city_and_type_race(
+    router, 
+    base_de_datos, 
+    carreras_schema, 
+    "posicion")
+
 lista_de_datos_str_plural= ["fecha" ]
 peticiones_http_delete.delete_many_by_data_str(
     router, 
