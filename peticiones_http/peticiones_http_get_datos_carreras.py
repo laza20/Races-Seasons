@@ -8,6 +8,8 @@ from funciones import funciones_logicas
 from fastapi import  HTTPException, status
 from errores import errores_simples
 from db.models.carrera_todos_los_datos import DatosTotales
+from db.models.carreras import Carreras, CarrerasCarga
+from db.schemas.carreras import carreras_carga_schema, carrera_carga_schema
 from db.schemas.carreras_todos_los_datos import carrera_todos_los_datos_schema_todas_las_carrera, carrera_todos_los_datos_schema_una_carrera
 from funciones import funciones_busqueda
 
@@ -34,5 +36,17 @@ def view_old_data_of_season(router):
             puntos_x_equipo=lista_puntos_equipo,
             puntos_x_piloto=lista_puntos_piloto
     )
+        
+#Sirve para carreras, carreras_por_piloto, carreras_por_equipos
+def view_data_season_and_city(router, base_de_datos, schema):
+    @router.get("/Ciudad/{temporada}/{ciudad_circuito}")
+    async def show_carreras_city(ciudad_circuito: str, temporada:str):
+        coleccion = getattr(db_client, base_de_datos)
+        temporada_oid = funciones_logicas.validate_object_id(temporada)
+        carreras = schema(coleccion.find({"ciudad_circuito":ciudad_circuito, "temporada": temporada_oid}))
+        if not carreras:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No se encontraron carreras")
+        
+        return carreras
         
 
