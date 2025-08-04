@@ -38,3 +38,21 @@ def encontrar_un_documento(dato, base_de_datos):
     
     errores_simples.error_sin_documentos_en_la_base_de_datos(dato, base_de_datos)
     
+    
+def encontrar_muchos_documentos(dato, base_de_datos):
+    coleccion = getattr(db_client, base_de_datos)
+    if base_de_datos not in listas_de_campos:
+        errores_simples.error_sin_base_de_datos(base_de_datos)
+        
+    campos = listas_de_campos[base_de_datos]
+    for campo in campos:
+        if isinstance(dato, str):
+            resultado = list(coleccion.find({campo:{"$regex": f"^{dato}$", "$options": "i"}}))
+        else:
+            resultado = list(coleccion.find({campo:dato}))
+            
+        if resultado:
+            return resultado
+    
+    errores_simples.error_sin_documentos_en_la_base_de_datos(dato, base_de_datos)
+    
