@@ -48,5 +48,17 @@ def view_data_season_and_city(router, base_de_datos, schema):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No se encontraron carreras")
         
         return carreras
+    
+def  view_data_for_category_and_year(router, base_de_datos, schema):
+    @router.get("/Data/Por/{categoria}/{year}")
+    async def view_data_for_category_and_year(categoria:str, year:int ):
+        coleccion = getattr(db_client, base_de_datos)
+        season = db_client.Temporadas.find_one({"categoria":categoria, "year":year})
+        if not season:
+            errores_simples.error_simple_negativo(f"{categoria}-{year}", base_de_datos)
+        temporada_oid = funciones_logicas.validate_object_id(season["_id"])
+        documentos = schema(coleccion.find({"temporada":temporada_oid}))
+        return documentos
+        
         
 
