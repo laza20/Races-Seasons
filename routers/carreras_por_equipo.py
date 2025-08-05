@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from db.schemas.puntos_por_equipos import puntos_por_equipo_schema, puntos_por_equipos_schema
+from db.schemas.puntos_por_equipos import puntos_por_equipos_schema
 from db.models.puntos_por_equipos import PuntosXEquipo
 from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_put, peticiones_http_get_datos_carreras
 
@@ -39,3 +39,9 @@ peticiones_http_get_datos_carreras.view_data_for_season_city_and_type_race(
     base_de_datos, 
     puntos_por_equipos_schema, 
     "puntos_equipo")
+
+peticiones_http_get_datos_carreras.view_podiums_season_by_id_season(
+    router, 
+    base_de_datos, 
+    puntos_por_equipos_schema
+)
