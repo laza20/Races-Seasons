@@ -94,4 +94,26 @@ def view_podiums_season_by_id_season(router, base_de_datos, schema):
         podios =  funciones_podios.transformacion(base_de_datos, podios, dict_dato, primer_lugar, segundo_lugar, tercer_lugar, dato, temporada_oid)
         return podios
 
+def view_podiums_season_by_category_and_year(router, base_de_datos, schema):
+    @router.get("/Podios/Año/{year}/categoria/{categoria}/dato/{dato}", )
+    async def show_podiums_for_drivers(dato:str, year:int, categoria:str):
+        coleccion = getattr(db_client, base_de_datos)
+        season = db_client.Temporadas.find_one({"year":year, "categoria":categoria})
+        if not season:
+            errores_simples.error_sin_documentos_en_la_base_de_datos(f"{categoria}-{year}", "Temporadas")
+            
+        temporada_oid = funciones_logicas.validate_object_id(season["_id"])
+        
+        dict_dato, campo = funciones_podios.buscar_data_team_or_driver(base_de_datos, dato, temporada_oid)
+        
+        carreras_totales = schema(coleccion.find({
+            campo : {"$regex": f"^{dato}$", "$options": "i"},
+            "temporada":temporada_oid
+        }))
+        
+        puntos_por_posicion = puntos_schema(db_client.Sistema_de_puntuacion.find({"temporada":temporada_oid}))
+                
+        primer_lugar, segundo_lugar, tercer_lugar, podios =  funciones_podios.buscar_podios(carreras_totales, puntos_por_posicion, base_de_datos)
 
+        podios =  funciones_podios.transformacion(base_de_datos, podios, dict_dato, primer_lugar, segundo_lugar, tercer_lugar, dato, temporada_oid)
+        return podios
