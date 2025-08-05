@@ -45,3 +45,9 @@ peticiones_http_get_datos_carreras.view_podiums_season_by_id_season(
     base_de_datos, 
     puntos_por_equipos_schema
 )
+
+peticiones_http_get_datos_carreras.view_podiums_season_by_category_and_year(
+    router, 
+    base_de_datos, 
+    puntos_por_equipos_schema
+)
