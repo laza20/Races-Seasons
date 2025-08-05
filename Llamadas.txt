@@ -41,8 +41,27 @@ método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Ver/Todos
 método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Datos/Cargas/Carreras
 método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Data/Por/ID
 método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Buscar/Mucha/Data/Por/ID
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Ciudad/{temporada}/{ciudad_circuito}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Data/Por/{categoria}/{year}
 método: del  -- Llamada: http://127.0.0.1:8000/Carreras/Borrar/Por/Data/{data}
 método: del  -- Llamada: http://127.0.0.1:8000/Carreras/Borrar/Datos/Carrera/{temporada}/{fecha}/{tipo_carrera}
+
+====================
+CARRERAS POR PILOTOS
+====================
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Piloto/Ciudad/{temporada}/{ciudad_circuito}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Piloto/Ciudad/Data/Por/{categoria}/{year}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Piloto/Circuito/{temporada}/{ciudad_circuito}/{tipo_carrera}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Piloto/Podios/Temporada/{dato}/{temporada} #en dato va el nombre del piloto
+
+====================
+CARRERAS POR EQUIPOS
+====================
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Equipos/Ciudad/{temporada}/{ciudad_circuito}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Equipos/Ciudad/Data/Por/{categoria}/{year}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Equipos/Circuito/{temporada}/{ciudad_circuito}/{tipo_carrera}
+método: get  -- Llamada: http://127.0.0.1:8000/Carreras/Por/Equipos/Podios/Temporada/{dato}/{temporada} #en dato va el nombre del equipo
+
 
 =======
 PILOTOS
