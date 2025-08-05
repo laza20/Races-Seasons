@@ -52,3 +52,8 @@ peticiones_http_get_datos_carreras.view_podiums_season_by_category_and_year(
     base_de_datos, 
     puntos_por_pilotos_schema
 )
+
+peticiones_http_get_datos_carreras.view_olds_podiums_for_driver_or_teams_by_category(
+    router, 
+    base_de_datos, 
+    puntos_por_pilotos_schema)
