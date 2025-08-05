@@ -72,6 +72,8 @@ peticiones_http_get_datos_carreras.view_data_for_category_and_year(
     carreras_schema
 )
 
+peticiones_http_get_datos_carreras.view_old_data_of_season(router)
+
 peticiones_http_get_datos_carreras.view_data_for_season_city_and_type_race(
     router, 
     base_de_datos, 
