@@ -63,7 +63,7 @@ def  view_data_for_category_and_year(router, base_de_datos, schema):
         
 #puntos_por_pilotos_schema--campo sirve para verificar por que campo se va a ordenar (puntos_piloto, puntos_equipo, puntos)
 def  view_data_for_season_city_and_type_race(router, base_de_datos, schema, campo):
-    @router.get("/Circuito/Pilotos/{temporada}/{ciudad_circuito}/{tipo_carrera}")
+    @router.get("/Circuito/{temporada}/{ciudad_circuito}/{tipo_carrera}")
     async def show_carrera_by_city_and_year(ciudad_circuito: str, temporada:str, tipo_carrera:str):
         coleccion = getattr(db_client, base_de_datos)
         temporada_oid = funciones_logicas.validate_object_id(temporada)
