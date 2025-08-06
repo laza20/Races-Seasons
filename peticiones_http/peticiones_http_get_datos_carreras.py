@@ -1,19 +1,13 @@
 #pyright: reportInvalidTypeForm=false
 from funciones import funciones_logicas
 from fastapi import status
-from pydantic import BaseModel
 from db.client import db_client
-from typing import Type, List
 from funciones import funciones_logicas
 from fastapi import  HTTPException, status
 from errores import errores_simples
 from db.models.carrera_todos_los_datos import DatosTotales
-from db.models.carreras import Carreras, CarrerasCarga
-from db.schemas.carreras import carreras_carga_schema, carrera_carga_schema
-from db.schemas.carreras_todos_los_datos import carrera_todos_los_datos_schema_todas_las_carrera, carrera_todos_los_datos_schema_una_carrera
-from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
-from db.schemas.pilotos import piloto_schema
-from db.schemas.equipos import equipo_schema
+from db.schemas.carreras_todos_los_datos import  carrera_todos_los_datos_schema_una_carrera
+from db.schemas.sistema_de_puntuacion import puntos_schema
 from db.schemas.temporada import temporadas_schema
 from funciones import funciones_busqueda
 from funciones import funciones_podios
