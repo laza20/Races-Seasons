@@ -5,16 +5,11 @@ from db.client import db_client
 from funciones import funciones_logicas
 from fastapi import  HTTPException, status
 from errores import errores_simples
-from db.models.Tabla_posicion_campeonato import TablaPosicionCampeonato, TablaPosicionesCircuito
-from db.schemas.equipos import equipo_schema, equipos_schema
-from validaciones_generales import lista_de_campos
-from db.schemas.puntos_por_equipos import puntos_por_equipo_schema, puntos_por_equipos_schema
-from db.schemas.pilotos import pilotos_schema, piloto_schema, piloto_por_temporada_schema, pilotos_por_temporada_schema
-from db.schemas.puntos_por_piloto import puntos_por_piloto_schema, puntos_por_pilotos_schema
+from db.models.Tabla_posicion_campeonato import TablaPosicionCampeonato
+from db.schemas.equipos import equipos_schema
+from db.schemas.pilotos import pilotos_schema,  pilotos_por_temporada_schema
 from db.schemas.equipos import equipos_schema, equipos_historicos_schema
-from db.schemas.sistema_de_puntuacion import punto_schema, puntos_schema
 from funciones import funciones_busqueda
-from funciones import funciones_podios
 
 def view_positions_teams_for_year_and_category(router, base_de_datos, schema):
     @router.get("/Posiciones/Categoria/{categoria}/Año/{year}", response_model=list[TablaPosicionCampeonato])
