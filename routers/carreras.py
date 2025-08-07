@@ -53,12 +53,7 @@ peticiones_http_get.view_data_by_id(
     carrera_schema
 )
 
-peticiones_http_get.view_many_data_by_id(
-    router, 
-    base_de_datos, 
-    Carreras, 
-    carreras_schema
-)
+
 
 peticiones_http_get_datos_carreras.view_data_season_and_city(
     router,
