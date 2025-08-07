@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from db.schemas.puntos_por_equipos import puntos_por_equipos_schema
 from db.models.puntos_por_equipos import PuntosXEquipo
-from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_put, peticiones_http_get_datos_carreras
+from peticiones_http import peticiones_http_delete, peticiones_http_get, peticiones_http_put, peticiones_http_get_datos_carreras, peticiones_http_get_tabla_posiciones
 
 router = APIRouter(prefix="/Carreras/Por/Equipos",
                    tags=["Carreras por equipos"],
@@ -56,3 +56,9 @@ peticiones_http_get_datos_carreras.view_olds_podiums_for_driver_or_teams_by_cate
     router, 
     base_de_datos, 
     puntos_por_equipos_schema)
+
+peticiones_http_get_tabla_posiciones.view_positions_teams_for_year_and_category(
+    router, 
+    base_de_datos, 
+    puntos_por_equipos_schema
+)
