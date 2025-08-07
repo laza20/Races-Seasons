@@ -16,7 +16,6 @@ El sistema permite realizar operaciones CRUD sobre:
 - **Circuitos**
 - **Circuitos dentro de una temporada**
 - **Sistemas de puntuaciones**
-- 
 
 ---
 
