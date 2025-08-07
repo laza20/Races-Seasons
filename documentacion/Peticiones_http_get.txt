@@ -1,0 +1,196 @@
+====================================
+peticiones_http_get.view_old_data():
+====================================
+LLamada         -> /Ver/Todo
+Ejemplo Llamada -> /Circuitos/Ver/Todo
+
+Esta funcion permite al usuario ver todos los datos cargados dentro de una tabla de documentos, solo necesita los siguientes parametros:
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Nos permitira buscar todos los datos de esta base de datos.
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+---------------------------------------------------------------------------------------------------------------------
+====================================================
+peticiones_http_get.view_one_document_for_data_str()
+====================================================
+LLamada         -> /Dato/{data}
+Ejemplo Llamada -> /Circuitos/Dato/barcelona
+
+Esta funcion permite visionar los documentos que contengan datos str que no se repitan. Por ejemplo en circuitos, podemos ingresar una ciudad y nos retornara este documento.
+Para su correcto funcionamiento necesitamos:
+router                        : Necesario para la llamada.
+base_de_datos                 : Nos permitira buscar en la base de datos el dato que necesitamos
+circuito_schema 	      : Necesario para devolver los datos al usuario una vez guardados.
+lista_de_propiedades_str_sing : Ejemplo en circuito solo contendra ciudad_circuito, es decir, sera usado para llamadas las cuales
+se precisen un buscar un dato que en mayoria de ocaciones va a ser unico.
+---------------------------------------------------------------------------------------------------------------------
+======================================
+peticiones_http_get.view_data_charge()
+======================================
+LLamada         -> /Datos/Cargas/{base_de_datos}
+Ejemplo Llamada -> Circuitos/Datos/Cargas/Pilotos
+
+Esta funcion nos permite verificar los datos que son necesarios para realizar las cargas en las diversas tablas. Para su correcto funcionamiento precisamos:
+router          : Necesario para la llamada.
+schema          : Necesario para devolver los datos al usuario una vez guardados.
+Clase           : Permitira que la obtencion de los datos json tengan un formato determinado.
+base_de_datos_2 : Solo necesario para bases de datos de temporada, por ejemplo pilotos_por_temporada, ya que los que nos permite es
+buscar los datos restantes de este que no se encuentran guardados como tal. Permite por medio de su distincion encontrar los datos
+en esta segunda base de datos.
+campo           : Este cumplira la funcion de campo que sera modificado por el dato que se trae de la base de datos 2. (con el proposito de mostrar un campo mas comprensible para el usuario)
+campo2          : Cumple la funcion de busqueda del campo que luego reemplazara al campo normal.
+---------------------------------------------------------------------------------------------------------------------
+=====================================
+peticiones_http_get.view_data_by_id()
+=====================================
+LLamada         -> /Buscar/Data/Por/{id}
+Ejemplo Llamada -> Circuitos/Buscar/Data/Por/688fd87730709edf01a87b57
+
+Esta funcion permite al usuario ver un dato en particular, por medio del id:
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Nos permitira buscar en la base de datos el dato que necesitamos
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+---------------------------------------------------------------------------------------------------------------------
+
+===============================================================
+peticiones_http_get.view_data_for_season_by_category_and_year()
+===============================================================
+LLamada         -> /Buscar/Datos/De/Cargas/{categoria}/{year}
+Ejemplo Llamada -> Temporadas/Buscar/Datos/De/Cargas/Formula 1/2025
+
+Esta funcion permite al usuario ver una serie de datos por medio del año(en la busqueda es year) y la categoria (ej. 2025, Formula 1):
+trae la temporada como una descripcion.
+router: Necesario para la llamada.
+Campo_extra: Servira para mostrar al usuario un dato mas ameno a la vista en lugar de un id.
+Nombre de la base de datos (Tabla): Nos permitira buscar en la base de datos el dato que necesitamos.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Nombre de la segunda base de datos: Servira para buscar el dato el cual simplificara la vista de los documentos.
+---------------------------------------------------------------------------------------------------------------------
+=========================================================================
+peticiones_http_get.view_data_for_season_by_category_and_year_season_id()
+=========================================================================
+LLamada         -> /Buscar/Datos/De/Cargas/Temporada/{categoria}/{year}
+Ejemplo Llamada -> Circuitos_Temporada/Buscar/Datos/De/Cargas/Temporada/Formula 1/2025
+
+Esta funcion permite al usuario ver una serie de datos por medio del año(en la busqueda es year) y la categoria (ej. 2025, Formula 1):
+trae la temporada como un id para facilitar la carga.
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos
+Clase        : Permitira que la obtencion de los datos json tengan un formato determinado.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+
+=========================================================================================
+|| APARTIR DE ESTE SECTOR SON PETICIONES QUE SON USADAS SOLO EN LOS ROUTERS DE CARRERA ||
+=========================================================================================
+---------------------------------------------------------------------------------------------------------------------
+============================================================
+peticiones_http_get_datos_carreras.view_old_data_of_season()
+============================================================
+LLamada         -> /Totales/{temporada}
+Ejemplo Llamada -> /Carreras/Ver/Todo
+
+Esta funcion solo es utilizada para el router de carreras, sirve para traer todas las posiciones tanto de carrera, carreras_por_piloto y carreras_por_equipos.
+Precisa:
+router: Necesario para la llamada.
+
+---------------------------------------------------------------------------------------------------------------------
+==============================================================
+peticiones_http_get_datos_carreras.view_data_season_and_city()
+==============================================================
+LLamada         -> /Ciudad/{temporada}/{ciudad_circuito}
+Ejemplo Llamada -> /Carreras/Ciudad/686698865a08ecb71e65372c/Barcelona
+
+Sirve para mostrar las carreras dentro de una ciudad en una temporada, se necesita:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+====================================================================
+peticiones_http_get_datos_carreras.view_data_for_category_and_year()
+====================================================================
+LLamada         -> /Data/Por/{categoria}/{year}
+Ejemplo Llamada -> /Carreras/Por/Piloto/Data/Por/Formula 1/2025
+
+Permite ver las todas las carreras dentro de una temporada por medio de la categoria y el año. Se usa en los 3 routers de carreras.
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+====================================================================
+peticiones_http_get_datos_carreras.view_data_for_category_and_year()
+====================================================================
+LLamada         -> /Circuito/{temporada}/{ciudad_circuito}/{tipo_carrera}
+Ejemplo Llamada -> /Carreras/Por/Equipos/Circuito/686698865a08ecb71e65372c/Barcelona/Principal
+
+Permite visualizar los datos de una carrera en una temporada por medio de la ciudad en la que se corrio y el tipo de carrera que fue.
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+=====================================================================
+peticiones_http_get_datos_carreras.view_podiums_season_by_id_season()
+=====================================================================
+LLamada         -> /Podios/Temporada/{dato}/{temporada} ---> dato representara el nombre del equipo o del piloto temporada sera el id de la misma.
+Ejemplo Llamada -> /Carreras/Por/Pilotos/Podios/Temporada/Franco Colapinto/686698865a08ecb71e65372c
+
+Permite visualizar los podios de un piloto o un equipo en una temporada por medio del nombre de los mismo y el id de la temporada.
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+=============================================================================
+peticiones_http_get_datos_carreras.view_podiums_season_by_category_and_year()
+=============================================================================
+LLamada         -> /Podios/Año/{year}/Categoria/{categoria}/Dato/{dato} ---> dato representara el nombre del equipo o del piloto temporada sera el id de la misma.
+Ejemplo Llamada -> /Carreras/Por/Equipos/Podios/Año/2025/Categoria/Formula 1/Dato/Williams
+
+Permite visualizar los podios de un piloto o un equipo en una temporada por medio del nombre de los mismo, el año y la categoria que se desea saber.
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+======================================================================================
+peticiones_http_get_datos_carreras.view_olds_podiums_for_driver_or_teams_by_category()
+======================================================================================
+LLamada         -> /Podios/Totales/Dato/{dato}/Categoria/{categoria} ---> dato representara el nombre del equipo o del piloto temporada sera el id de la misma.
+Ejemplo Llamada -> /Carreras/Por/Pilotos/Podios/Totales/Dato/Lando Norris/Categoria/Formula 1
+
+Permite visualizar los podios totales de un piloto o un equipo dentro de una categoria.
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+---------------------------------------------------------------------------------------------------------------------
+(SOLO SE USA EN CARRERAS DE PILOTO Y CARRERAS DE EQUIPOS)
+=================================================================================
+peticiones_http_get_tabla_posiciones.view_positions_teams_for_year_and_category()
+=================================================================================
+LLamada         -> /Posiciones/Categoria/{categoria}/Año/{year}
+Ejemplo Llamada -> /Carreras/Por/Equipos/Posiciones/Categoria/Moto GP/Año/2025
+Ejemplo Llamada -> /Carreras/Por/Pilotos/Posiciones/Categoria/Moto GP/Año/2025
+
+
+Permite visualizar todas las posiciones de aquellos pilotos que hayan participado en al menos 1 carrera dentro de una temporada
+son ordenados por medio de los puntos en primera instancia y la cantidad de carreras en segunda respectivamente.
+En las posiciones de los pilotos se mostrar la cantidad de carreras que corrio cada piloto, mientras que en la de los equipos
+se mostrara la cantidad de carreras que hubo (indistintamente del tipo).
+Precisa:
+router       : Necesario para la llamada.
+base_de_datos: Nos permitira buscar en la base de datos el dato que necesitamos.
+schema       : Necesario para devolver los datos al usuario una vez guardados.
+
+
+
+

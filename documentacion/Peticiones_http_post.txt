@@ -1,0 +1,16 @@
+Peticiones_htpp_post.cargar_uno_temporada():
+Esta funcion permite cargar un documentos de temporada, solamente se le deben pasar los siguientes parametros:
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Es necesario para las validaciones, y demas. Tambien servira para mostrar al usuario el tipo de dato de la tabla.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Campo_extra: Por medio de este se permitira que el usuario elija si cargar los datos por medio del id o de un campo identificador.
+
+Peticiones_http_post.cargar_muchos_temporada:
+Esta funcion permite cargar muchos documentos de temporada, solamente se le deben pasar los siguientes parametros:
+Clase:Permitira que la obtencion de los datos json tengan un formato determinado.
+router: Necesario para la llamada.
+Nombre de la base de datos (Tabla): Es necesario para las validaciones, y demas. Tambien servira para mostrar al usuario el tipo de dato de la tabla.
+Schema: Necesario para devolver los datos al usuario una vez guardados.
+Campo_extra: Por medio de este se permitira que el usuario elija si cargar los datos por medio del id o de un campo identificador.
+
