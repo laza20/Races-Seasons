@@ -61,6 +61,9 @@ def view_positions_teams_for_year_and_category(router, base_de_datos, schema):
                     "temporada":temporada_oid
                 })
                 
+                if base_de_datos == "Carreras_por_equipos":
+                    cantidad_carreras = cantidad_carreras / 2
+                
                 puntos_totales = sum(carrera[puntos] for carrera in carreras_de_un_equipo)
                 
                 tabla_posiciones.append({
