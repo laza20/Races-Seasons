@@ -33,11 +33,11 @@ El sistema permite realizar operaciones CRUD sobre:
 4. **Participantes**
    - **Equipos / Escuderías**
    - **Pilotos**, cada uno asociado a un equipo.
-5. 
-   **Carreras registradas**
+
+5. **Carreras registradas**
    - **Cada carrera podra ser vista o modificada una vez cargada**
-6.
-  **Datos de carreras**
+
+6.**Datos de carreras**
    - Se podran visualizar posiciones de una carrera cargada
    - Podios logrados en una temporada tanto por equipos como por pilotos
    - Podios logrados a lo largo de una categorira tanto como pilotos como equipos
