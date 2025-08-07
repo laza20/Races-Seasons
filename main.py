@@ -6,7 +6,6 @@ from routers import (
     sistema_de_puntuacion, 
     carreras, 
     conformacion_de_equipos,
-    tabla_posiciones, 
     temporada, 
     equipos_por_temporada, 
     pilotos_por_temporada, 
@@ -26,7 +25,6 @@ app.include_router(circuitos.router)
 app.include_router(sistema_de_puntuacion.router)
 app.include_router(conformacion_de_equipos.router)
 app.include_router(carreras.router)
-app.include_router(tabla_posiciones.router)
 app.include_router(temporada.router)
 app.include_router(equipos_por_temporada.router)
 app.include_router(pilotos_por_temporada.router)
