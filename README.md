@@ -56,7 +56,7 @@ El sistema permite realizar operaciones CRUD sobre:
    - *Cargar las conformaciones de equipos (para esto antes deben estar cargado tanto los equipos como pilotos necesarios dentro de la temporada)*
    - *Cargar los **circuitos** que se quieran cargar (luego podran ser utilizados en una temporada o no)*
    - *Cargar los **circuitos** necesarios dentro de una temporada.*
-3. A partir de ahí, se pueden registrar resultados de carreras y calcular los puntos automáticamente, ademasd de otros tipos de especificaciones de datos.
+4. A partir de ahí, se pueden registrar resultados de carreras y calcular los puntos automáticamente, ademasd de otros tipos de especificaciones de datos.
 
 ## ⚠️ Validaciones
 
